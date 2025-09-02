@@ -1,0 +1,30 @@
+{
+  "menu": {
+    "dashboardBorrower": "Dashboard",
+    "myLoans": "My loans",
+    "newLoan": "New request",
+    "myProfile": "My profile",
+    "dashboardGuarantor": "Dashboard",
+    "guarantees": "Guarantees",
+    "dashboardCommittee": "Dashboard",
+    "loansToReview": "Requests to review",
+    "votingHistory": "Voting history",
+    "statistics": "Statistics",
+    "dashboardTreasurer": "Dashboard",
+    "disbursements": "Disbursements",
+    "payments": "Payments",
+    "reports": "Reports",
+    "dashboardAdmin": "Dashboard",
+    "loanManagement": "Loan management",
+    "users": "Users",
+    "configuration": "Configuration",
+    "adminReports": "Reports"
+  },
+  "userMenu": {
+    "myAccount": "My account",
+    "settings": "Settings",
+    "lightMode": "Light mode",
+    "darkMode": "Dark mode",
+    "logout": "Logout"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Settings",
+  "general": "General",
+  "security": "Security",
+  "notifications": "Notifications",
+  "language": "Language",
+  "theme": "Theme",
+  "twoFactorAuth": "Two-factor authentication",
+  "changePassword": "Change password",
+  "emailNotifications": "Email notifications",
+  "smsNotifications": "SMS notifications",
+  "darkMode": "Dark mode",
+  "lightMode": "Light mode",
+  "systemDefault": "System default"
+}

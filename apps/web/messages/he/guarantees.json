@@ -1,0 +1,70 @@
+{
+  "title": "ערבויות להלוואה",
+  "subtitle": "נהל ערבויות לאבטחת בקשת ההלוואה שלך",
+  "coverage": "כיסוי ערבויות",
+  "recommendation": "מומלץ שלפחות 100% מהסכום יהיה מובטח כדי להגדיל את סיכויי האישור",
+  "addGuarantor": "הוסף ערב",
+  "inviteGuarantor": {
+    "title": "הזמן ערב",
+    "subtitle": "הערב יקבל דוא״ל לאישור הערבות שלו",
+    "email": "דוא״ל הערב",
+    "emailPlaceholder": "arev@example.com",
+    "emailHelp": "הערב חייב להיות בעל חשבון במערכת",
+    "type": "סוג ערבות",
+    "amount": "סכום ערבות (₪)",
+    "amountMax": "סכום מקסימלי: {max}₪",
+    "cancel": "ביטול",
+    "send": "שלח הזמנה"
+  },
+  "types": {
+    "simple": {
+      "label": "ערבות פשוטה",
+      "description": "ערב יחיד"
+    },
+    "joint": {
+      "label": "ערבות משותפת",
+      "description": "מספר ערבים ביחד ולחוד"
+    },
+    "collective": {
+      "label": "ערבות קולקטיבית",
+      "description": "קבוצת ערבים"
+    },
+    "deposit": {
+      "label": "פיקדון ערבות",
+      "description": "סכום חסום"
+    },
+    "assetBacked": {
+      "label": "ערבות בנכס",
+      "description": "נכס כביטחון"
+    }
+  },
+  "statuses": {
+    "pending": "ממתין",
+    "active": "פעיל",
+    "released": "שוחרר",
+    "cancelled": "בוטל",
+    "invoked": "מומש"
+  },
+  "list": {
+    "title": "רשימת ערבים",
+    "signedDate": "נחתם ב-{date}",
+    "resend": "שלח שוב",
+    "cancel": "בטל"
+  },
+  "empty": {
+    "title": "לא נוספו ערבים",
+    "subtitle": "הוסף ערבים לאבטחת בקשתך"
+  },
+  "messages": {
+    "userNotFound": "לא נמצא משתמש עם דוא״ל זה",
+    "invitationSent": "הזמנת ערבות נשלחה בהצלחה",
+    "addError": "שגיאה בהוספת ערב",
+    "cancelled": "הערבות בוטלה",
+    "cancelError": "שגיאה בביטול",
+    "reminderSent": "תזכורת נשלחה ל-{email}"
+  },
+  "validation": {
+    "invalidEmail": "דוא״ל לא תקין",
+    "minAmount": "הסכום המינימלי הוא ₪100"
+  }
+}

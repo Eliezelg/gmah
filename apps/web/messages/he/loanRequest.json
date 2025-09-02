@@ -1,0 +1,181 @@
+{
+  "title": "בקשת הלוואה חדשה",
+  "subtitle": "מלא את הטופס כדי להגיש את בקשתך",
+  "backButton": "חזרה",
+  "steps": {
+    "loanType": "סוג הלוואה",
+    "amount": "סכום",
+    "details": "פרטים",
+    "documents": "מסמכים",
+    "guarantees": "ערבויות",
+    "confirmation": "אישור"
+  },
+  "stepDescriptions": {
+    "loanType": "בחר את סוג ההלוואה המתאים לצרכיך",
+    "amount": "הגדר את הסכום ומשך ההחזר",
+    "details": "פרט את פרטי בקשתך",
+    "documents": "הוסף מסמכים תומכים",
+    "guarantees": "הוסף ערבים לאבטחת בקשתך",
+    "confirmation": "סקור ואשר את בקשתך"
+  },
+  "loanTypes": {
+    "personal": {
+      "label": "הלוואה אישית",
+      "description": "לצרכיך האישיים הדחופים"
+    },
+    "business": {
+      "label": "הלוואה עסקית",
+      "description": "לפיתוח העסק שלך"
+    },
+    "student": {
+      "label": "הלוואת סטודנט",
+      "description": "למימון לימודיך"
+    },
+    "medical": {
+      "label": "הלוואה רפואית",
+      "description": "לטיפול רפואי דחוף"
+    },
+    "emergency": {
+      "label": "הלוואת חירום",
+      "description": "למצב חירום"
+    },
+    "maxAmount": "מקסימום: {amount}",
+    "maxDuration": "משך: {duration} חודשים"
+  },
+  "amountStep": {
+    "loanAmount": "סכום ההלוואה",
+    "placeholder": "0",
+    "amountRange": "סכום בין ₪100 ל-{max}",
+    "installmentsLabel": "מספר תשלומים: {count} חודשים",
+    "installmentsRange": {
+      "min": "חודש אחד",
+      "max": "{duration} חודשים"
+    },
+    "summary": {
+      "requestedAmount": "סכום מבוקש:",
+      "duration": "משך:",
+      "monthlyPayment": "תשלום חודשי:",
+      "expectedEnd": "סיום צפוי:"
+    }
+  },
+  "detailsStep": {
+    "purpose": "מטרת ההלוואה",
+    "purposePlaceholder": "לדוגמה: רכישת ציוד מחשב",
+    "purposeDescription": "תאר בקצרה את השימוש המיועד בכספים",
+    "category": "קטגוריה",
+    "categoryPlaceholder": "בחר קטגוריה",
+    "detailedDescription": "תיאור מפורט",
+    "descriptionPlaceholder": "הסבר בפירוט מדוע אתה זקוק להלוואה זו...",
+    "descriptionHelp": "ככל שתהיה יותר ספציפי, כך גדל הסיכוי שבקשתך תאושר במהירות"
+  },
+  "documentsStep": {
+    "title": "מסמכים תומכים",
+    "subtitle": "העלה את המסמכים הנדרשים לבקשת ההלוואה שלך",
+    "recommendedTitle": "מסמכים מומלצים",
+    "personal": {
+      "idCard": "תעודת זהות",
+      "addressProof": "הוכחת כתובת",
+      "paySlips": "3 תלושי שכר אחרונים"
+    },
+    "business": {
+      "kbis": "רישום חברה",
+      "balance": "דוחות כספיים",
+      "businessPlan": "תוכנית עסקית",
+      "bankStatements": "דפי חשבון בנק עסקיים"
+    },
+    "student": {
+      "studentCard": "תעודת סטודנט",
+      "enrollment": "אישור לימודים",
+      "resources": "הוכחת משאבים"
+    },
+    "medical": {
+      "quote": "הצעת מחיר רפואית",
+      "prescription": "מרשם רפואי",
+      "socialSecurity": "אישור ביטוח בריאות"
+    },
+    "emergency": {
+      "urgencyProof": "הוכחת מצב חירום",
+      "idCard": "תעודת זהות"
+    },
+    "uploadError": "נא להעלות לפחות מסמך אחד"
+  },
+  "guaranteesStep": {
+    "title": "ערבים",
+    "subtitle": "הוסף ערבים כדי להגדיל את סיכויי האישור שלך",
+    "whyGuarantors": "למה להוסיף ערבים?",
+    "benefits": {
+      "approval": "מגדיל משמעותית את סיכויי האישור",
+      "higherAmount": "מאפשר גישה לסכומים גבוהים יותר",
+      "fasterProcess": "מזרז את תהליך האישור",
+      "lowerCollateral": "מפחית את הערבויות החומריות הנדרשות"
+    }
+  },
+  "confirmationStep": {
+    "title": "סיכום הבקשה",
+    "loanType": "סוג הלוואה",
+    "amount": "סכום",
+    "duration": "משך",
+    "monthlyPayment": "תשלום חודשי",
+    "purpose": "מטרה",
+    "description": "תיאור",
+    "uploadedDocs": "מסמכים שהועלו",
+    "documentsCount": "{count} מסמך/ים",
+    "guarantors": "ערבים",
+    "guarantorsCount": "{count} ערב/ים",
+    "noGuarantors": "לא נוספו ערבים",
+    "importantInfo": "מידע חשוב",
+    "reviewTime": "בקשתך תיבדק על ידי הוועדה תוך 48-72 שעות",
+    "additionalDocs": "ייתכן שיידרשו מסמכים נוספים",
+    "noInterest": "לא תיגבה ריבית על הלוואה זו",
+    "emailNotification": "תקבל הודעה בדוא״ל על ההחלטה"
+  },
+  "navigation": {
+    "previous": "הקודם",
+    "next": "הבא",
+    "submit": "הגש בקשה"
+  },
+  "purposes": {
+    "personal": {
+      "marriage": "חתונה",
+      "moving": "מעבר דירה",
+      "renovation": "שיפוץ",
+      "travel": "נסיעה",
+      "equipment": "רכישת ציוד",
+      "other": "אחר"
+    },
+    "business": {
+      "startup": "הקמת עסק",
+      "development": "פיתוח עסק",
+      "equipment": "רכישת ציוד",
+      "treasury": "תזרים מזומנים",
+      "stock": "מלאי",
+      "other": "אחר"
+    },
+    "student": {
+      "tuition": "שכר לימוד",
+      "housing": "דיור סטודנטים",
+      "supplies": "ציוד לימודים",
+      "training": "הכשרה",
+      "other": "אחר"
+    },
+    "medical": {
+      "surgery": "ניתוח",
+      "treatment": "טיפול",
+      "hospitalization": "אשפוז",
+      "medication": "תרופות",
+      "other": "אחר"
+    },
+    "emergency": {
+      "urgentRepair": "תיקון דחוף",
+      "unpaidBills": "חשבונות לא משולמים",
+      "familySituation": "מצב משפחתי",
+      "other": "אחר"
+    }
+  },
+  "validation": {
+    "createError": "שגיאה ביצירת הבקשה",
+    "submitError": "שגיאה בהגשת הבקשה",
+    "missingLoanId": "שגיאה: מזהה הלוואה חסר",
+    "success": "בקשת ההלוואה נוצרה בהצלחה!"
+  }
+}

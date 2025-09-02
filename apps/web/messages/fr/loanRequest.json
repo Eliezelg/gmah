@@ -1,0 +1,181 @@
+{
+  "title": "Nouvelle demande de prêt",
+  "subtitle": "Remplissez le formulaire pour soumettre votre demande",
+  "backButton": "Retour",
+  "steps": {
+    "loanType": "Type de prêt",
+    "amount": "Montant",
+    "details": "Détails",
+    "documents": "Documents",
+    "guarantees": "Garanties",
+    "confirmation": "Confirmation"
+  },
+  "stepDescriptions": {
+    "loanType": "Choisissez le type de prêt qui correspond à vos besoins",
+    "amount": "Définissez le montant et la durée de remboursement",
+    "details": "Précisez les détails de votre demande",
+    "documents": "Ajoutez les documents justificatifs",
+    "guarantees": "Ajoutez des garants pour sécuriser votre demande",
+    "confirmation": "Vérifiez et confirmez votre demande"
+  },
+  "loanTypes": {
+    "personal": {
+      "label": "Prêt Personnel",
+      "description": "Pour vos besoins personnels urgents"
+    },
+    "business": {
+      "label": "Prêt Professionnel",
+      "description": "Pour développer votre activité"
+    },
+    "student": {
+      "label": "Prêt Étudiant",
+      "description": "Pour financer vos études"
+    },
+    "medical": {
+      "label": "Prêt Médical",
+      "description": "Pour des soins médicaux urgents"
+    },
+    "emergency": {
+      "label": "Prêt Urgent",
+      "description": "Pour une situation d'urgence"
+    },
+    "maxAmount": "Max: {amount}",
+    "maxDuration": "Durée: {duration} mois"
+  },
+  "amountStep": {
+    "loanAmount": "Montant du prêt",
+    "placeholder": "0",
+    "amountRange": "Montant entre €100 et {max}",
+    "installmentsLabel": "Nombre de mensualités: {count} mois",
+    "installmentsRange": {
+      "min": "1 mois",
+      "max": "{duration} mois"
+    },
+    "summary": {
+      "requestedAmount": "Montant demandé:",
+      "duration": "Durée:",
+      "monthlyPayment": "Mensualité:",
+      "expectedEnd": "Fin prévue:"
+    }
+  },
+  "detailsStep": {
+    "purpose": "Objet du prêt",
+    "purposePlaceholder": "Ex: Achat de matériel informatique",
+    "purposeDescription": "Décrivez brièvement l'utilisation prévue des fonds",
+    "category": "Catégorie",
+    "categoryPlaceholder": "Sélectionnez une catégorie",
+    "detailedDescription": "Description détaillée",
+    "descriptionPlaceholder": "Expliquez en détail pourquoi vous avez besoin de ce prêt...",
+    "descriptionHelp": "Plus vous êtes précis, plus votre demande a de chances d'être approuvée rapidement"
+  },
+  "documentsStep": {
+    "title": "Documents justificatifs",
+    "subtitle": "Téléchargez les documents nécessaires pour votre demande de prêt",
+    "recommendedTitle": "Documents recommandés",
+    "personal": {
+      "idCard": "Pièce d'identité valide",
+      "addressProof": "Justificatif de domicile",
+      "paySlips": "3 derniers bulletins de salaire"
+    },
+    "business": {
+      "kbis": "Extrait Kbis ou équivalent",
+      "balance": "Bilans comptables",
+      "businessPlan": "Business plan",
+      "bankStatements": "Relevés bancaires professionnels"
+    },
+    "student": {
+      "studentCard": "Carte d'étudiant",
+      "enrollment": "Attestation d'inscription",
+      "resources": "Justificatifs de ressources"
+    },
+    "medical": {
+      "quote": "Devis médical",
+      "prescription": "Ordonnance ou prescription",
+      "socialSecurity": "Attestation de sécurité sociale"
+    },
+    "emergency": {
+      "urgencyProof": "Justificatif de la situation d'urgence",
+      "idCard": "Pièce d'identité"
+    },
+    "uploadError": "Veuillez télécharger au moins un document"
+  },
+  "guaranteesStep": {
+    "title": "Garants",
+    "subtitle": "Ajoutez des garants pour augmenter vos chances d'approbation",
+    "whyGuarantors": "Pourquoi ajouter des garants?",
+    "benefits": {
+      "approval": "Augmente significativement vos chances d'approbation",
+      "higherAmount": "Permet d'accéder à des montants plus élevés",
+      "fasterProcess": "Accélère le processus de validation",
+      "lowerCollateral": "Réduit les garanties matérielles requises"
+    }
+  },
+  "confirmationStep": {
+    "title": "Récapitulatif de votre demande",
+    "loanType": "Type de prêt",
+    "amount": "Montant",
+    "duration": "Durée",
+    "monthlyPayment": "Mensualité",
+    "purpose": "Objet",
+    "description": "Description",
+    "uploadedDocs": "Documents téléchargés",
+    "documentsCount": "{count} document(s)",
+    "guarantors": "Garants",
+    "guarantorsCount": "{count} garant(s)",
+    "noGuarantors": "Aucun garant ajouté",
+    "importantInfo": "Informations importantes",
+    "reviewTime": "Votre demande sera examinée par le comité sous 48-72h",
+    "additionalDocs": "Des documents justificatifs peuvent être demandés",
+    "noInterest": "Aucun intérêt ne sera appliqué sur ce prêt",
+    "emailNotification": "Vous serez notifié par email de la décision"
+  },
+  "navigation": {
+    "previous": "Précédent",
+    "next": "Suivant",
+    "submit": "Soumettre la demande"
+  },
+  "purposes": {
+    "personal": {
+      "marriage": "Mariage",
+      "moving": "Déménagement",
+      "renovation": "Rénovation",
+      "travel": "Voyage",
+      "equipment": "Achat équipement",
+      "other": "Autre"
+    },
+    "business": {
+      "startup": "Création entreprise",
+      "development": "Développement activité",
+      "equipment": "Achat matériel",
+      "treasury": "Trésorerie",
+      "stock": "Stock",
+      "other": "Autre"
+    },
+    "student": {
+      "tuition": "Frais de scolarité",
+      "housing": "Logement étudiant",
+      "supplies": "Matériel scolaire",
+      "training": "Formation",
+      "other": "Autre"
+    },
+    "medical": {
+      "surgery": "Opération",
+      "treatment": "Traitement",
+      "hospitalization": "Hospitalisation",
+      "medication": "Médicaments",
+      "other": "Autre"
+    },
+    "emergency": {
+      "urgentRepair": "Réparation urgente",
+      "unpaidBills": "Factures impayées",
+      "familySituation": "Situation familiale",
+      "other": "Autre"
+    }
+  },
+  "validation": {
+    "createError": "Erreur lors de la création de la demande",
+    "submitError": "Erreur lors de la soumission de la demande",
+    "missingLoanId": "Erreur: ID de prêt manquant",
+    "success": "Demande de prêt créée avec succès!"
+  }
+}

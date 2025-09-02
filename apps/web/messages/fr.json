@@ -1,0 +1,659 @@
+{
+  "_locale": "fr",
+  "common": {
+    "appName": "GMAH Platform",
+    "loading": "Chargement...",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "export": "Exporter",
+    "import": "Importer",
+    "submit": "Soumettre",
+    "confirm": "Confirmer",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "yes": "Oui",
+    "no": "Non",
+    "status": "Statut",
+    "actions": "Actions",
+    "date": "Date",
+    "amount": "Montant",
+    "description": "Description",
+    "details": "Détails",
+    "error": "Erreur",
+    "success": "Succès",
+    "warning": "Attention",
+    "info": "Information"
+  },
+  "home": {
+    "hero": {
+      "title": "Plateforme de Prêts Sans Intérêts",
+      "subtitle": "Système de gestion communautaire pour des prêts solidaires conformes aux principes halakhiques",
+      "login": "Se connecter",
+      "register": "S'inscrire"
+    },
+    "features": {
+      "title": "Nos Services",
+      "secure": {
+        "title": "Sécurité Garantie",
+        "description": "Vos données sont protégées avec les plus hauts standards de sécurité"
+      },
+      "community": {
+        "title": "Communauté Solidaire",
+        "description": "Un réseau d'entraide basé sur la confiance et le soutien mutuel"
+      },
+      "efficient": {
+        "title": "Processus Efficace",
+        "description": "Traitement rapide des demandes et décisions en 48-72h"
+      },
+      "solidarity": {
+        "title": "Valeurs Solidaires",
+        "description": "Des prêts sans intérêts respectant les principes halakhiques"
+      }
+    },
+    "cta": {
+      "title": "Prêt à commencer?",
+      "subtitle": "Rejoignez notre communauté et bénéficiez de prêts sans intérêts",
+      "button": "Commencer maintenant"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Connexion à GMAH",
+      "subtitle": "Entrez vos identifiants pour accéder à votre compte",
+      "email": "Email",
+      "emailPlaceholder": "nom@exemple.com",
+      "password": "Mot de passe",
+      "passwordPlaceholder": "••••••••",
+      "forgotPassword": "Mot de passe oublié?",
+      "loginButton": "Se connecter",
+      "noAccount": "Pas encore de compte?",
+      "signUpLink": "S'inscrire",
+      "loginSuccess": "Connexion réussie!",
+      "loginError": "Erreur de connexion",
+      "rememberMe": "Se souvenir de moi"
+    },
+    "register": {
+      "title": "Inscription",
+      "email": "Email",
+      "password": "Mot de passe",
+      "confirmPassword": "Confirmer le mot de passe",
+      "createAccount": "Créer un compte",
+      "alreadyHaveAccount": "Vous avez déjà un compte?",
+      "registerSuccess": "Inscription réussie",
+      "registerError": "Erreur d'inscription",
+      "accountCreated": "Compte créé avec succès"
+    },
+    "reset": {
+      "forgotPassword": "Mot de passe oublié?",
+      "resetPassword": "Réinitialiser le mot de passe",
+      "passwordResetSent": "Email de réinitialisation envoyé",
+      "passwordResetSuccess": "Mot de passe réinitialisé avec succès"
+    },
+    "logout": "Déconnexion",
+    "validation": {
+      "invalidEmail": "Email invalide",
+      "passwordTooShort": "Le mot de passe doit contenir au moins 6 caractères",
+      "passwordsDontMatch": "Les mots de passe ne correspondent pas",
+      "invalidCredentials": "Identifiants invalides"
+    }
+  },
+  "navigation": {
+    "home": "Accueil",
+    "dashboard": "Tableau de bord",
+    "loans": "Prêts",
+    "myLoans": "Mes prêts",
+    "newLoan": "Nouveau prêt",
+    "loanRequests": "Demandes de prêt",
+    "payments": "Paiements",
+    "guarantees": "Garanties",
+    "documents": "Documents",
+    "reports": "Rapports",
+    "users": "Utilisateurs",
+    "settings": "Paramètres",
+    "profile": "Profil",
+    "help": "Aide",
+    "notifications": "Notifications",
+    "treasury": "Trésorerie",
+    "committee": "Comité",
+    "admin": "Administration"
+  },
+  "loan": {
+    "title": "Prêt",
+    "loanNumber": "Numéro de prêt",
+    "borrower": "Emprunteur",
+    "amount": "Montant",
+    "type": "Type",
+    "purpose": "Objet",
+    "status": "Statut",
+    "requestDate": "Date de demande",
+    "approvalDate": "Date d'approbation",
+    "disbursementDate": "Date de décaissement",
+    "repaymentSchedule": "Échéancier",
+    "guarantees": "Garanties",
+    "documents": "Documents",
+    "interest": "Intérêt",
+    "duration": "Durée",
+    "monthlyPayment": "Mensualité",
+    "totalRepayment": "Remboursement total",
+    "outstandingBalance": "Solde restant",
+    "nextPaymentDate": "Prochaine échéance",
+    "submit": "Soumettre la demande",
+    "approve": "Approuver",
+    "reject": "Rejeter",
+    "disburse": "Décaisser",
+    "statuses": {
+      "DRAFT": "Brouillon",
+      "SUBMITTED": "Soumis",
+      "UNDER_REVIEW": "En cours d'examen",
+      "APPROVED": "Approuvé",
+      "REJECTED": "Rejeté",
+      "DISBURSED": "Décaissé",
+      "ACTIVE": "Actif",
+      "COMPLETED": "Complété",
+      "DEFAULTED": "En défaut",
+      "CANCELLED": "Annulé"
+    },
+    "types": {
+      "PERSONAL": "Personnel",
+      "BUSINESS": "Professionnel",
+      "EDUCATION": "Éducation",
+      "MEDICAL": "Médical",
+      "EMERGENCY": "Urgence",
+      "OTHER": "Autre"
+    }
+  },
+  "dashboard": {
+    "welcome": "Bienvenue",
+    "overview": "Vue d'ensemble",
+    "quickActions": "Actions rapides",
+    "recentActivity": "Activité récente",
+    "statistics": "Statistiques",
+    "totalLoans": "Total des prêts",
+    "activeLoans": "Prêts actifs",
+    "pendingApproval": "En attente d'approbation",
+    "totalDisbursed": "Total décaissé",
+    "totalCollected": "Total collecté",
+    "outstandingAmount": "Montant restant",
+    "repaymentRate": "Taux de remboursement",
+    "defaultRate": "Taux de défaut",
+    "admin": {
+      "title": "Tableau de bord Admin",
+      "subtitle": "Vue d'ensemble de la plateforme",
+      "underConstruction": "En construction",
+      "underConstructionDesc": "Le tableau de bord administrateur sera disponible prochainement",
+      "interfaceDescription": "Cette interface permettra de gérer les utilisateurs, les prêts et les configurations système."
+    },
+    "committee": {
+      "title": "Tableau de bord Comité",
+      "subtitle": "Examinez et votez sur les demandes de prêt",
+      "underConstruction": "En construction",
+      "underConstructionDesc": "Le tableau de bord du comité sera disponible prochainement",
+      "interfaceDescription": "Cette interface permettra d'examiner les demandes et de voter."
+    },
+    "borrower": {
+      "title": "Tableau de bord",
+      "subtitle": "Gérez vos prêts et suivez vos remboursements",
+      "newLoanButton": "Nouvelle demande",
+      "stats": {
+        "activeLoans": "Prêts actifs",
+        "totalOf": "Sur {total} au total",
+        "totalBorrowed": "Total emprunté",
+        "totalDisbursedDesc": "Montant total décaissé",
+        "repaid": "Remboursé",
+        "repaidPercentage": "{percentage}% du total",
+        "completedLoans": "Prêts terminés",
+        "fullyRepaid": "Remboursés intégralement"
+      },
+      "upcomingPayments": {
+        "title": "Prochaines échéances",
+        "viewDetails": "Voir détails →"
+      },
+      "tabs": {
+        "active": "Actifs ({count})",
+        "pending": "En cours ({count})",
+        "all": "Tous ({count})"
+      },
+      "emptyStates": {
+        "noActiveLoans": "Aucun prêt actif",
+        "noActiveLoanDesc": "Vous n'avez pas de prêt en cours de remboursement",
+        "makeNewLoan": "Faire une demande de prêt",
+        "noPendingRequests": "Aucune demande en cours",
+        "noPendingDesc": "Vous n'avez pas de demande en attente",
+        "noLoansEver": "Aucun prêt",
+        "noLoansEverDesc": "Vous n'avez jamais fait de demande de prêt",
+        "firstLoan": "Faire votre première demande"
+      },
+      "loanDetails": {
+        "amount": "Montant",
+        "outstanding": "Restant dû",
+        "monthlyPayment": "Mensualité",
+        "installments": "Échéances",
+        "months": "mois",
+        "requestedAmount": "Montant demandé",
+        "requestDate": "Date de demande",
+        "type": "Type",
+        "date": "Date",
+        "viewDetails": "Voir les détails"
+      }
+    },
+    "layout": {
+      "headers": {
+        "borrower": "Tableau de bord",
+        "treasurer": "Gestion Financière",
+        "committee": "Comité d'approbation",
+        "admin": "Administration",
+        "superAdmin": "Super Administration"
+      }
+    }
+  },
+  "loanRequest": {
+    "title": "Nouvelle demande de prêt",
+    "subtitle": "Remplissez le formulaire pour soumettre votre demande",
+    "backButton": "Retour",
+    "steps": {
+      "loanType": "Type de prêt",
+      "amount": "Montant",
+      "details": "Détails",
+      "documents": "Documents",
+      "guarantees": "Garanties",
+      "confirmation": "Confirmation"
+    },
+    "stepDescriptions": {
+      "loanType": "Choisissez le type de prêt qui correspond à vos besoins",
+      "amount": "Définissez le montant et la durée de remboursement",
+      "details": "Précisez les détails de votre demande",
+      "documents": "Ajoutez les documents justificatifs",
+      "guarantees": "Ajoutez des garants pour sécuriser votre demande",
+      "confirmation": "Vérifiez et confirmez votre demande"
+    },
+    "loanTypes": {
+      "personal": {
+        "label": "Prêt Personnel",
+        "description": "Pour vos besoins personnels urgents"
+      },
+      "business": {
+        "label": "Prêt Professionnel",
+        "description": "Pour développer votre activité"
+      },
+      "student": {
+        "label": "Prêt Étudiant",
+        "description": "Pour financer vos études"
+      },
+      "medical": {
+        "label": "Prêt Médical",
+        "description": "Pour des soins médicaux urgents"
+      },
+      "emergency": {
+        "label": "Prêt Urgent",
+        "description": "Pour une situation d'urgence"
+      },
+      "maxAmount": "Max: {amount}",
+      "maxDuration": "Durée: {duration} mois"
+    },
+    "amountStep": {
+      "loanAmount": "Montant du prêt",
+      "placeholder": "0",
+      "amountRange": "Montant entre €100 et {max}",
+      "installmentsLabel": "Nombre de mensualités: {count} mois",
+      "installmentsRange": {
+        "min": "1 mois",
+        "max": "{duration} mois"
+      },
+      "summary": {
+        "requestedAmount": "Montant demandé:",
+        "duration": "Durée:",
+        "monthlyPayment": "Mensualité:",
+        "expectedEnd": "Fin prévue:"
+      }
+    },
+    "detailsStep": {
+      "purpose": "Objet du prêt",
+      "purposePlaceholder": "Ex: Achat de matériel informatique",
+      "purposeDescription": "Décrivez brièvement l'utilisation prévue des fonds",
+      "category": "Catégorie",
+      "categoryPlaceholder": "Sélectionnez une catégorie",
+      "detailedDescription": "Description détaillée",
+      "descriptionPlaceholder": "Expliquez en détail pourquoi vous avez besoin de ce prêt...",
+      "descriptionHelp": "Plus vous êtes précis, plus votre demande a de chances d'être approuvée rapidement"
+    },
+    "documentsStep": {
+      "title": "Documents justificatifs",
+      "subtitle": "Téléchargez les documents nécessaires pour votre demande de prêt",
+      "recommendedTitle": "Documents recommandés",
+      "personal": {
+        "idCard": "Pièce d'identité valide",
+        "addressProof": "Justificatif de domicile",
+        "paySlips": "3 derniers bulletins de salaire"
+      },
+      "business": {
+        "kbis": "Extrait Kbis ou équivalent",
+        "balance": "Bilans comptables",
+        "businessPlan": "Business plan",
+        "bankStatements": "Relevés bancaires professionnels"
+      },
+      "student": {
+        "studentCard": "Carte d'étudiant",
+        "enrollment": "Attestation d'inscription",
+        "resources": "Justificatifs de ressources"
+      },
+      "medical": {
+        "quote": "Devis médical",
+        "prescription": "Ordonnance ou prescription",
+        "socialSecurity": "Attestation de sécurité sociale"
+      },
+      "emergency": {
+        "urgencyProof": "Justificatif de la situation d'urgence",
+        "idCard": "Pièce d'identité"
+      },
+      "uploadError": "Veuillez télécharger au moins un document"
+    },
+    "guaranteesStep": {
+      "title": "Garants",
+      "subtitle": "Ajoutez des garants pour augmenter vos chances d'approbation",
+      "whyGuarantors": "Pourquoi ajouter des garants?",
+      "benefits": {
+        "approval": "Augmente significativement vos chances d'approbation",
+        "higherAmount": "Permet d'accéder à des montants plus élevés",
+        "fasterProcess": "Accélère le processus de validation",
+        "lowerCollateral": "Réduit les garanties matérielles requises"
+      }
+    },
+    "confirmationStep": {
+      "title": "Récapitulatif de votre demande",
+      "loanType": "Type de prêt",
+      "amount": "Montant",
+      "duration": "Durée",
+      "monthlyPayment": "Mensualité",
+      "purpose": "Objet",
+      "description": "Description",
+      "uploadedDocs": "Documents téléchargés",
+      "documentsCount": "{count} document(s)",
+      "guarantors": "Garants",
+      "guarantorsCount": "{count} garant(s)",
+      "noGuarantors": "Aucun garant ajouté",
+      "importantInfo": "Informations importantes",
+      "reviewTime": "Votre demande sera examinée par le comité sous 48-72h",
+      "additionalDocs": "Des documents justificatifs peuvent être demandés",
+      "noInterest": "Aucun intérêt ne sera appliqué sur ce prêt",
+      "emailNotification": "Vous serez notifié par email de la décision"
+    },
+    "navigation": {
+      "previous": "Précédent",
+      "next": "Suivant",
+      "submit": "Soumettre la demande"
+    },
+    "purposes": {
+      "personal": {
+        "marriage": "Mariage",
+        "moving": "Déménagement",
+        "renovation": "Rénovation",
+        "travel": "Voyage",
+        "equipment": "Achat équipement",
+        "other": "Autre"
+      },
+      "business": {
+        "startup": "Création entreprise",
+        "development": "Développement activité",
+        "equipment": "Achat matériel",
+        "treasury": "Trésorerie",
+        "stock": "Stock",
+        "other": "Autre"
+      },
+      "student": {
+        "tuition": "Frais de scolarité",
+        "housing": "Logement étudiant",
+        "supplies": "Matériel scolaire",
+        "training": "Formation",
+        "other": "Autre"
+      },
+      "medical": {
+        "surgery": "Opération",
+        "treatment": "Traitement",
+        "hospitalization": "Hospitalisation",
+        "medication": "Médicaments",
+        "other": "Autre"
+      },
+      "emergency": {
+        "urgentRepair": "Réparation urgente",
+        "unpaidBills": "Factures impayées",
+        "familySituation": "Situation familiale",
+        "other": "Autre"
+      }
+    },
+    "validation": {
+      "createError": "Erreur lors de la création de la demande",
+      "submitError": "Erreur lors de la soumission de la demande",
+      "missingLoanId": "Erreur: ID de prêt manquant",
+      "success": "Demande de prêt créée avec succès!"
+    }
+  },
+  "guarantees": {
+    "title": "Garanties du prêt",
+    "subtitle": "Gérez les garanties pour sécuriser votre demande de prêt",
+    "coverage": "Couverture des garanties",
+    "recommendation": "Il est recommandé d'avoir au moins 100% du montant garanti pour augmenter vos chances d'approbation",
+    "addGuarantor": "Ajouter un garant",
+    "inviteGuarantor": {
+      "title": "Inviter un garant",
+      "subtitle": "Le garant recevra un email pour confirmer sa garantie",
+      "email": "Email du garant",
+      "emailPlaceholder": "garant@example.com",
+      "emailHelp": "Le garant doit avoir un compte sur la plateforme",
+      "type": "Type de garantie",
+      "amount": "Montant garanti (€)",
+      "amountMax": "Montant maximum: {max}€",
+      "cancel": "Annuler",
+      "send": "Envoyer l'invitation"
+    },
+    "types": {
+      "simple": {
+        "label": "Garantie Simple",
+        "description": "Un seul garant"
+      },
+      "joint": {
+        "label": "Garantie Conjointe",
+        "description": "Plusieurs garants solidaires"
+      },
+      "collective": {
+        "label": "Garantie Collective",
+        "description": "Groupe de garants"
+      },
+      "deposit": {
+        "label": "Dépôt de Garantie",
+        "description": "Montant bloqué"
+      },
+      "assetBacked": {
+        "label": "Garantie sur Actif",
+        "description": "Bien en garantie"
+      }
+    },
+    "statuses": {
+      "pending": "En attente",
+      "active": "Active",
+      "released": "Libérée",
+      "cancelled": "Annulée",
+      "invoked": "Invoquée"
+    },
+    "list": {
+      "title": "Liste des garants",
+      "signedDate": "Signé le {date}",
+      "resend": "Renvoyer",
+      "cancel": "Annuler"
+    },
+    "empty": {
+      "title": "Aucun garant ajouté",
+      "subtitle": "Ajoutez des garants pour sécuriser votre demande"
+    },
+    "messages": {
+      "userNotFound": "Aucun utilisateur trouvé avec cet email",
+      "invitationSent": "Invitation de garantie envoyée avec succès",
+      "addError": "Erreur lors de l'ajout du garant",
+      "cancelled": "Garantie annulée",
+      "cancelError": "Erreur lors de l'annulation",
+      "reminderSent": "Email de rappel envoyé à {email}"
+    },
+    "validation": {
+      "invalidEmail": "Email invalide",
+      "minAmount": "Le montant minimum est de 100€"
+    }
+  },
+  "payment": {
+    "title": "Paiement",
+    "paymentNumber": "Numéro de paiement",
+    "amount": "Montant",
+    "date": "Date",
+    "method": "Méthode",
+    "status": "Statut",
+    "reference": "Référence",
+    "makePayment": "Effectuer un paiement",
+    "paymentHistory": "Historique des paiements",
+    "upcomingPayments": "Paiements à venir",
+    "overduePayments": "Paiements en retard",
+    "methods": {
+      "BANK_TRANSFER": "Virement bancaire",
+      "CHECK": "Chèque",
+      "CASH": "Espèces",
+      "CREDIT_CARD": "Carte de crédit",
+      "STANDING_ORDER": "Ordre permanent"
+    },
+    "statuses": {
+      "PENDING": "En attente",
+      "PROCESSING": "En traitement",
+      "COMPLETED": "Complété",
+      "FAILED": "Échoué",
+      "CANCELLED": "Annulé"
+    }
+  },
+  "committee": {
+    "title": "Comité d'approbation",
+    "members": "Membres",
+    "pendingReview": "En attente d'examen",
+    "votingInProgress": "Vote en cours",
+    "decisions": "Décisions",
+    "vote": "Voter",
+    "approve": "Approuver",
+    "reject": "Rejeter",
+    "abstain": "S'abstenir",
+    "comments": "Commentaires",
+    "conditions": "Conditions",
+    "votingDeadline": "Date limite de vote",
+    "unanimousRequired": "Unanimité requise",
+    "majorityRequired": "Majorité requise"
+  },
+  "treasury": {
+    "title": "Trésorerie",
+    "cashBalance": "Solde de trésorerie",
+    "pendingDisbursements": "Décaissements en attente",
+    "expectedCollections": "Collectes attendues",
+    "cashFlow": "Flux de trésorerie",
+    "disbursements": "Décaissements",
+    "collections": "Collectes",
+    "processDisbursement": "Traiter le décaissement",
+    "recordPayment": "Enregistrer le paiement",
+    "bankDetails": "Coordonnées bancaires",
+    "transactionReference": "Référence de transaction"
+  },
+  "reports": {
+    "title": "Rapports",
+    "generate": "Générer",
+    "export": "Exporter",
+    "schedule": "Planifier",
+    "loanReport": "Rapport des prêts",
+    "paymentReport": "Rapport des paiements",
+    "defaulterReport": "Rapport des défaillants",
+    "financialSummary": "Résumé financier",
+    "auditLog": "Journal d'audit",
+    "selectPeriod": "Sélectionner la période",
+    "format": "Format",
+    "excel": "Excel",
+    "pdf": "PDF",
+    "csv": "CSV"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "general": "Général",
+    "security": "Sécurité",
+    "notifications": "Notifications",
+    "language": "Langue",
+    "theme": "Thème",
+    "twoFactorAuth": "Authentification à deux facteurs",
+    "changePassword": "Changer le mot de passe",
+    "emailNotifications": "Notifications par email",
+    "smsNotifications": "Notifications par SMS",
+    "darkMode": "Mode sombre",
+    "lightMode": "Mode clair",
+    "systemDefault": "Par défaut du système"
+  },
+  "errors": {
+    "required": "Ce champ est requis",
+    "invalidEmail": "Email invalide",
+    "passwordTooShort": "Le mot de passe doit contenir au moins 8 caractères",
+    "passwordsDontMatch": "Les mots de passe ne correspondent pas",
+    "invalidPhone": "Numéro de téléphone invalide",
+    "invalidAmount": "Montant invalide",
+    "somethingWentWrong": "Une erreur s'est produite",
+    "networkError": "Erreur de connexion",
+    "unauthorized": "Non autorisé",
+    "forbidden": "Accès interdit",
+    "notFound": "Non trouvé",
+    "serverError": "Erreur serveur"
+  },
+  "calendar": {
+    "hebrew": "Calendrier hébraïque",
+    "gregorian": "Calendrier grégorien",
+    "shemitah": "Shemitat Kesafim",
+    "months": {
+      "tishrei": "Tishrei",
+      "cheshvan": "Cheshvan",
+      "kislev": "Kislev",
+      "tevet": "Tevet",
+      "shevat": "Shevat",
+      "adar": "Adar",
+      "adar2": "Adar II",
+      "nissan": "Nissan",
+      "iyar": "Iyar",
+      "sivan": "Sivan",
+      "tamuz": "Tamuz",
+      "av": "Av",
+      "elul": "Elul"
+    }
+  },
+  "sidebar": {
+    "menu": {
+      "dashboardBorrower": "Tableau de bord",
+      "myLoans": "Mes prêts",
+      "newLoan": "Nouvelle demande",
+      "myProfile": "Mon profil",
+      "dashboardGuarantor": "Tableau de bord",
+      "guarantees": "Garanties",
+      "dashboardCommittee": "Tableau de bord",
+      "loansToReview": "Demandes à examiner",
+      "votingHistory": "Historique des votes",
+      "statistics": "Statistiques",
+      "dashboardTreasurer": "Tableau de bord",
+      "disbursements": "Décaissements",
+      "payments": "Paiements",
+      "reports": "Rapports",
+      "dashboardAdmin": "Tableau de bord",
+      "loanManagement": "Gestion des prêts",
+      "users": "Utilisateurs",
+      "configuration": "Configuration",
+      "adminReports": "Rapports"
+    },
+    "userMenu": {
+      "myAccount": "Mon compte",
+      "settings": "Paramètres",
+      "lightMode": "Mode clair",
+      "darkMode": "Mode sombre",
+      "logout": "Déconnexion"
+    }
+  },
+  "languageSelector": {
+    "selectLanguage": "Sélectionner la langue"
+  }
+}

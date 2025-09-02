@@ -1,0 +1,13 @@
+{
+  "title": "Trésorerie",
+  "cashBalance": "Solde de trésorerie",
+  "pendingDisbursements": "Décaissements en attente",
+  "expectedCollections": "Collectes attendues",
+  "cashFlow": "Flux de trésorerie",
+  "disbursements": "Décaissements",
+  "collections": "Collectes",
+  "processDisbursement": "Traiter le décaissement",
+  "recordPayment": "Enregistrer le paiement",
+  "bankDetails": "Coordonnées bancaires",
+  "transactionReference": "Référence de transaction"
+}

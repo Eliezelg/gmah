@@ -1,0 +1,627 @@
+{
+  "_locale": "he",
+  "common": {
+    "appName": "מערכת גמ״ח",
+    "loading": "טוען...",
+    "save": "שמור",
+    "cancel": "ביטול",
+    "delete": "מחק",
+    "edit": "ערוך",
+    "search": "חיפוש",
+    "filter": "סינון",
+    "export": "ייצוא",
+    "import": "ייבוא",
+    "submit": "שלח",
+    "confirm": "אישור",
+    "back": "חזרה",
+    "next": "הבא",
+    "previous": "הקודם",
+    "yes": "כן",
+    "no": "לא",
+    "status": "סטטוס",
+    "actions": "פעולות",
+    "date": "תאריך",
+    "amount": "סכום",
+    "description": "תיאור",
+    "details": "פרטים",
+    "error": "שגיאה",
+    "success": "הצלחה",
+    "warning": "אזהרה",
+    "info": "מידע"
+  },
+  "auth": {
+    "login": {
+      "title": "כניסה למערכת גמ״ח",
+      "subtitle": "הזן את פרטי ההזדהות שלך",
+      "email": "דוא״ל",
+      "emailPlaceholder": "name@example.com",
+      "password": "סיסמה",
+      "passwordPlaceholder": "••••••••",
+      "forgotPassword": "שכחת סיסמה?",
+      "loginButton": "כניסה",
+      "noAccount": "אין לך חשבון?",
+      "signUpLink": "הרשמה",
+      "loginSuccess": "כניסה הצליחה!",
+      "loginError": "שגיאת כניסה",
+      "rememberMe": "זכור אותי"
+    },
+    "register": {
+      "title": "הרשמה",
+      "email": "דוא״ל",
+      "password": "סיסמה",
+      "confirmPassword": "אישור סיסמה",
+      "createAccount": "צור חשבון",
+      "alreadyHaveAccount": "יש לך כבר חשבון?",
+      "registerSuccess": "הרשמה הצליחה",
+      "registerError": "שגיאת הרשמה",
+      "accountCreated": "החשבון נוצר בהצלחה"
+    },
+    "reset": {
+      "forgotPassword": "שכחת סיסמה?",
+      "resetPassword": "איפוס סיסמה",
+      "passwordResetSent": "נשלח דוא״ל לאיפוס סיסמה",
+      "passwordResetSuccess": "הסיסמה אופסה בהצלחה"
+    },
+    "logout": "יציאה",
+    "validation": {
+      "invalidEmail": "דוא״ל לא תקין",
+      "passwordTooShort": "הסיסמה חייבת להכיל לפחות 6 תווים",
+      "passwordsDontMatch": "הסיסמאות אינן תואמות",
+      "invalidCredentials": "פרטי הזדהות שגויים"
+    }
+  },
+  "navigation": {
+    "home": "בית",
+    "dashboard": "לוח בקרה",
+    "loans": "הלוואות",
+    "myLoans": "ההלוואות שלי",
+    "newLoan": "הלוואה חדשה",
+    "loanRequests": "בקשות הלוואה",
+    "payments": "תשלומים",
+    "guarantees": "ערבויות",
+    "documents": "מסמכים",
+    "reports": "דוחות",
+    "users": "משתמשים",
+    "settings": "הגדרות",
+    "profile": "פרופיל",
+    "help": "עזרה",
+    "notifications": "התראות",
+    "treasury": "קופה",
+    "committee": "ועדה",
+    "admin": "ניהול"
+  },
+  "loan": {
+    "title": "הלוואה",
+    "loanNumber": "מספר הלוואה",
+    "borrower": "לווה",
+    "amount": "סכום",
+    "type": "סוג",
+    "purpose": "מטרה",
+    "status": "סטטוס",
+    "requestDate": "תאריך בקשה",
+    "approvalDate": "תאריך אישור",
+    "disbursementDate": "תאריך העברה",
+    "repaymentSchedule": "לוח תשלומים",
+    "guarantees": "ערבויות",
+    "documents": "מסמכים",
+    "interest": "ריבית",
+    "duration": "משך",
+    "monthlyPayment": "תשלום חודשי",
+    "totalRepayment": "סך החזר",
+    "outstandingBalance": "יתרה לתשלום",
+    "nextPaymentDate": "תאריך תשלום הבא",
+    "submit": "הגש בקשה",
+    "approve": "אשר",
+    "reject": "דחה",
+    "disburse": "העבר",
+    "statuses": {
+      "DRAFT": "טיוטה",
+      "SUBMITTED": "הוגש",
+      "UNDER_REVIEW": "בבדיקה",
+      "APPROVED": "מאושר",
+      "REJECTED": "נדחה",
+      "DISBURSED": "הועבר",
+      "ACTIVE": "פעיל",
+      "COMPLETED": "הושלם",
+      "DEFAULTED": "בהפרה",
+      "CANCELLED": "בוטל"
+    },
+    "types": {
+      "PERSONAL": "אישי",
+      "BUSINESS": "עסקי",
+      "EDUCATION": "לימודים",
+      "MEDICAL": "רפואי",
+      "EMERGENCY": "חירום",
+      "OTHER": "אחר"
+    }
+  },
+  "dashboard": {
+    "welcome": "ברוך הבא",
+    "overview": "סקירה",
+    "quickActions": "פעולות מהירות",
+    "recentActivity": "פעילות אחרונה",
+    "statistics": "סטטיסטיקות",
+    "totalLoans": "סך הלוואות",
+    "activeLoans": "הלוואות פעילות",
+    "pendingApproval": "ממתינות לאישור",
+    "totalDisbursed": "סך הועבר",
+    "totalCollected": "סך נגבה",
+    "outstandingAmount": "סכום לגבייה",
+    "repaymentRate": "שיעור החזר",
+    "defaultRate": "שיעור הפרה",
+    "admin": {
+      "title": "לוח בקרה מנהל",
+      "subtitle": "סקירת המערכת",
+      "underConstruction": "בבנייה",
+      "underConstructionDesc": "לוח הבקרה למנהל יהיה זמין בקרוב",
+      "interfaceDescription": "ממשק זה יאפשר ניהול משתמשים, הלוואות והגדרות מערכת."
+    },
+    "committee": {
+      "title": "לוח בקרה ועדה",
+      "subtitle": "בדיקה והצבעה על בקשות הלוואה",
+      "underConstruction": "בבנייה",
+      "underConstructionDesc": "לוח הבקרה לוועדה יהיה זמין בקרוב",
+      "interfaceDescription": "ממשק זה יאפשר בדיקת בקשות והצבעה."
+    },
+    "borrower": {
+      "title": "לוח בקרה",
+      "subtitle": "נהל את ההלוואות שלך ועקוב אחר ההחזרים",
+      "newLoanButton": "בקשה חדשה",
+      "stats": {
+        "activeLoans": "הלוואות פעילות",
+        "totalOf": "מתוך {total} בסך הכל",
+        "totalBorrowed": "סך לווה",
+        "totalDisbursedDesc": "סכום כולל שהועבר",
+        "repaid": "הוחזר",
+        "repaidPercentage": "{percentage}% מהסך הכל",
+        "completedLoans": "הלוואות שהושלמו",
+        "fullyRepaid": "הוחזרו במלואן"
+      },
+      "upcomingPayments": {
+        "title": "תשלומים קרובים",
+        "viewDetails": "צפה בפרטים ←"
+      },
+      "tabs": {
+        "active": "פעילות ({count})",
+        "pending": "בהמתנה ({count})",
+        "all": "הכל ({count})"
+      },
+      "emptyStates": {
+        "noActiveLoans": "אין הלוואות פעילות",
+        "noActiveLoanDesc": "אין לך הלוואות בהחזר",
+        "makeNewLoan": "הגש בקשת הלוואה",
+        "noPendingRequests": "אין בקשות בהמתנה",
+        "noPendingDesc": "אין לך בקשות בהמתנה",
+        "noLoansEver": "אין הלוואות",
+        "noLoansEverDesc": "מעולם לא הגשת בקשת הלוואה",
+        "firstLoan": "הגש את בקשתך הראשונה"
+      },
+      "loanDetails": {
+        "amount": "סכום",
+        "outstanding": "יתרה",
+        "monthlyPayment": "תשלום חודשי",
+        "installments": "תשלומים",
+        "months": "חודשים",
+        "requestedAmount": "סכום מבוקש",
+        "requestDate": "תאריך בקשה",
+        "type": "סוג",
+        "date": "תאריך",
+        "viewDetails": "צפה בפרטים"
+      }
+    },
+    "layout": {
+      "headers": {
+        "borrower": "לוח בקרה",
+        "treasurer": "ניהול פיננסי",
+        "committee": "ועדת אישורים",
+        "admin": "ניהול",
+        "superAdmin": "ניהול ראשי"
+      }
+    }
+  },
+  "loanRequest": {
+    "title": "בקשת הלוואה חדשה",
+    "subtitle": "מלא את הטופס כדי להגיש את בקשתך",
+    "backButton": "חזרה",
+    "steps": {
+      "loanType": "סוג הלוואה",
+      "amount": "סכום",
+      "details": "פרטים",
+      "documents": "מסמכים",
+      "guarantees": "ערבויות",
+      "confirmation": "אישור"
+    },
+    "stepDescriptions": {
+      "loanType": "בחר את סוג ההלוואה המתאים לצרכיך",
+      "amount": "הגדר את הסכום ומשך ההחזר",
+      "details": "פרט את פרטי בקשתך",
+      "documents": "הוסף מסמכים תומכים",
+      "guarantees": "הוסף ערבים לאבטחת בקשתך",
+      "confirmation": "סקור ואשר את בקשתך"
+    },
+    "loanTypes": {
+      "personal": {
+        "label": "הלוואה אישית",
+        "description": "לצרכיך האישיים הדחופים"
+      },
+      "business": {
+        "label": "הלוואה עסקית",
+        "description": "לפיתוח העסק שלך"
+      },
+      "student": {
+        "label": "הלוואת סטודנט",
+        "description": "למימון לימודיך"
+      },
+      "medical": {
+        "label": "הלוואה רפואית",
+        "description": "לטיפול רפואי דחוף"
+      },
+      "emergency": {
+        "label": "הלוואת חירום",
+        "description": "למצב חירום"
+      },
+      "maxAmount": "מקסימום: {amount}",
+      "maxDuration": "משך: {duration} חודשים"
+    },
+    "amountStep": {
+      "loanAmount": "סכום ההלוואה",
+      "placeholder": "0",
+      "amountRange": "סכום בין ₪100 ל-{max}",
+      "installmentsLabel": "מספר תשלומים: {count} חודשים",
+      "installmentsRange": {
+        "min": "חודש אחד",
+        "max": "{duration} חודשים"
+      },
+      "summary": {
+        "requestedAmount": "סכום מבוקש:",
+        "duration": "משך:",
+        "monthlyPayment": "תשלום חודשי:",
+        "expectedEnd": "סיום צפוי:"
+      }
+    },
+    "detailsStep": {
+      "purpose": "מטרת ההלוואה",
+      "purposePlaceholder": "לדוגמה: רכישת ציוד מחשב",
+      "purposeDescription": "תאר בקצרה את השימוש המיועד בכספים",
+      "category": "קטגוריה",
+      "categoryPlaceholder": "בחר קטגוריה",
+      "detailedDescription": "תיאור מפורט",
+      "descriptionPlaceholder": "הסבר בפירוט מדוע אתה זקוק להלוואה זו...",
+      "descriptionHelp": "ככל שתהיה יותר ספציפי, כך גדל הסיכוי שבקשתך תאושר במהירות"
+    },
+    "documentsStep": {
+      "title": "מסמכים תומכים",
+      "subtitle": "העלה את המסמכים הנדרשים לבקשת ההלוואה שלך",
+      "recommendedTitle": "מסמכים מומלצים",
+      "personal": {
+        "idCard": "תעודת זהות",
+        "addressProof": "הוכחת כתובת",
+        "paySlips": "3 תלושי שכר אחרונים"
+      },
+      "business": {
+        "kbis": "רישום חברה",
+        "balance": "דוחות כספיים",
+        "businessPlan": "תוכנית עסקית",
+        "bankStatements": "דפי חשבון בנק עסקיים"
+      },
+      "student": {
+        "studentCard": "תעודת סטודנט",
+        "enrollment": "אישור לימודים",
+        "resources": "הוכחת משאבים"
+      },
+      "medical": {
+        "quote": "הצעת מחיר רפואית",
+        "prescription": "מרשם רפואי",
+        "socialSecurity": "אישור ביטוח בריאות"
+      },
+      "emergency": {
+        "urgencyProof": "הוכחת מצב חירום",
+        "idCard": "תעודת זהות"
+      },
+      "uploadError": "נא להעלות לפחות מסמך אחד"
+    },
+    "guaranteesStep": {
+      "title": "ערבים",
+      "subtitle": "הוסף ערבים כדי להגדיל את סיכויי האישור שלך",
+      "whyGuarantors": "למה להוסיף ערבים?",
+      "benefits": {
+        "approval": "מגדיל משמעותית את סיכויי האישור",
+        "higherAmount": "מאפשר גישה לסכומים גבוהים יותר",
+        "fasterProcess": "מזרז את תהליך האישור",
+        "lowerCollateral": "מפחית את הערבויות החומריות הנדרשות"
+      }
+    },
+    "confirmationStep": {
+      "title": "סיכום הבקשה",
+      "loanType": "סוג הלוואה",
+      "amount": "סכום",
+      "duration": "משך",
+      "monthlyPayment": "תשלום חודשי",
+      "purpose": "מטרה",
+      "description": "תיאור",
+      "uploadedDocs": "מסמכים שהועלו",
+      "documentsCount": "{count} מסמך/ים",
+      "guarantors": "ערבים",
+      "guarantorsCount": "{count} ערב/ים",
+      "noGuarantors": "לא נוספו ערבים",
+      "importantInfo": "מידע חשוב",
+      "reviewTime": "בקשתך תיבדק על ידי הוועדה תוך 48-72 שעות",
+      "additionalDocs": "ייתכן שיידרשו מסמכים נוספים",
+      "noInterest": "לא תיגבה ריבית על הלוואה זו",
+      "emailNotification": "תקבל הודעה בדוא״ל על ההחלטה"
+    },
+    "navigation": {
+      "previous": "הקודם",
+      "next": "הבא",
+      "submit": "הגש בקשה"
+    },
+    "purposes": {
+      "personal": {
+        "marriage": "חתונה",
+        "moving": "מעבר דירה",
+        "renovation": "שיפוץ",
+        "travel": "נסיעה",
+        "equipment": "רכישת ציוד",
+        "other": "אחר"
+      },
+      "business": {
+        "startup": "הקמת עסק",
+        "development": "פיתוח עסק",
+        "equipment": "רכישת ציוד",
+        "treasury": "תזרים מזומנים",
+        "stock": "מלאי",
+        "other": "אחר"
+      },
+      "student": {
+        "tuition": "שכר לימוד",
+        "housing": "דיור סטודנטים",
+        "supplies": "ציוד לימודים",
+        "training": "הכשרה",
+        "other": "אחר"
+      },
+      "medical": {
+        "surgery": "ניתוח",
+        "treatment": "טיפול",
+        "hospitalization": "אשפוז",
+        "medication": "תרופות",
+        "other": "אחר"
+      },
+      "emergency": {
+        "urgentRepair": "תיקון דחוף",
+        "unpaidBills": "חשבונות לא משולמים",
+        "familySituation": "מצב משפחתי",
+        "other": "אחר"
+      }
+    },
+    "validation": {
+      "createError": "שגיאה ביצירת הבקשה",
+      "submitError": "שגיאה בהגשת הבקשה",
+      "missingLoanId": "שגיאה: מזהה הלוואה חסר",
+      "success": "בקשת ההלוואה נוצרה בהצלחה!"
+    }
+  },
+  "guarantees": {
+    "title": "ערבויות להלוואה",
+    "subtitle": "נהל ערבויות לאבטחת בקשת ההלוואה שלך",
+    "coverage": "כיסוי ערבויות",
+    "recommendation": "מומלץ שלפחות 100% מהסכום יהיה מובטח כדי להגדיל את סיכויי האישור",
+    "addGuarantor": "הוסף ערב",
+    "inviteGuarantor": {
+      "title": "הזמן ערב",
+      "subtitle": "הערב יקבל דוא״ל לאישור הערבות שלו",
+      "email": "דוא״ל הערב",
+      "emailPlaceholder": "arev@example.com",
+      "emailHelp": "הערב חייב להיות בעל חשבון במערכת",
+      "type": "סוג ערבות",
+      "amount": "סכום ערבות (₪)",
+      "amountMax": "סכום מקסימלי: {max}₪",
+      "cancel": "ביטול",
+      "send": "שלח הזמנה"
+    },
+    "types": {
+      "simple": {
+        "label": "ערבות פשוטה",
+        "description": "ערב יחיד"
+      },
+      "joint": {
+        "label": "ערבות משותפת",
+        "description": "מספר ערבים ביחד ולחוד"
+      },
+      "collective": {
+        "label": "ערבות קולקטיבית",
+        "description": "קבוצת ערבים"
+      },
+      "deposit": {
+        "label": "פיקדון ערבות",
+        "description": "סכום חסום"
+      },
+      "assetBacked": {
+        "label": "ערבות בנכס",
+        "description": "נכס כביטחון"
+      }
+    },
+    "statuses": {
+      "pending": "ממתין",
+      "active": "פעיל",
+      "released": "שוחרר",
+      "cancelled": "בוטל",
+      "invoked": "מומש"
+    },
+    "list": {
+      "title": "רשימת ערבים",
+      "signedDate": "נחתם ב-{date}",
+      "resend": "שלח שוב",
+      "cancel": "בטל"
+    },
+    "empty": {
+      "title": "לא נוספו ערבים",
+      "subtitle": "הוסף ערבים לאבטחת בקשתך"
+    },
+    "messages": {
+      "userNotFound": "לא נמצא משתמש עם דוא״ל זה",
+      "invitationSent": "הזמנת ערבות נשלחה בהצלחה",
+      "addError": "שגיאה בהוספת ערב",
+      "cancelled": "הערבות בוטלה",
+      "cancelError": "שגיאה בביטול",
+      "reminderSent": "תזכורת נשלחה ל-{email}"
+    },
+    "validation": {
+      "invalidEmail": "דוא״ל לא תקין",
+      "minAmount": "הסכום המינימלי הוא ₪100"
+    }
+  },
+  "payment": {
+    "title": "תשלום",
+    "paymentNumber": "מספר תשלום",
+    "amount": "סכום",
+    "date": "תאריך",
+    "method": "אמצעי",
+    "status": "סטטוס",
+    "reference": "אסמכתא",
+    "makePayment": "בצע תשלום",
+    "paymentHistory": "היסטוריית תשלומים",
+    "upcomingPayments": "תשלומים עתידיים",
+    "overduePayments": "תשלומים באיחור",
+    "methods": {
+      "BANK_TRANSFER": "העברה בנקאית",
+      "CHECK": "צ'ק",
+      "CASH": "מזומן",
+      "CREDIT_CARD": "כרטיס אשראי",
+      "STANDING_ORDER": "הוראת קבע"
+    },
+    "statuses": {
+      "PENDING": "ממתין",
+      "PROCESSING": "בעיבוד",
+      "COMPLETED": "הושלם",
+      "FAILED": "נכשל",
+      "CANCELLED": "בוטל"
+    }
+  },
+  "committee": {
+    "title": "ועדת אישורים",
+    "members": "חברים",
+    "pendingReview": "ממתין לבדיקה",
+    "votingInProgress": "הצבעה בתהליך",
+    "decisions": "החלטות",
+    "vote": "הצבע",
+    "approve": "אשר",
+    "reject": "דחה",
+    "abstain": "נמנע",
+    "comments": "הערות",
+    "conditions": "תנאים",
+    "votingDeadline": "מועד אחרון להצבעה",
+    "unanimousRequired": "נדרשת החלטה פה אחד",
+    "majorityRequired": "נדרש רוב"
+  },
+  "treasury": {
+    "title": "קופה",
+    "cashBalance": "יתרת מזומנים",
+    "pendingDisbursements": "העברות ממתינות",
+    "expectedCollections": "גביות צפויות",
+    "cashFlow": "תזרים מזומנים",
+    "disbursements": "העברות",
+    "collections": "גביות",
+    "processDisbursement": "עבד העברה",
+    "recordPayment": "רשום תשלום",
+    "bankDetails": "פרטי בנק",
+    "transactionReference": "אסמכתא עסקה"
+  },
+  "reports": {
+    "title": "דוחות",
+    "generate": "צור",
+    "export": "ייצא",
+    "schedule": "תזמן",
+    "loanReport": "דוח הלוואות",
+    "paymentReport": "דוח תשלומים",
+    "defaulterReport": "דוח חייבים",
+    "financialSummary": "סיכום פיננסי",
+    "auditLog": "יומן ביקורת",
+    "selectPeriod": "בחר תקופה",
+    "format": "פורמט",
+    "excel": "Excel",
+    "pdf": "PDF",
+    "csv": "CSV"
+  },
+  "settings": {
+    "title": "הגדרות",
+    "general": "כללי",
+    "security": "אבטחה",
+    "notifications": "התראות",
+    "language": "שפה",
+    "theme": "ערכת נושא",
+    "twoFactorAuth": "אימות דו-שלבי",
+    "changePassword": "שנה סיסמה",
+    "emailNotifications": "התראות דוא״ל",
+    "smsNotifications": "התראות SMS",
+    "darkMode": "מצב כהה",
+    "lightMode": "מצב בהיר",
+    "systemDefault": "ברירת מחדל מערכת"
+  },
+  "errors": {
+    "required": "שדה זה חובה",
+    "invalidEmail": "דוא״ל לא תקין",
+    "passwordTooShort": "הסיסמה חייבת להכיל לפחות 8 תווים",
+    "passwordsDontMatch": "הסיסמאות אינן תואמות",
+    "invalidPhone": "מספר טלפון לא תקין",
+    "invalidAmount": "סכום לא תקין",
+    "somethingWentWrong": "משהו השתבש",
+    "networkError": "שגיאת רשת",
+    "unauthorized": "לא מורשה",
+    "forbidden": "גישה אסורה",
+    "notFound": "לא נמצא",
+    "serverError": "שגיאת שרת"
+  },
+  "calendar": {
+    "hebrew": "לוח עברי",
+    "gregorian": "לוח גרגוריאני",
+    "shemitah": "שמיטת כספים",
+    "months": {
+      "tishrei": "תשרי",
+      "cheshvan": "חשוון",
+      "kislev": "כסלו",
+      "tevet": "טבת",
+      "shevat": "שבט",
+      "adar": "אדר",
+      "adar2": "אדר ב'",
+      "nissan": "ניסן",
+      "iyar": "אייר",
+      "sivan": "סיוון",
+      "tamuz": "תמוז",
+      "av": "אב",
+      "elul": "אלול"
+    }
+  },
+  "sidebar": {
+    "menu": {
+      "dashboardBorrower": "לוח בקרה",
+      "myLoans": "ההלוואות שלי",
+      "newLoan": "בקשה חדשה",
+      "myProfile": "הפרופיל שלי",
+      "dashboardGuarantor": "לוח בקרה",
+      "guarantees": "ערבויות",
+      "dashboardCommittee": "לוח בקרה",
+      "loansToReview": "בקשות לבדיקה",
+      "votingHistory": "היסטוריית הצבעות",
+      "statistics": "סטטיסטיקות",
+      "dashboardTreasurer": "לוח בקרה",
+      "disbursements": "העברות",
+      "payments": "תשלומים",
+      "reports": "דוחות",
+      "dashboardAdmin": "לוח בקרה",
+      "loanManagement": "ניהול הלוואות",
+      "users": "משתמשים",
+      "configuration": "הגדרות",
+      "adminReports": "דוחות"
+    },
+    "userMenu": {
+      "myAccount": "החשבון שלי",
+      "settings": "הגדרות",
+      "lightMode": "מצב בהיר",
+      "darkMode": "מצב כהה",
+      "logout": "יציאה"
+    }
+  },
+  "languageSelector": {
+    "selectLanguage": "בחר שפה"
+  }
+}

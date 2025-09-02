@@ -1,0 +1,16 @@
+{
+  "title": "Reports",
+  "generate": "Generate",
+  "export": "Export",
+  "schedule": "Schedule",
+  "loanReport": "Loan report",
+  "paymentReport": "Payment report",
+  "defaulterReport": "Defaulter report",
+  "financialSummary": "Financial summary",
+  "auditLog": "Audit log",
+  "selectPeriod": "Select period",
+  "format": "Format",
+  "excel": "Excel",
+  "pdf": "PDF",
+  "csv": "CSV"
+}

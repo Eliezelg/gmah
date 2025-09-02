@@ -1,0 +1,27 @@
+{
+  "title": "תשלום",
+  "paymentNumber": "מספר תשלום",
+  "amount": "סכום",
+  "date": "תאריך",
+  "method": "אמצעי",
+  "status": "סטטוס",
+  "reference": "אסמכתא",
+  "makePayment": "בצע תשלום",
+  "paymentHistory": "היסטוריית תשלומים",
+  "upcomingPayments": "תשלומים עתידיים",
+  "overduePayments": "תשלומים באיחור",
+  "methods": {
+    "BANK_TRANSFER": "העברה בנקאית",
+    "CHECK": "צ'ק",
+    "CASH": "מזומן",
+    "CREDIT_CARD": "כרטיס אשראי",
+    "STANDING_ORDER": "הוראת קבע"
+  },
+  "statuses": {
+    "PENDING": "ממתין",
+    "PROCESSING": "בעיבוד",
+    "COMPLETED": "הושלם",
+    "FAILED": "נכשל",
+    "CANCELLED": "בוטל"
+  }
+}

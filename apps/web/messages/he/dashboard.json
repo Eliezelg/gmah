@@ -1,0 +1,84 @@
+{
+  "welcome": "ברוך הבא",
+  "overview": "סקירה",
+  "quickActions": "פעולות מהירות",
+  "recentActivity": "פעילות אחרונה",
+  "statistics": "סטטיסטיקות",
+  "totalLoans": "סך הלוואות",
+  "activeLoans": "הלוואות פעילות",
+  "pendingApproval": "ממתינות לאישור",
+  "totalDisbursed": "סך הועבר",
+  "totalCollected": "סך נגבה",
+  "outstandingAmount": "סכום לגבייה",
+  "repaymentRate": "שיעור החזר",
+  "defaultRate": "שיעור הפרה",
+  "admin": {
+    "title": "לוח בקרה מנהל",
+    "subtitle": "סקירת המערכת",
+    "underConstruction": "בבנייה",
+    "underConstructionDesc": "לוח הבקרה למנהל יהיה זמין בקרוב",
+    "interfaceDescription": "ממשק זה יאפשר ניהול משתמשים, הלוואות והגדרות מערכת."
+  },
+  "committee": {
+    "title": "לוח בקרה ועדה",
+    "subtitle": "בדיקה והצבעה על בקשות הלוואה",
+    "underConstruction": "בבנייה",
+    "underConstructionDesc": "לוח הבקרה לוועדה יהיה זמין בקרוב",
+    "interfaceDescription": "ממשק זה יאפשר בדיקת בקשות והצבעה."
+  },
+  "borrower": {
+    "title": "לוח בקרה",
+    "subtitle": "נהל את ההלוואות שלך ועקוב אחר ההחזרים",
+    "newLoanButton": "בקשה חדשה",
+    "stats": {
+      "activeLoans": "הלוואות פעילות",
+      "totalOf": "מתוך {total} בסך הכל",
+      "totalBorrowed": "סך לווה",
+      "totalDisbursedDesc": "סכום כולל שהועבר",
+      "repaid": "הוחזר",
+      "repaidPercentage": "{percentage}% מהסך הכל",
+      "completedLoans": "הלוואות שהושלמו",
+      "fullyRepaid": "הוחזרו במלואן"
+    },
+    "upcomingPayments": {
+      "title": "תשלומים קרובים",
+      "viewDetails": "צפה בפרטים ←"
+    },
+    "tabs": {
+      "active": "פעילות ({count})",
+      "pending": "בהמתנה ({count})",
+      "all": "הכל ({count})"
+    },
+    "emptyStates": {
+      "noActiveLoans": "אין הלוואות פעילות",
+      "noActiveLoanDesc": "אין לך הלוואות בהחזר",
+      "makeNewLoan": "הגש בקשת הלוואה",
+      "noPendingRequests": "אין בקשות בהמתנה",
+      "noPendingDesc": "אין לך בקשות בהמתנה",
+      "noLoansEver": "אין הלוואות",
+      "noLoansEverDesc": "מעולם לא הגשת בקשת הלוואה",
+      "firstLoan": "הגש את בקשתך הראשונה"
+    },
+    "loanDetails": {
+      "amount": "סכום",
+      "outstanding": "יתרה",
+      "monthlyPayment": "תשלום חודשי",
+      "installments": "תשלומים",
+      "months": "חודשים",
+      "requestedAmount": "סכום מבוקש",
+      "requestDate": "תאריך בקשה",
+      "type": "סוג",
+      "date": "תאריך",
+      "viewDetails": "צפה בפרטים"
+    }
+  },
+  "layout": {
+    "headers": {
+      "borrower": "לוח בקרה",
+      "treasurer": "ניהול פיננסי",
+      "committee": "ועדת אישורים",
+      "admin": "ניהול",
+      "superAdmin": "ניהול ראשי"
+    }
+  }
+}

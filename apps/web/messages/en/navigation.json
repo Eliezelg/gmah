@@ -1,0 +1,20 @@
+{
+  "home": "Home",
+  "dashboard": "Dashboard",
+  "loans": "Loans",
+  "myLoans": "My loans",
+  "newLoan": "New loan",
+  "loanRequests": "Loan requests",
+  "payments": "Payments",
+  "guarantees": "Guarantees",
+  "documents": "Documents",
+  "reports": "Reports",
+  "users": "Users",
+  "settings": "Settings",
+  "profile": "Profile",
+  "help": "Help",
+  "notifications": "Notifications",
+  "treasury": "Treasury",
+  "committee": "Committee",
+  "admin": "Administration"
+}

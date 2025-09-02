@@ -1,0 +1,30 @@
+{
+  "menu": {
+    "dashboardBorrower": "לוח בקרה",
+    "myLoans": "ההלוואות שלי",
+    "newLoan": "בקשה חדשה",
+    "myProfile": "הפרופיל שלי",
+    "dashboardGuarantor": "לוח בקרה",
+    "guarantees": "ערבויות",
+    "dashboardCommittee": "לוח בקרה",
+    "loansToReview": "בקשות לבדיקה",
+    "votingHistory": "היסטוריית הצבעות",
+    "statistics": "סטטיסטיקות",
+    "dashboardTreasurer": "לוח בקרה",
+    "disbursements": "העברות",
+    "payments": "תשלומים",
+    "reports": "דוחות",
+    "dashboardAdmin": "לוח בקרה",
+    "loanManagement": "ניהול הלוואות",
+    "users": "משתמשים",
+    "configuration": "הגדרות",
+    "adminReports": "דוחות"
+  },
+  "userMenu": {
+    "myAccount": "החשבון שלי",
+    "settings": "הגדרות",
+    "lightMode": "מצב בהיר",
+    "darkMode": "מצב כהה",
+    "logout": "יציאה"
+  }
+}

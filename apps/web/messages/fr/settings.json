@@ -1,0 +1,15 @@
+{
+  "title": "Paramètres",
+  "general": "Général",
+  "security": "Sécurité",
+  "notifications": "Notifications",
+  "language": "Langue",
+  "theme": "Thème",
+  "twoFactorAuth": "Authentification à deux facteurs",
+  "changePassword": "Changer le mot de passe",
+  "emailNotifications": "Notifications par email",
+  "smsNotifications": "Notifications par SMS",
+  "darkMode": "Mode sombre",
+  "lightMode": "Mode clair",
+  "systemDefault": "Par défaut du système"
+}

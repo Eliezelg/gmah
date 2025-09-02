@@ -1,0 +1,16 @@
+{
+  "title": "דוחות",
+  "generate": "צור",
+  "export": "ייצא",
+  "schedule": "תזמן",
+  "loanReport": "דוח הלוואות",
+  "paymentReport": "דוח תשלומים",
+  "defaulterReport": "דוח חייבים",
+  "financialSummary": "סיכום פיננסי",
+  "auditLog": "יומן ביקורת",
+  "selectPeriod": "בחר תקופה",
+  "format": "פורמט",
+  "excel": "Excel",
+  "pdf": "PDF",
+  "csv": "CSV"
+}

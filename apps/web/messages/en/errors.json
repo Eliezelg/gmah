@@ -1,0 +1,14 @@
+{
+  "required": "This field is required",
+  "invalidEmail": "Invalid email",
+  "passwordTooShort": "Password must be at least 8 characters",
+  "passwordsDontMatch": "Passwords don't match",
+  "invalidPhone": "Invalid phone number",
+  "invalidAmount": "Invalid amount",
+  "somethingWentWrong": "Something went wrong",
+  "networkError": "Network error",
+  "unauthorized": "Unauthorized",
+  "forbidden": "Access forbidden",
+  "notFound": "Not found",
+  "serverError": "Server error"
+}

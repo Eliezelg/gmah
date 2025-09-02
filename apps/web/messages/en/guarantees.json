@@ -1,0 +1,70 @@
+{
+  "title": "Loan Guarantees",
+  "subtitle": "Manage guarantees to secure your loan request",
+  "coverage": "Guarantee Coverage",
+  "recommendation": "It is recommended to have at least 100% of the amount guaranteed to increase your approval chances",
+  "addGuarantor": "Add Guarantor",
+  "inviteGuarantor": {
+    "title": "Invite a Guarantor",
+    "subtitle": "The guarantor will receive an email to confirm their guarantee",
+    "email": "Guarantor's email",
+    "emailPlaceholder": "guarantor@example.com",
+    "emailHelp": "The guarantor must have an account on the platform",
+    "type": "Guarantee type",
+    "amount": "Guaranteed amount (£)",
+    "amountMax": "Maximum amount: {max}£",
+    "cancel": "Cancel",
+    "send": "Send invitation"
+  },
+  "types": {
+    "simple": {
+      "label": "Simple Guarantee",
+      "description": "Single guarantor"
+    },
+    "joint": {
+      "label": "Joint Guarantee",
+      "description": "Multiple joint guarantors"
+    },
+    "collective": {
+      "label": "Collective Guarantee",
+      "description": "Group of guarantors"
+    },
+    "deposit": {
+      "label": "Security Deposit",
+      "description": "Blocked amount"
+    },
+    "assetBacked": {
+      "label": "Asset-Backed Guarantee",
+      "description": "Asset as collateral"
+    }
+  },
+  "statuses": {
+    "pending": "Pending",
+    "active": "Active",
+    "released": "Released",
+    "cancelled": "Cancelled",
+    "invoked": "Invoked"
+  },
+  "list": {
+    "title": "Guarantors List",
+    "signedDate": "Signed on {date}",
+    "resend": "Resend",
+    "cancel": "Cancel"
+  },
+  "empty": {
+    "title": "No guarantors added",
+    "subtitle": "Add guarantors to secure your request"
+  },
+  "messages": {
+    "userNotFound": "No user found with this email",
+    "invitationSent": "Guarantee invitation sent successfully",
+    "addError": "Error adding guarantor",
+    "cancelled": "Guarantee cancelled",
+    "cancelError": "Error cancelling",
+    "reminderSent": "Reminder email sent to {email}"
+  },
+  "validation": {
+    "invalidEmail": "Invalid email",
+    "minAmount": "Minimum amount is £100"
+  }
+}

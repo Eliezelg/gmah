@@ -1,0 +1,27 @@
+{
+  "title": "Payment",
+  "paymentNumber": "Payment number",
+  "amount": "Amount",
+  "date": "Date",
+  "method": "Method",
+  "status": "Status",
+  "reference": "Reference",
+  "makePayment": "Make payment",
+  "paymentHistory": "Payment history",
+  "upcomingPayments": "Upcoming payments",
+  "overduePayments": "Overdue payments",
+  "methods": {
+    "BANK_TRANSFER": "Bank transfer",
+    "CHECK": "Check",
+    "CASH": "Cash",
+    "CREDIT_CARD": "Credit card",
+    "STANDING_ORDER": "Standing order"
+  },
+  "statuses": {
+    "PENDING": "Pending",
+    "PROCESSING": "Processing",
+    "COMPLETED": "Completed",
+    "FAILED": "Failed",
+    "CANCELLED": "Cancelled"
+  }
+}

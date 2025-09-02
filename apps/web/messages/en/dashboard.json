@@ -1,0 +1,84 @@
+{
+  "welcome": "Welcome",
+  "overview": "Overview",
+  "quickActions": "Quick actions",
+  "recentActivity": "Recent activity",
+  "statistics": "Statistics",
+  "totalLoans": "Total loans",
+  "activeLoans": "Active loans",
+  "pendingApproval": "Pending approval",
+  "totalDisbursed": "Total disbursed",
+  "totalCollected": "Total collected",
+  "outstandingAmount": "Outstanding amount",
+  "repaymentRate": "Repayment rate",
+  "defaultRate": "Default rate",
+  "admin": {
+    "title": "Admin Dashboard",
+    "subtitle": "Platform overview",
+    "underConstruction": "Under construction",
+    "underConstructionDesc": "The admin dashboard will be available soon",
+    "interfaceDescription": "This interface will allow managing users, loans and system configurations."
+  },
+  "committee": {
+    "title": "Committee Dashboard",
+    "subtitle": "Review and vote on loan requests",
+    "underConstruction": "Under construction",
+    "underConstructionDesc": "The committee dashboard will be available soon",
+    "interfaceDescription": "This interface will allow reviewing requests and voting."
+  },
+  "borrower": {
+    "title": "Dashboard",
+    "subtitle": "Manage your loans and track your repayments",
+    "newLoanButton": "New request",
+    "stats": {
+      "activeLoans": "Active loans",
+      "totalOf": "Out of {total} total",
+      "totalBorrowed": "Total borrowed",
+      "totalDisbursedDesc": "Total amount disbursed",
+      "repaid": "Repaid",
+      "repaidPercentage": "{percentage}% of total",
+      "completedLoans": "Completed loans",
+      "fullyRepaid": "Fully repaid"
+    },
+    "upcomingPayments": {
+      "title": "Upcoming payments",
+      "viewDetails": "View details →"
+    },
+    "tabs": {
+      "active": "Active ({count})",
+      "pending": "Pending ({count})",
+      "all": "All ({count})"
+    },
+    "emptyStates": {
+      "noActiveLoans": "No active loans",
+      "noActiveLoanDesc": "You don't have any loans in repayment",
+      "makeNewLoan": "Apply for a loan",
+      "noPendingRequests": "No pending requests",
+      "noPendingDesc": "You don't have any pending requests",
+      "noLoansEver": "No loans",
+      "noLoansEverDesc": "You have never applied for a loan",
+      "firstLoan": "Make your first request"
+    },
+    "loanDetails": {
+      "amount": "Amount",
+      "outstanding": "Outstanding",
+      "monthlyPayment": "Monthly payment",
+      "installments": "Installments",
+      "months": "months",
+      "requestedAmount": "Requested amount",
+      "requestDate": "Request date",
+      "type": "Type",
+      "date": "Date",
+      "viewDetails": "View details"
+    }
+  },
+  "layout": {
+    "headers": {
+      "borrower": "Dashboard",
+      "treasurer": "Financial Management",
+      "committee": "Approval Committee",
+      "admin": "Administration",
+      "superAdmin": "Super Administration"
+    }
+  }
+}

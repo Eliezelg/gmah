@@ -1,0 +1,16 @@
+{
+  "title": "Approval Committee",
+  "members": "Members",
+  "pendingReview": "Pending review",
+  "votingInProgress": "Voting in progress",
+  "decisions": "Decisions",
+  "vote": "Vote",
+  "approve": "Approve",
+  "reject": "Reject",
+  "abstain": "Abstain",
+  "comments": "Comments",
+  "conditions": "Conditions",
+  "votingDeadline": "Voting deadline",
+  "unanimousRequired": "Unanimous required",
+  "majorityRequired": "Majority required"
+}

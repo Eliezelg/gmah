@@ -1,0 +1,14 @@
+{
+  "required": "שדה זה חובה",
+  "invalidEmail": "דוא״ל לא תקין",
+  "passwordTooShort": "הסיסמה חייבת להכיל לפחות 8 תווים",
+  "passwordsDontMatch": "הסיסמאות אינן תואמות",
+  "invalidPhone": "מספר טלפון לא תקין",
+  "invalidAmount": "סכום לא תקין",
+  "somethingWentWrong": "משהו השתבש",
+  "networkError": "שגיאת רשת",
+  "unauthorized": "לא מורשה",
+  "forbidden": "גישה אסורה",
+  "notFound": "לא נמצא",
+  "serverError": "שגיאת שרת"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Rapports",
+  "generate": "Générer",
+  "export": "Exporter",
+  "schedule": "Planifier",
+  "loanReport": "Rapport des prêts",
+  "paymentReport": "Rapport des paiements",
+  "defaulterReport": "Rapport des défaillants",
+  "financialSummary": "Résumé financier",
+  "auditLog": "Journal d'audit",
+  "selectPeriod": "Sélectionner la période",
+  "format": "Format",
+  "excel": "Excel",
+  "pdf": "PDF",
+  "csv": "CSV"
+}

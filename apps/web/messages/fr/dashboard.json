@@ -1,0 +1,84 @@
+{
+  "welcome": "Bienvenue",
+  "overview": "Vue d'ensemble",
+  "quickActions": "Actions rapides",
+  "recentActivity": "Activité récente",
+  "statistics": "Statistiques",
+  "totalLoans": "Total des prêts",
+  "activeLoans": "Prêts actifs",
+  "pendingApproval": "En attente d'approbation",
+  "totalDisbursed": "Total décaissé",
+  "totalCollected": "Total collecté",
+  "outstandingAmount": "Montant restant",
+  "repaymentRate": "Taux de remboursement",
+  "defaultRate": "Taux de défaut",
+  "admin": {
+    "title": "Tableau de bord Admin",
+    "subtitle": "Vue d'ensemble de la plateforme",
+    "underConstruction": "En construction",
+    "underConstructionDesc": "Le tableau de bord administrateur sera disponible prochainement",
+    "interfaceDescription": "Cette interface permettra de gérer les utilisateurs, les prêts et les configurations système."
+  },
+  "committee": {
+    "title": "Tableau de bord Comité",
+    "subtitle": "Examinez et votez sur les demandes de prêt",
+    "underConstruction": "En construction",
+    "underConstructionDesc": "Le tableau de bord du comité sera disponible prochainement",
+    "interfaceDescription": "Cette interface permettra d'examiner les demandes et de voter."
+  },
+  "borrower": {
+    "title": "Tableau de bord",
+    "subtitle": "Gérez vos prêts et suivez vos remboursements",
+    "newLoanButton": "Nouvelle demande",
+    "stats": {
+      "activeLoans": "Prêts actifs",
+      "totalOf": "Sur {total} au total",
+      "totalBorrowed": "Total emprunté",
+      "totalDisbursedDesc": "Montant total décaissé",
+      "repaid": "Remboursé",
+      "repaidPercentage": "{percentage}% du total",
+      "completedLoans": "Prêts terminés",
+      "fullyRepaid": "Remboursés intégralement"
+    },
+    "upcomingPayments": {
+      "title": "Prochaines échéances",
+      "viewDetails": "Voir détails →"
+    },
+    "tabs": {
+      "active": "Actifs ({count})",
+      "pending": "En cours ({count})",
+      "all": "Tous ({count})"
+    },
+    "emptyStates": {
+      "noActiveLoans": "Aucun prêt actif",
+      "noActiveLoanDesc": "Vous n'avez pas de prêt en cours de remboursement",
+      "makeNewLoan": "Faire une demande de prêt",
+      "noPendingRequests": "Aucune demande en cours",
+      "noPendingDesc": "Vous n'avez pas de demande en attente",
+      "noLoansEver": "Aucun prêt",
+      "noLoansEverDesc": "Vous n'avez jamais fait de demande de prêt",
+      "firstLoan": "Faire votre première demande"
+    },
+    "loanDetails": {
+      "amount": "Montant",
+      "outstanding": "Restant dû",
+      "monthlyPayment": "Mensualité",
+      "installments": "Échéances",
+      "months": "mois",
+      "requestedAmount": "Montant demandé",
+      "requestDate": "Date de demande",
+      "type": "Type",
+      "date": "Date",
+      "viewDetails": "Voir les détails"
+    }
+  },
+  "layout": {
+    "headers": {
+      "borrower": "Tableau de bord",
+      "treasurer": "Gestion Financière",
+      "committee": "Comité d'approbation",
+      "admin": "Administration",
+      "superAdmin": "Super Administration"
+    }
+  }
+}

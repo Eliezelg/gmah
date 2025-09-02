@@ -1,0 +1,20 @@
+{
+  "home": "Accueil",
+  "dashboard": "Tableau de bord",
+  "loans": "Prêts",
+  "myLoans": "Mes prêts",
+  "newLoan": "Nouveau prêt",
+  "loanRequests": "Demandes de prêt",
+  "payments": "Paiements",
+  "guarantees": "Garanties",
+  "documents": "Documents",
+  "reports": "Rapports",
+  "users": "Utilisateurs",
+  "settings": "Paramètres",
+  "profile": "Profil",
+  "help": "Aide",
+  "notifications": "Notifications",
+  "treasury": "Trésorerie",
+  "committee": "Comité",
+  "admin": "Administration"
+}

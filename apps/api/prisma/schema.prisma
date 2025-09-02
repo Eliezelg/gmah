@@ -1,0 +1,512 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Enums
+enum Role {
+  SUPER_ADMIN
+  ADMIN
+  SECRETARY
+  TREASURER
+  COMMITTEE_MEMBER
+  LENDER
+  BORROWER
+  GUARANTOR
+  AUDITOR
+}
+
+enum LoanStatus {
+  DRAFT
+  SUBMITTED
+  UNDER_REVIEW
+  APPROVED
+  REJECTED
+  DISBURSED
+  ACTIVE
+  COMPLETED
+  DEFAULTED
+  CANCELLED
+}
+
+enum LoanType {
+  STANDARD
+  EMERGENCY
+  EDUCATION
+  WEDDING
+  MEDICAL
+  PROFESSIONAL
+  OTHER
+}
+
+enum PaymentStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  REFUNDED
+  CANCELLED
+}
+
+enum PaymentMethod {
+  BANK_TRANSFER
+  CREDIT_CARD
+  DIRECT_DEBIT
+  CASH
+  CHECK
+  OTHER
+}
+
+enum GuaranteeType {
+  SIMPLE
+  JOINT
+  COLLECTIVE
+  DEPOSIT
+  ASSET_BACKED
+}
+
+enum GuaranteeStatus {
+  PENDING
+  ACTIVE
+  INVOKED
+  RELEASED
+  CANCELLED
+}
+
+enum NotificationType {
+  EMAIL
+  SMS
+  PUSH
+  IN_APP
+}
+
+enum ApprovalVoteType {
+  APPROVE
+  REJECT
+  ABSTAIN
+  REQUEST_INFO
+}
+
+// Models
+model User {
+  id                String           @id @default(cuid())
+  email             String           @unique
+  passwordHash      String
+  firstName         String
+  lastName          String
+  phone             String?
+  address           String?
+  city              String?
+  postalCode        String?
+  country           String?
+  role              Role             @default(BORROWER)
+  isActive          Boolean          @default(true)
+  emailVerified     Boolean          @default(false)
+  phoneVerified     Boolean          @default(false)
+  twoFactorEnabled  Boolean          @default(false)
+  twoFactorSecret   String?
+  lastLoginAt       DateTime?
+  
+  // Relations
+  profile           Profile?
+  borrowedLoans     Loan[]           @relation("BorrowerLoans")
+  guarantees        Guarantee[]      @relation("GuarantorGuarantees")
+  contributions     Contribution[]
+  notifications     Notification[]   @relation("UserNotifications")
+  approvalVotes     ApprovalVote[]
+  auditLogs         AuditLog[]       @relation("UserAuditLogs")
+  sessions          Session[]
+  uploadedDocuments Document[]       @relation("UploadedDocuments")
+  verifiedDocuments Document[]       @relation("VerifiedDocuments")
+  
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  
+  @@index([email])
+  @@index([role])
+}
+
+model Profile {
+  id                String           @id @default(cuid())
+  userId            String           @unique
+  user              User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  // Additional profile information
+  dateOfBirth       DateTime?
+  nationalId        String?
+  occupation        String?
+  monthlyIncome     Decimal?         @db.Money
+  maritalStatus     String?
+  numberOfChildren  Int?
+  
+  // Community specific
+  communityMemberSince DateTime?
+  synagogue         String?
+  referredBy        String?
+  
+  // Financial profile
+  creditScore       Int?
+  maxLoanAmount     Decimal?         @db.Money
+  reliabilityScore  Float?           @default(100)
+  
+  // Documents
+  documents         Document[]
+  
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+}
+
+model Loan {
+  id                String           @id @default(cuid())
+  loanNumber        String           @unique
+  borrowerId        String
+  borrower          User             @relation("BorrowerLoans", fields: [borrowerId], references: [id])
+  
+  // Loan details
+  amount            Decimal          @db.Money
+  type              LoanType
+  status            LoanStatus       @default(DRAFT)
+  purpose           String           @db.Text
+  purposeDetails    Json?
+  
+  // Dates
+  requestDate       DateTime         @default(now())
+  reviewStartDate   DateTime?
+  approvalDate      DateTime?
+  rejectionDate     DateTime?
+  disbursementDate  DateTime?
+  expectedEndDate   DateTime?
+  actualEndDate     DateTime?
+  
+  // Financial terms
+  numberOfInstallments Int
+  installmentAmount    Decimal?      @db.Money
+  totalRepaid          Decimal       @default(0) @db.Money
+  outstandingAmount    Decimal       @default(0) @db.Money
+  
+  // Committee decision
+  committeeNotes    String?          @db.Text
+  rejectionReason   String?
+  
+  // Single decision maker fields
+  approvedBy        String?          // ID of the single approver (for direct approval)
+  approvalComments  String?          @db.Text
+  approvalConditions String?         @db.Text
+  rejectedBy        String?          // ID of the single rejecter (for direct rejection)
+  rejectionComments String?          @db.Text
+  
+  // Relations
+  guarantees        Guarantee[]
+  payments          Payment[]
+  repaymentSchedule RepaymentSchedule[]
+  documents         Document[]       @relation("LoanDocuments")
+  approvalVotes     ApprovalVote[]
+  auditLogs         AuditLog[]       @relation("LoanAuditLogs")
+  notifications     Notification[]   @relation("LoanNotifications")
+  
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  
+  @@index([borrowerId])
+  @@index([status])
+  @@index([type])
+  @@index([loanNumber])
+}
+
+model Guarantee {
+  id                String           @id @default(cuid())
+  loanId            String
+  loan              Loan             @relation(fields: [loanId], references: [id])
+  guarantorId       String
+  guarantor         User             @relation("GuarantorGuarantees", fields: [guarantorId], references: [id])
+  
+  type              GuaranteeType
+  status            GuaranteeStatus  @default(PENDING)
+  amount            Decimal          @db.Money
+  percentage        Float?           // Percentage of loan guaranteed
+  
+  // Dates
+  requestDate       DateTime         @default(now())
+  signedDate        DateTime?
+  activatedDate     DateTime?
+  releasedDate      DateTime?
+  
+  // Digital signature
+  signatureHash     String?
+  signatureIp       String?
+  
+  // Documents
+  documents         Document[]       @relation("GuaranteeDocuments")
+  
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  
+  @@index([loanId])
+  @@index([guarantorId])
+  @@index([status])
+  @@unique([loanId, guarantorId])
+}
+
+model Payment {
+  id                String           @id @default(cuid())
+  paymentNumber     String           @unique
+  loanId            String?
+  loan              Loan?            @relation(fields: [loanId], references: [id])
+  contributionId    String?
+  contribution      Contribution?    @relation(fields: [contributionId], references: [id])
+  
+  amount            Decimal          @db.Money
+  currency          String           @default("ILS")
+  status            PaymentStatus    @default(PENDING)
+  method            PaymentMethod
+  
+  // Transaction details
+  transactionRef    String?
+  processorRef      String?          // External payment processor reference
+  processorResponse Json?
+  
+  // Dates
+  scheduledDate     DateTime?
+  processedDate     DateTime?
+  failedDate        DateTime?
+  
+  // Metadata
+  description       String?
+  metadata          Json?
+  
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  
+  @@index([loanId])
+  @@index([contributionId])
+  @@index([status])
+  @@index([paymentNumber])
+}
+
+model RepaymentSchedule {
+  id                String           @id @default(cuid())
+  loanId            String
+  loan              Loan             @relation(fields: [loanId], references: [id])
+  
+  installmentNumber Int
+  dueDate           DateTime
+  amount            Decimal          @db.Money
+  principalAmount   Decimal          @db.Money
+  
+  isPaid            Boolean          @default(false)
+  paidDate          DateTime?
+  paidAmount        Decimal?         @db.Money
+  
+  isLate            Boolean          @default(false)
+  daysLate          Int              @default(0)
+  lateFeesApplied   Boolean          @default(false)
+  
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  
+  @@index([loanId])
+  @@index([dueDate])
+  @@unique([loanId, installmentNumber])
+}
+
+model Contribution {
+  id                String           @id @default(cuid())
+  contributorId     String
+  contributor       User             @relation(fields: [contributorId], references: [id])
+  
+  amount            Decimal          @db.Money
+  type              String           // DONATION, LOAN_FUND, EMERGENCY_FUND
+  campaignId        String?
+  campaign          Campaign?        @relation(fields: [campaignId], references: [id])
+  
+  // Payment
+  payments          Payment[]
+  
+  // Tax receipt
+  taxReceiptIssued  Boolean          @default(false)
+  taxReceiptNumber  String?
+  taxReceiptDate    DateTime?
+  
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  
+  @@index([contributorId])
+  @@index([campaignId])
+}
+
+model Campaign {
+  id                String           @id @default(cuid())
+  name              String
+  description       String           @db.Text
+  targetAmount      Decimal          @db.Money
+  raisedAmount      Decimal          @default(0) @db.Money
+  
+  startDate         DateTime
+  endDate           DateTime
+  isActive          Boolean          @default(true)
+  
+  contributions     Contribution[]
+  
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  
+  @@index([isActive])
+}
+
+model Document {
+  id                String           @id @default(cuid())
+  
+  // Relations
+  uploaderId        String
+  uploader          User             @relation("UploadedDocuments", fields: [uploaderId], references: [id])
+  
+  profileId         String?
+  profile           Profile?         @relation(fields: [profileId], references: [id])
+  loanId            String?
+  loan              Loan?            @relation("LoanDocuments", fields: [loanId], references: [id])
+  guaranteeId       String?
+  guarantee         Guarantee?       @relation("GuaranteeDocuments", fields: [guaranteeId], references: [id])
+  
+  type              String           // ID_CARD, PAY_SLIP, BANK_STATEMENT, CONTRACT, etc.
+  name              String
+  description       String?
+  
+  // File details
+  fileUrl           String
+  fileName          String
+  originalName      String
+  fileSize          Int
+  mimeType          String
+  path              String           // Server file path
+  
+  // Security
+  isEncrypted       Boolean          @default(false)
+  encryptionKey     String?
+  checksum          String?          // SHA256 hash for integrity verification
+  
+  // Verification
+  isVerified        Boolean          @default(false)
+  verifiedBy        String?
+  verifier          User?            @relation("VerifiedDocuments", fields: [verifiedBy], references: [id])
+  verifiedAt        DateTime?
+  verificationNotes String?
+  
+  // Status
+  status            String           @default("PENDING") // PENDING, APPROVED, REJECTED, EXPIRED, ARCHIVED
+  expiresAt         DateTime?
+  
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  
+  @@index([uploaderId])
+  @@index([profileId])
+  @@index([loanId])
+  @@index([guaranteeId])
+  @@index([type])
+  @@index([status])
+}
+
+model Notification {
+  id                String           @id @default(cuid())
+  userId            String
+  user              User             @relation("UserNotifications", fields: [userId], references: [id])
+  
+  type              NotificationType
+  title             String
+  message           String           @db.Text
+  
+  // Related entity
+  loanId            String?
+  loan              Loan?            @relation("LoanNotifications", fields: [loanId], references: [id])
+  
+  // Status
+  isRead            Boolean          @default(false)
+  readAt            DateTime?
+  isSent            Boolean          @default(false)
+  sentAt            DateTime?
+  
+  // Metadata
+  metadata          Json?
+  priority          String           @default("normal") // low, normal, high, urgent
+  
+  createdAt         DateTime         @default(now())
+  
+  @@index([userId])
+  @@index([isRead])
+  @@index([createdAt])
+}
+
+model ApprovalVote {
+  id                String           @id @default(cuid())
+  loanId            String
+  loan              Loan             @relation(fields: [loanId], references: [id])
+  voterId           String
+  voter             User             @relation(fields: [voterId], references: [id])
+  
+  vote              ApprovalVoteType
+  comment           String?          @db.Text
+  votedAt           DateTime         @default(now())
+  
+  createdAt         DateTime         @default(now())
+  
+  @@unique([loanId, voterId])
+  @@index([loanId])
+  @@index([voterId])
+}
+
+model AuditLog {
+  id                String           @id @default(cuid())
+  userId            String?
+  user              User?            @relation("UserAuditLogs", fields: [userId], references: [id])
+  
+  action            String           // CREATE, UPDATE, DELETE, LOGIN, LOGOUT, etc.
+  entityType        String           // User, Loan, Payment, etc.
+  entityId          String?
+  
+  // Related entities
+  loanId            String?
+  loan              Loan?            @relation("LoanAuditLogs", fields: [loanId], references: [id])
+  
+  // Details
+  oldValues         Json?
+  newValues         Json?
+  ipAddress         String?
+  userAgent         String?
+  
+  createdAt         DateTime         @default(now())
+  
+  @@index([userId])
+  @@index([entityType, entityId])
+  @@index([createdAt])
+}
+
+model Session {
+  id                String           @id @default(cuid())
+  sessionToken      String           @unique
+  userId            String
+  user              User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expires           DateTime
+  
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  
+  @@index([userId])
+  @@index([sessionToken])
+}
+
+model SystemConfig {
+  id                String           @id @default(cuid())
+  key               String           @unique
+  value             Json
+  description       String?
+  isPublic          Boolean          @default(false)
+  
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  
+  @@index([key])
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Treasury",
+  "cashBalance": "Cash balance",
+  "pendingDisbursements": "Pending disbursements",
+  "expectedCollections": "Expected collections",
+  "cashFlow": "Cash flow",
+  "disbursements": "Disbursements",
+  "collections": "Collections",
+  "processDisbursement": "Process disbursement",
+  "recordPayment": "Record payment",
+  "bankDetails": "Bank details",
+  "transactionReference": "Transaction reference"
+}

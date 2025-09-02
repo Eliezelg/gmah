@@ -1,0 +1,15 @@
+{
+  "title": "הגדרות",
+  "general": "כללי",
+  "security": "אבטחה",
+  "notifications": "התראות",
+  "language": "שפה",
+  "theme": "ערכת נושא",
+  "twoFactorAuth": "אימות דו-שלבי",
+  "changePassword": "שנה סיסמה",
+  "emailNotifications": "התראות דוא״ל",
+  "smsNotifications": "התראות SMS",
+  "darkMode": "מצב כהה",
+  "lightMode": "מצב בהיר",
+  "systemDefault": "ברירת מחדל מערכת"
+}

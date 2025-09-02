@@ -1,0 +1,70 @@
+{
+  "title": "Garanties du prêt",
+  "subtitle": "Gérez les garanties pour sécuriser votre demande de prêt",
+  "coverage": "Couverture des garanties",
+  "recommendation": "Il est recommandé d'avoir au moins 100% du montant garanti pour augmenter vos chances d'approbation",
+  "addGuarantor": "Ajouter un garant",
+  "inviteGuarantor": {
+    "title": "Inviter un garant",
+    "subtitle": "Le garant recevra un email pour confirmer sa garantie",
+    "email": "Email du garant",
+    "emailPlaceholder": "garant@example.com",
+    "emailHelp": "Le garant doit avoir un compte sur la plateforme",
+    "type": "Type de garantie",
+    "amount": "Montant garanti (€)",
+    "amountMax": "Montant maximum: {max}€",
+    "cancel": "Annuler",
+    "send": "Envoyer l'invitation"
+  },
+  "types": {
+    "simple": {
+      "label": "Garantie Simple",
+      "description": "Un seul garant"
+    },
+    "joint": {
+      "label": "Garantie Conjointe",
+      "description": "Plusieurs garants solidaires"
+    },
+    "collective": {
+      "label": "Garantie Collective",
+      "description": "Groupe de garants"
+    },
+    "deposit": {
+      "label": "Dépôt de Garantie",
+      "description": "Montant bloqué"
+    },
+    "assetBacked": {
+      "label": "Garantie sur Actif",
+      "description": "Bien en garantie"
+    }
+  },
+  "statuses": {
+    "pending": "En attente",
+    "active": "Active",
+    "released": "Libérée",
+    "cancelled": "Annulée",
+    "invoked": "Invoquée"
+  },
+  "list": {
+    "title": "Liste des garants",
+    "signedDate": "Signé le {date}",
+    "resend": "Renvoyer",
+    "cancel": "Annuler"
+  },
+  "empty": {
+    "title": "Aucun garant ajouté",
+    "subtitle": "Ajoutez des garants pour sécuriser votre demande"
+  },
+  "messages": {
+    "userNotFound": "Aucun utilisateur trouvé avec cet email",
+    "invitationSent": "Invitation de garantie envoyée avec succès",
+    "addError": "Erreur lors de l'ajout du garant",
+    "cancelled": "Garantie annulée",
+    "cancelError": "Erreur lors de l'annulation",
+    "reminderSent": "Email de rappel envoyé à {email}"
+  },
+  "validation": {
+    "invalidEmail": "Email invalide",
+    "minAmount": "Le montant minimum est de 100€"
+  }
+}

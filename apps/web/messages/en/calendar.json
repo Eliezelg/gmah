@@ -1,0 +1,20 @@
+{
+  "hebrew": "Hebrew calendar",
+  "gregorian": "Gregorian calendar",
+  "shemitah": "Shemitat Kesafim",
+  "months": {
+    "tishrei": "Tishrei",
+    "cheshvan": "Cheshvan",
+    "kislev": "Kislev",
+    "tevet": "Tevet",
+    "shevat": "Shevat",
+    "adar": "Adar",
+    "adar2": "Adar II",
+    "nissan": "Nissan",
+    "iyar": "Iyar",
+    "sivan": "Sivan",
+    "tamuz": "Tamuz",
+    "av": "Av",
+    "elul": "Elul"
+  }
+}

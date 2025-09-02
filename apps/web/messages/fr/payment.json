@@ -1,0 +1,27 @@
+{
+  "title": "Paiement",
+  "paymentNumber": "Numéro de paiement",
+  "amount": "Montant",
+  "date": "Date",
+  "method": "Méthode",
+  "status": "Statut",
+  "reference": "Référence",
+  "makePayment": "Effectuer un paiement",
+  "paymentHistory": "Historique des paiements",
+  "upcomingPayments": "Paiements à venir",
+  "overduePayments": "Paiements en retard",
+  "methods": {
+    "BANK_TRANSFER": "Virement bancaire",
+    "CHECK": "Chèque",
+    "CASH": "Espèces",
+    "CREDIT_CARD": "Carte de crédit",
+    "STANDING_ORDER": "Ordre permanent"
+  },
+  "statuses": {
+    "PENDING": "En attente",
+    "PROCESSING": "En traitement",
+    "COMPLETED": "Complété",
+    "FAILED": "Échoué",
+    "CANCELLED": "Annulé"
+  }
+}

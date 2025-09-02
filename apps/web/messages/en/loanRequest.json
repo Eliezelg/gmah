@@ -1,0 +1,181 @@
+{
+  "title": "New Loan Request",
+  "subtitle": "Fill out the form to submit your request",
+  "backButton": "Back",
+  "steps": {
+    "loanType": "Loan Type",
+    "amount": "Amount",
+    "details": "Details",
+    "documents": "Documents",
+    "guarantees": "Guarantees",
+    "confirmation": "Confirmation"
+  },
+  "stepDescriptions": {
+    "loanType": "Choose the loan type that matches your needs",
+    "amount": "Define the amount and repayment duration",
+    "details": "Specify the details of your request",
+    "documents": "Add supporting documents",
+    "guarantees": "Add guarantors to secure your request",
+    "confirmation": "Review and confirm your request"
+  },
+  "loanTypes": {
+    "personal": {
+      "label": "Personal Loan",
+      "description": "For your urgent personal needs"
+    },
+    "business": {
+      "label": "Business Loan",
+      "description": "To develop your business"
+    },
+    "student": {
+      "label": "Student Loan",
+      "description": "To finance your studies"
+    },
+    "medical": {
+      "label": "Medical Loan",
+      "description": "For urgent medical care"
+    },
+    "emergency": {
+      "label": "Emergency Loan",
+      "description": "For an emergency situation"
+    },
+    "maxAmount": "Max: {amount}",
+    "maxDuration": "Duration: {duration} months"
+  },
+  "amountStep": {
+    "loanAmount": "Loan Amount",
+    "placeholder": "0",
+    "amountRange": "Amount between £100 and {max}",
+    "installmentsLabel": "Number of installments: {count} months",
+    "installmentsRange": {
+      "min": "1 month",
+      "max": "{duration} months"
+    },
+    "summary": {
+      "requestedAmount": "Requested amount:",
+      "duration": "Duration:",
+      "monthlyPayment": "Monthly payment:",
+      "expectedEnd": "Expected end:"
+    }
+  },
+  "detailsStep": {
+    "purpose": "Loan Purpose",
+    "purposePlaceholder": "e.g., Computer equipment purchase",
+    "purposeDescription": "Briefly describe the intended use of funds",
+    "category": "Category",
+    "categoryPlaceholder": "Select a category",
+    "detailedDescription": "Detailed Description",
+    "descriptionPlaceholder": "Explain in detail why you need this loan...",
+    "descriptionHelp": "The more specific you are, the more likely your request will be approved quickly"
+  },
+  "documentsStep": {
+    "title": "Supporting Documents",
+    "subtitle": "Upload the necessary documents for your loan request",
+    "recommendedTitle": "Recommended Documents",
+    "personal": {
+      "idCard": "Valid ID",
+      "addressProof": "Proof of address",
+      "paySlips": "Last 3 pay slips"
+    },
+    "business": {
+      "kbis": "Company registration",
+      "balance": "Financial statements",
+      "businessPlan": "Business plan",
+      "bankStatements": "Business bank statements"
+    },
+    "student": {
+      "studentCard": "Student ID",
+      "enrollment": "Enrollment certificate",
+      "resources": "Proof of resources"
+    },
+    "medical": {
+      "quote": "Medical quote",
+      "prescription": "Medical prescription",
+      "socialSecurity": "Health insurance certificate"
+    },
+    "emergency": {
+      "urgencyProof": "Proof of emergency situation",
+      "idCard": "ID card"
+    },
+    "uploadError": "Please upload at least one document"
+  },
+  "guaranteesStep": {
+    "title": "Guarantors",
+    "subtitle": "Add guarantors to increase your approval chances",
+    "whyGuarantors": "Why add guarantors?",
+    "benefits": {
+      "approval": "Significantly increases your approval chances",
+      "higherAmount": "Allows access to higher amounts",
+      "fasterProcess": "Speeds up the validation process",
+      "lowerCollateral": "Reduces required material guarantees"
+    }
+  },
+  "confirmationStep": {
+    "title": "Request Summary",
+    "loanType": "Loan type",
+    "amount": "Amount",
+    "duration": "Duration",
+    "monthlyPayment": "Monthly payment",
+    "purpose": "Purpose",
+    "description": "Description",
+    "uploadedDocs": "Uploaded documents",
+    "documentsCount": "{count} document(s)",
+    "guarantors": "Guarantors",
+    "guarantorsCount": "{count} guarantor(s)",
+    "noGuarantors": "No guarantors added",
+    "importantInfo": "Important Information",
+    "reviewTime": "Your request will be reviewed by the committee within 48-72h",
+    "additionalDocs": "Additional supporting documents may be requested",
+    "noInterest": "No interest will be applied to this loan",
+    "emailNotification": "You will be notified by email of the decision"
+  },
+  "navigation": {
+    "previous": "Previous",
+    "next": "Next",
+    "submit": "Submit Request"
+  },
+  "purposes": {
+    "personal": {
+      "marriage": "Wedding",
+      "moving": "Moving",
+      "renovation": "Renovation",
+      "travel": "Travel",
+      "equipment": "Equipment purchase",
+      "other": "Other"
+    },
+    "business": {
+      "startup": "Business creation",
+      "development": "Business development",
+      "equipment": "Equipment purchase",
+      "treasury": "Cash flow",
+      "stock": "Stock",
+      "other": "Other"
+    },
+    "student": {
+      "tuition": "Tuition fees",
+      "housing": "Student housing",
+      "supplies": "School supplies",
+      "training": "Training",
+      "other": "Other"
+    },
+    "medical": {
+      "surgery": "Surgery",
+      "treatment": "Treatment",
+      "hospitalization": "Hospitalization",
+      "medication": "Medication",
+      "other": "Other"
+    },
+    "emergency": {
+      "urgentRepair": "Urgent repair",
+      "unpaidBills": "Unpaid bills",
+      "familySituation": "Family situation",
+      "other": "Other"
+    }
+  },
+  "validation": {
+    "createError": "Error creating request",
+    "submitError": "Error submitting request",
+    "missingLoanId": "Error: Missing loan ID",
+    "success": "Loan request created successfully!"
+  }
+}

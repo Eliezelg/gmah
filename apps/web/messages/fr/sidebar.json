@@ -1,0 +1,30 @@
+{
+  "menu": {
+    "dashboardBorrower": "Tableau de bord",
+    "myLoans": "Mes prêts",
+    "newLoan": "Nouvelle demande",
+    "myProfile": "Mon profil",
+    "dashboardGuarantor": "Tableau de bord",
+    "guarantees": "Garanties",
+    "dashboardCommittee": "Tableau de bord",
+    "loansToReview": "Demandes à examiner",
+    "votingHistory": "Historique des votes",
+    "statistics": "Statistiques",
+    "dashboardTreasurer": "Tableau de bord",
+    "disbursements": "Décaissements",
+    "payments": "Paiements",
+    "reports": "Rapports",
+    "dashboardAdmin": "Tableau de bord",
+    "loanManagement": "Gestion des prêts",
+    "users": "Utilisateurs",
+    "configuration": "Configuration",
+    "adminReports": "Rapports"
+  },
+  "userMenu": {
+    "myAccount": "Mon compte",
+    "settings": "Paramètres",
+    "lightMode": "Mode clair",
+    "darkMode": "Mode sombre",
+    "logout": "Déconnexion"
+  }
+}

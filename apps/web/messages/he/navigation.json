@@ -1,0 +1,20 @@
+{
+  "home": "בית",
+  "dashboard": "לוח בקרה",
+  "loans": "הלוואות",
+  "myLoans": "ההלוואות שלי",
+  "newLoan": "הלוואה חדשה",
+  "loanRequests": "בקשות הלוואה",
+  "payments": "תשלומים",
+  "guarantees": "ערבויות",
+  "documents": "מסמכים",
+  "reports": "דוחות",
+  "users": "משתמשים",
+  "settings": "הגדרות",
+  "profile": "פרופיל",
+  "help": "עזרה",
+  "notifications": "התראות",
+  "treasury": "קופה",
+  "committee": "ועדה",
+  "admin": "ניהול"
+}

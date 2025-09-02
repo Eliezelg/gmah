@@ -1,0 +1,13 @@
+{
+  "title": "קופה",
+  "cashBalance": "יתרת מזומנים",
+  "pendingDisbursements": "העברות ממתינות",
+  "expectedCollections": "גביות צפויות",
+  "cashFlow": "תזרים מזומנים",
+  "disbursements": "העברות",
+  "collections": "גביות",
+  "processDisbursement": "עבד העברה",
+  "recordPayment": "רשום תשלום",
+  "bankDetails": "פרטי בנק",
+  "transactionReference": "אסמכתא עסקה"
+}

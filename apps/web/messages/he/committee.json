@@ -1,0 +1,16 @@
+{
+  "title": "ועדת אישורים",
+  "members": "חברים",
+  "pendingReview": "ממתין לבדיקה",
+  "votingInProgress": "הצבעה בתהליך",
+  "decisions": "החלטות",
+  "vote": "הצבע",
+  "approve": "אשר",
+  "reject": "דחה",
+  "abstain": "נמנע",
+  "comments": "הערות",
+  "conditions": "תנאים",
+  "votingDeadline": "מועד אחרון להצבעה",
+  "unanimousRequired": "נדרשת החלטה פה אחד",
+  "majorityRequired": "נדרש רוב"
+}

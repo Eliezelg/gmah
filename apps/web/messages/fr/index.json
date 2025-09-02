@@ -1,0 +1,18 @@
+{
+  "common": "@/messages/fr/common.json",
+  "auth": "@/messages/fr/auth.json",
+  "navigation": "@/messages/fr/navigation.json",
+  "loan": "@/messages/fr/loan.json",
+  "dashboard": "@/messages/fr/dashboard.json",
+  "loanRequest": "@/messages/fr/loanRequest.json",
+  "guarantees": "@/messages/fr/guarantees.json",
+  "payment": "@/messages/fr/payment.json",
+  "committee": "@/messages/fr/committee.json",
+  "treasury": "@/messages/fr/treasury.json",
+  "reports": "@/messages/fr/reports.json",
+  "settings": "@/messages/fr/settings.json",
+  "errors": "@/messages/fr/errors.json",
+  "calendar": "@/messages/fr/calendar.json",
+  "sidebar": "@/messages/fr/sidebar.json",
+  "languageSelector": "@/messages/fr/languageSelector.json"
+}

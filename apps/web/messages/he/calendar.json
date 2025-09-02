@@ -1,0 +1,20 @@
+{
+  "hebrew": "לוח עברי",
+  "gregorian": "לוח גרגוריאני",
+  "shemitah": "שמיטת כספים",
+  "months": {
+    "tishrei": "תשרי",
+    "cheshvan": "חשוון",
+    "kislev": "כסלו",
+    "tevet": "טבת",
+    "shevat": "שבט",
+    "adar": "אדר",
+    "adar2": "אדר ב'",
+    "nissan": "ניסן",
+    "iyar": "אייר",
+    "sivan": "סיוון",
+    "tamuz": "תמוז",
+    "av": "אב",
+    "elul": "אלול"
+  }
+}

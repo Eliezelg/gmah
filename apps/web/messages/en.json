@@ -1,0 +1,627 @@
+{
+  "_locale": "en",
+  "common": {
+    "appName": "GMAH Platform",
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "search": "Search",
+    "filter": "Filter",
+    "export": "Export",
+    "import": "Import",
+    "submit": "Submit",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "yes": "Yes",
+    "no": "No",
+    "status": "Status",
+    "actions": "Actions",
+    "date": "Date",
+    "amount": "Amount",
+    "description": "Description",
+    "details": "Details",
+    "error": "Error",
+    "success": "Success",
+    "warning": "Warning",
+    "info": "Information"
+  },
+  "auth": {
+    "login": {
+      "title": "Login to GMAH",
+      "subtitle": "Enter your credentials to access your account",
+      "email": "Email",
+      "emailPlaceholder": "name@example.com",
+      "password": "Password",
+      "passwordPlaceholder": "••••••••",
+      "forgotPassword": "Forgot password?",
+      "loginButton": "Log in",
+      "noAccount": "Don't have an account?",
+      "signUpLink": "Sign up",
+      "loginSuccess": "Login successful!",
+      "loginError": "Login error",
+      "rememberMe": "Remember me"
+    },
+    "register": {
+      "title": "Sign Up",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "createAccount": "Create account",
+      "alreadyHaveAccount": "Already have an account?",
+      "registerSuccess": "Registration successful",
+      "registerError": "Registration error",
+      "accountCreated": "Account created successfully"
+    },
+    "reset": {
+      "forgotPassword": "Forgot password?",
+      "resetPassword": "Reset password",
+      "passwordResetSent": "Password reset email sent",
+      "passwordResetSuccess": "Password reset successfully"
+    },
+    "logout": "Logout",
+    "validation": {
+      "invalidEmail": "Invalid email",
+      "passwordTooShort": "Password must be at least 6 characters",
+      "passwordsDontMatch": "Passwords don't match",
+      "invalidCredentials": "Invalid credentials"
+    }
+  },
+  "navigation": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "loans": "Loans",
+    "myLoans": "My loans",
+    "newLoan": "New loan",
+    "loanRequests": "Loan requests",
+    "payments": "Payments",
+    "guarantees": "Guarantees",
+    "documents": "Documents",
+    "reports": "Reports",
+    "users": "Users",
+    "settings": "Settings",
+    "profile": "Profile",
+    "help": "Help",
+    "notifications": "Notifications",
+    "treasury": "Treasury",
+    "committee": "Committee",
+    "admin": "Administration"
+  },
+  "loan": {
+    "title": "Loan",
+    "loanNumber": "Loan number",
+    "borrower": "Borrower",
+    "amount": "Amount",
+    "type": "Type",
+    "purpose": "Purpose",
+    "status": "Status",
+    "requestDate": "Request date",
+    "approvalDate": "Approval date",
+    "disbursementDate": "Disbursement date",
+    "repaymentSchedule": "Repayment schedule",
+    "guarantees": "Guarantees",
+    "documents": "Documents",
+    "interest": "Interest",
+    "duration": "Duration",
+    "monthlyPayment": "Monthly payment",
+    "totalRepayment": "Total repayment",
+    "outstandingBalance": "Outstanding balance",
+    "nextPaymentDate": "Next payment date",
+    "submit": "Submit request",
+    "approve": "Approve",
+    "reject": "Reject",
+    "disburse": "Disburse",
+    "statuses": {
+      "DRAFT": "Draft",
+      "SUBMITTED": "Submitted",
+      "UNDER_REVIEW": "Under review",
+      "APPROVED": "Approved",
+      "REJECTED": "Rejected",
+      "DISBURSED": "Disbursed",
+      "ACTIVE": "Active",
+      "COMPLETED": "Completed",
+      "DEFAULTED": "Defaulted",
+      "CANCELLED": "Cancelled"
+    },
+    "types": {
+      "PERSONAL": "Personal",
+      "BUSINESS": "Business",
+      "EDUCATION": "Education",
+      "MEDICAL": "Medical",
+      "EMERGENCY": "Emergency",
+      "OTHER": "Other"
+    }
+  },
+  "dashboard": {
+    "welcome": "Welcome",
+    "overview": "Overview",
+    "quickActions": "Quick actions",
+    "recentActivity": "Recent activity",
+    "statistics": "Statistics",
+    "totalLoans": "Total loans",
+    "activeLoans": "Active loans",
+    "pendingApproval": "Pending approval",
+    "totalDisbursed": "Total disbursed",
+    "totalCollected": "Total collected",
+    "outstandingAmount": "Outstanding amount",
+    "repaymentRate": "Repayment rate",
+    "defaultRate": "Default rate",
+    "admin": {
+      "title": "Admin Dashboard",
+      "subtitle": "Platform overview",
+      "underConstruction": "Under construction",
+      "underConstructionDesc": "The admin dashboard will be available soon",
+      "interfaceDescription": "This interface will allow managing users, loans and system configurations."
+    },
+    "committee": {
+      "title": "Committee Dashboard",
+      "subtitle": "Review and vote on loan requests",
+      "underConstruction": "Under construction",
+      "underConstructionDesc": "The committee dashboard will be available soon",
+      "interfaceDescription": "This interface will allow reviewing requests and voting."
+    },
+    "borrower": {
+      "title": "Dashboard",
+      "subtitle": "Manage your loans and track your repayments",
+      "newLoanButton": "New request",
+      "stats": {
+        "activeLoans": "Active loans",
+        "totalOf": "Out of {total} total",
+        "totalBorrowed": "Total borrowed",
+        "totalDisbursedDesc": "Total amount disbursed",
+        "repaid": "Repaid",
+        "repaidPercentage": "{percentage}% of total",
+        "completedLoans": "Completed loans",
+        "fullyRepaid": "Fully repaid"
+      },
+      "upcomingPayments": {
+        "title": "Upcoming payments",
+        "viewDetails": "View details →"
+      },
+      "tabs": {
+        "active": "Active ({count})",
+        "pending": "Pending ({count})",
+        "all": "All ({count})"
+      },
+      "emptyStates": {
+        "noActiveLoans": "No active loans",
+        "noActiveLoanDesc": "You don't have any loans in repayment",
+        "makeNewLoan": "Apply for a loan",
+        "noPendingRequests": "No pending requests",
+        "noPendingDesc": "You don't have any pending requests",
+        "noLoansEver": "No loans",
+        "noLoansEverDesc": "You have never applied for a loan",
+        "firstLoan": "Make your first request"
+      },
+      "loanDetails": {
+        "amount": "Amount",
+        "outstanding": "Outstanding",
+        "monthlyPayment": "Monthly payment",
+        "installments": "Installments",
+        "months": "months",
+        "requestedAmount": "Requested amount",
+        "requestDate": "Request date",
+        "type": "Type",
+        "date": "Date",
+        "viewDetails": "View details"
+      }
+    },
+    "layout": {
+      "headers": {
+        "borrower": "Dashboard",
+        "treasurer": "Financial Management",
+        "committee": "Approval Committee",
+        "admin": "Administration",
+        "superAdmin": "Super Administration"
+      }
+    }
+  },
+  "loanRequest": {
+    "title": "New Loan Request",
+    "subtitle": "Fill out the form to submit your request",
+    "backButton": "Back",
+    "steps": {
+      "loanType": "Loan Type",
+      "amount": "Amount",
+      "details": "Details",
+      "documents": "Documents",
+      "guarantees": "Guarantees",
+      "confirmation": "Confirmation"
+    },
+    "stepDescriptions": {
+      "loanType": "Choose the loan type that matches your needs",
+      "amount": "Define the amount and repayment duration",
+      "details": "Specify the details of your request",
+      "documents": "Add supporting documents",
+      "guarantees": "Add guarantors to secure your request",
+      "confirmation": "Review and confirm your request"
+    },
+    "loanTypes": {
+      "personal": {
+        "label": "Personal Loan",
+        "description": "For your urgent personal needs"
+      },
+      "business": {
+        "label": "Business Loan",
+        "description": "To develop your business"
+      },
+      "student": {
+        "label": "Student Loan",
+        "description": "To finance your studies"
+      },
+      "medical": {
+        "label": "Medical Loan",
+        "description": "For urgent medical care"
+      },
+      "emergency": {
+        "label": "Emergency Loan",
+        "description": "For an emergency situation"
+      },
+      "maxAmount": "Max: {amount}",
+      "maxDuration": "Duration: {duration} months"
+    },
+    "amountStep": {
+      "loanAmount": "Loan Amount",
+      "placeholder": "0",
+      "amountRange": "Amount between £100 and {max}",
+      "installmentsLabel": "Number of installments: {count} months",
+      "installmentsRange": {
+        "min": "1 month",
+        "max": "{duration} months"
+      },
+      "summary": {
+        "requestedAmount": "Requested amount:",
+        "duration": "Duration:",
+        "monthlyPayment": "Monthly payment:",
+        "expectedEnd": "Expected end:"
+      }
+    },
+    "detailsStep": {
+      "purpose": "Loan Purpose",
+      "purposePlaceholder": "e.g., Computer equipment purchase",
+      "purposeDescription": "Briefly describe the intended use of funds",
+      "category": "Category",
+      "categoryPlaceholder": "Select a category",
+      "detailedDescription": "Detailed Description",
+      "descriptionPlaceholder": "Explain in detail why you need this loan...",
+      "descriptionHelp": "The more specific you are, the more likely your request will be approved quickly"
+    },
+    "documentsStep": {
+      "title": "Supporting Documents",
+      "subtitle": "Upload the necessary documents for your loan request",
+      "recommendedTitle": "Recommended Documents",
+      "personal": {
+        "idCard": "Valid ID",
+        "addressProof": "Proof of address",
+        "paySlips": "Last 3 pay slips"
+      },
+      "business": {
+        "kbis": "Company registration",
+        "balance": "Financial statements",
+        "businessPlan": "Business plan",
+        "bankStatements": "Business bank statements"
+      },
+      "student": {
+        "studentCard": "Student ID",
+        "enrollment": "Enrollment certificate",
+        "resources": "Proof of resources"
+      },
+      "medical": {
+        "quote": "Medical quote",
+        "prescription": "Medical prescription",
+        "socialSecurity": "Health insurance certificate"
+      },
+      "emergency": {
+        "urgencyProof": "Proof of emergency situation",
+        "idCard": "ID card"
+      },
+      "uploadError": "Please upload at least one document"
+    },
+    "guaranteesStep": {
+      "title": "Guarantors",
+      "subtitle": "Add guarantors to increase your approval chances",
+      "whyGuarantors": "Why add guarantors?",
+      "benefits": {
+        "approval": "Significantly increases your approval chances",
+        "higherAmount": "Allows access to higher amounts",
+        "fasterProcess": "Speeds up the validation process",
+        "lowerCollateral": "Reduces required material guarantees"
+      }
+    },
+    "confirmationStep": {
+      "title": "Request Summary",
+      "loanType": "Loan type",
+      "amount": "Amount",
+      "duration": "Duration",
+      "monthlyPayment": "Monthly payment",
+      "purpose": "Purpose",
+      "description": "Description",
+      "uploadedDocs": "Uploaded documents",
+      "documentsCount": "{count} document(s)",
+      "guarantors": "Guarantors",
+      "guarantorsCount": "{count} guarantor(s)",
+      "noGuarantors": "No guarantors added",
+      "importantInfo": "Important Information",
+      "reviewTime": "Your request will be reviewed by the committee within 48-72h",
+      "additionalDocs": "Additional supporting documents may be requested",
+      "noInterest": "No interest will be applied to this loan",
+      "emailNotification": "You will be notified by email of the decision"
+    },
+    "navigation": {
+      "previous": "Previous",
+      "next": "Next",
+      "submit": "Submit Request"
+    },
+    "purposes": {
+      "personal": {
+        "marriage": "Wedding",
+        "moving": "Moving",
+        "renovation": "Renovation",
+        "travel": "Travel",
+        "equipment": "Equipment purchase",
+        "other": "Other"
+      },
+      "business": {
+        "startup": "Business creation",
+        "development": "Business development",
+        "equipment": "Equipment purchase",
+        "treasury": "Cash flow",
+        "stock": "Stock",
+        "other": "Other"
+      },
+      "student": {
+        "tuition": "Tuition fees",
+        "housing": "Student housing",
+        "supplies": "School supplies",
+        "training": "Training",
+        "other": "Other"
+      },
+      "medical": {
+        "surgery": "Surgery",
+        "treatment": "Treatment",
+        "hospitalization": "Hospitalization",
+        "medication": "Medication",
+        "other": "Other"
+      },
+      "emergency": {
+        "urgentRepair": "Urgent repair",
+        "unpaidBills": "Unpaid bills",
+        "familySituation": "Family situation",
+        "other": "Other"
+      }
+    },
+    "validation": {
+      "createError": "Error creating request",
+      "submitError": "Error submitting request",
+      "missingLoanId": "Error: Missing loan ID",
+      "success": "Loan request created successfully!"
+    }
+  },
+  "guarantees": {
+    "title": "Loan Guarantees",
+    "subtitle": "Manage guarantees to secure your loan request",
+    "coverage": "Guarantee Coverage",
+    "recommendation": "It is recommended to have at least 100% of the amount guaranteed to increase your approval chances",
+    "addGuarantor": "Add Guarantor",
+    "inviteGuarantor": {
+      "title": "Invite a Guarantor",
+      "subtitle": "The guarantor will receive an email to confirm their guarantee",
+      "email": "Guarantor's email",
+      "emailPlaceholder": "guarantor@example.com",
+      "emailHelp": "The guarantor must have an account on the platform",
+      "type": "Guarantee type",
+      "amount": "Guaranteed amount (£)",
+      "amountMax": "Maximum amount: {max}£",
+      "cancel": "Cancel",
+      "send": "Send invitation"
+    },
+    "types": {
+      "simple": {
+        "label": "Simple Guarantee",
+        "description": "Single guarantor"
+      },
+      "joint": {
+        "label": "Joint Guarantee",
+        "description": "Multiple joint guarantors"
+      },
+      "collective": {
+        "label": "Collective Guarantee",
+        "description": "Group of guarantors"
+      },
+      "deposit": {
+        "label": "Security Deposit",
+        "description": "Blocked amount"
+      },
+      "assetBacked": {
+        "label": "Asset-Backed Guarantee",
+        "description": "Asset as collateral"
+      }
+    },
+    "statuses": {
+      "pending": "Pending",
+      "active": "Active",
+      "released": "Released",
+      "cancelled": "Cancelled",
+      "invoked": "Invoked"
+    },
+    "list": {
+      "title": "Guarantors List",
+      "signedDate": "Signed on {date}",
+      "resend": "Resend",
+      "cancel": "Cancel"
+    },
+    "empty": {
+      "title": "No guarantors added",
+      "subtitle": "Add guarantors to secure your request"
+    },
+    "messages": {
+      "userNotFound": "No user found with this email",
+      "invitationSent": "Guarantee invitation sent successfully",
+      "addError": "Error adding guarantor",
+      "cancelled": "Guarantee cancelled",
+      "cancelError": "Error cancelling",
+      "reminderSent": "Reminder email sent to {email}"
+    },
+    "validation": {
+      "invalidEmail": "Invalid email",
+      "minAmount": "Minimum amount is £100"
+    }
+  },
+  "payment": {
+    "title": "Payment",
+    "paymentNumber": "Payment number",
+    "amount": "Amount",
+    "date": "Date",
+    "method": "Method",
+    "status": "Status",
+    "reference": "Reference",
+    "makePayment": "Make payment",
+    "paymentHistory": "Payment history",
+    "upcomingPayments": "Upcoming payments",
+    "overduePayments": "Overdue payments",
+    "methods": {
+      "BANK_TRANSFER": "Bank transfer",
+      "CHECK": "Check",
+      "CASH": "Cash",
+      "CREDIT_CARD": "Credit card",
+      "STANDING_ORDER": "Standing order"
+    },
+    "statuses": {
+      "PENDING": "Pending",
+      "PROCESSING": "Processing",
+      "COMPLETED": "Completed",
+      "FAILED": "Failed",
+      "CANCELLED": "Cancelled"
+    }
+  },
+  "committee": {
+    "title": "Approval Committee",
+    "members": "Members",
+    "pendingReview": "Pending review",
+    "votingInProgress": "Voting in progress",
+    "decisions": "Decisions",
+    "vote": "Vote",
+    "approve": "Approve",
+    "reject": "Reject",
+    "abstain": "Abstain",
+    "comments": "Comments",
+    "conditions": "Conditions",
+    "votingDeadline": "Voting deadline",
+    "unanimousRequired": "Unanimous required",
+    "majorityRequired": "Majority required"
+  },
+  "treasury": {
+    "title": "Treasury",
+    "cashBalance": "Cash balance",
+    "pendingDisbursements": "Pending disbursements",
+    "expectedCollections": "Expected collections",
+    "cashFlow": "Cash flow",
+    "disbursements": "Disbursements",
+    "collections": "Collections",
+    "processDisbursement": "Process disbursement",
+    "recordPayment": "Record payment",
+    "bankDetails": "Bank details",
+    "transactionReference": "Transaction reference"
+  },
+  "reports": {
+    "title": "Reports",
+    "generate": "Generate",
+    "export": "Export",
+    "schedule": "Schedule",
+    "loanReport": "Loan report",
+    "paymentReport": "Payment report",
+    "defaulterReport": "Defaulter report",
+    "financialSummary": "Financial summary",
+    "auditLog": "Audit log",
+    "selectPeriod": "Select period",
+    "format": "Format",
+    "excel": "Excel",
+    "pdf": "PDF",
+    "csv": "CSV"
+  },
+  "settings": {
+    "title": "Settings",
+    "general": "General",
+    "security": "Security",
+    "notifications": "Notifications",
+    "language": "Language",
+    "theme": "Theme",
+    "twoFactorAuth": "Two-factor authentication",
+    "changePassword": "Change password",
+    "emailNotifications": "Email notifications",
+    "smsNotifications": "SMS notifications",
+    "darkMode": "Dark mode",
+    "lightMode": "Light mode",
+    "systemDefault": "System default"
+  },
+  "errors": {
+    "required": "This field is required",
+    "invalidEmail": "Invalid email",
+    "passwordTooShort": "Password must be at least 8 characters",
+    "passwordsDontMatch": "Passwords don't match",
+    "invalidPhone": "Invalid phone number",
+    "invalidAmount": "Invalid amount",
+    "somethingWentWrong": "Something went wrong",
+    "networkError": "Network error",
+    "unauthorized": "Unauthorized",
+    "forbidden": "Access forbidden",
+    "notFound": "Not found",
+    "serverError": "Server error"
+  },
+  "calendar": {
+    "hebrew": "Hebrew calendar",
+    "gregorian": "Gregorian calendar",
+    "shemitah": "Shemitat Kesafim",
+    "months": {
+      "tishrei": "Tishrei",
+      "cheshvan": "Cheshvan",
+      "kislev": "Kislev",
+      "tevet": "Tevet",
+      "shevat": "Shevat",
+      "adar": "Adar",
+      "adar2": "Adar II",
+      "nissan": "Nissan",
+      "iyar": "Iyar",
+      "sivan": "Sivan",
+      "tamuz": "Tamuz",
+      "av": "Av",
+      "elul": "Elul"
+    }
+  },
+  "sidebar": {
+    "menu": {
+      "dashboardBorrower": "Dashboard",
+      "myLoans": "My loans",
+      "newLoan": "New request",
+      "myProfile": "My profile",
+      "dashboardGuarantor": "Dashboard",
+      "guarantees": "Guarantees",
+      "dashboardCommittee": "Dashboard",
+      "loansToReview": "Requests to review",
+      "votingHistory": "Voting history",
+      "statistics": "Statistics",
+      "dashboardTreasurer": "Dashboard",
+      "disbursements": "Disbursements",
+      "payments": "Payments",
+      "reports": "Reports",
+      "dashboardAdmin": "Dashboard",
+      "loanManagement": "Loan management",
+      "users": "Users",
+      "configuration": "Configuration",
+      "adminReports": "Reports"
+    },
+    "userMenu": {
+      "myAccount": "My account",
+      "settings": "Settings",
+      "lightMode": "Light mode",
+      "darkMode": "Dark mode",
+      "logout": "Logout"
+    }
+  },
+  "languageSelector": {
+    "selectLanguage": "Select language"
+  }
+}

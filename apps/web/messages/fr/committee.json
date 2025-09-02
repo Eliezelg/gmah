@@ -1,0 +1,16 @@
+{
+  "title": "Comité d'approbation",
+  "members": "Membres",
+  "pendingReview": "En attente d'examen",
+  "votingInProgress": "Vote en cours",
+  "decisions": "Décisions",
+  "vote": "Voter",
+  "approve": "Approuver",
+  "reject": "Rejeter",
+  "abstain": "S'abstenir",
+  "comments": "Commentaires",
+  "conditions": "Conditions",
+  "votingDeadline": "Date limite de vote",
+  "unanimousRequired": "Unanimité requise",
+  "majorityRequired": "Majorité requise"
+}
