@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { ThrottlerModule } from '@nestjs/throttler';
+import { ScheduleModule } from '@nestjs/schedule';
 import { APP_GUARD } from '@nestjs/core';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -18,6 +19,10 @@ import { EmailModule } from './email/email.module';
 import { RedisCacheModule } from './cache/cache.module';
 import { ReportsModule } from './reports/reports.module';
 import { AuditModule } from './audit/audit.module';
+import { OrganizationsModule } from './modules/organizations/organizations.module';
+import { TenantsModule } from './modules/tenants/tenants.module';
+import { DomainsModule } from './modules/domains/domains.module';
+import { TreasuryForecastModule } from './treasury-forecast/treasury-forecast.module';
 
 @Module({
   imports: [
@@ -29,6 +34,7 @@ import { AuditModule } from './audit/audit.module';
       ttl: 60000,
       limit: 100,
     }]),
+    ScheduleModule.forRoot(),
     PrismaModule,
     RedisCacheModule,
     AuthModule,
@@ -41,6 +47,10 @@ import { AuditModule } from './audit/audit.module';
     EmailModule,
     ReportsModule,
     AuditModule,
+    OrganizationsModule,
+    TenantsModule,
+    DomainsModule,
+    TreasuryForecastModule,
   ],
   controllers: [AppController],
   providers: [

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { useAuthStore } from '@/lib/stores/auth-store';
+import { useTranslations } from 'next-intl';
 import {
   LayoutDashboard,
   FileText,
@@ -20,6 +21,7 @@ import {
   ClipboardCheck,
   UserCheck,
   BanknoteIcon,
+  BarChart3,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
@@ -55,12 +57,14 @@ const navigation = {
   ],
   TREASURER: [
     { name: 'Tableau de bord', href: '/treasurer', icon: LayoutDashboard },
+    { name: 'Prévisions', href: '/admin/treasury-forecast', icon: BarChart3 },
     { name: 'Décaissements', href: '/treasurer/disbursements', icon: BanknoteIcon },
     { name: 'Paiements', href: '/treasurer/payments', icon: Wallet },
     { name: 'Rapports', href: '/treasurer/reports', icon: FileText },
   ],
   ADMIN: [
     { name: 'Tableau de bord', href: '/dashboard', icon: LayoutDashboard },
+    { name: 'Prévisions Trésorerie', href: '/admin/treasury-forecast', icon: BarChart3 },
     { name: 'Gestion des prêts', href: '/admin/loans', icon: FileText },
     { name: 'Utilisateurs', href: '/admin/users', icon: Users },
     { name: 'Configuration', href: '/admin/settings', icon: Settings },
@@ -68,6 +72,7 @@ const navigation = {
   ],
   SUPER_ADMIN: [
     { name: 'Tableau de bord', href: '/dashboard', icon: LayoutDashboard },
+    { name: 'Prévisions Trésorerie', href: '/admin/treasury-forecast', icon: BarChart3 },
     { name: 'Gestion des prêts', href: '/admin/loans', icon: FileText },
     { name: 'Utilisateurs', href: '/admin/users', icon: Users },
     { name: 'Configuration', href: '/admin/settings', icon: Settings },
@@ -80,6 +85,8 @@ export function Sidebar() {
   const { user, logout } = useAuthStore();
   const { theme, setTheme } = useTheme();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const tMenu = useTranslations('sidebar');
+  const tCommon = useTranslations('common');
 
   const userNavigation = navigation[user?.role || 'BORROWER'];
 
@@ -131,7 +138,7 @@ export function Sidebar() {
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <item.icon className="h-5 w-5" />
-                  {tMenu(item.nameKey)}
+                  {item.name}
                 </Link>
               );
             })}
@@ -160,12 +167,12 @@ export function Sidebar() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start" className="w-56">
-                <DropdownMenuLabel>{tUserMenu('myAccount')}</DropdownMenuLabel>
+                <DropdownMenuLabel>Mon compte</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
                   <Link href="/profile" className="cursor-pointer">
                     <Settings className="mr-2 h-4 w-4" />
-                    {tUserMenu('settings')}
+                    Paramètres
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem
@@ -175,19 +182,19 @@ export function Sidebar() {
                   {theme === 'dark' ? (
                     <>
                       <Sun className="mr-2 h-4 w-4" />
-                      {tUserMenu('lightMode')}
+                      Mode clair
                     </>
                   ) : (
                     <>
                       <Moon className="mr-2 h-4 w-4" />
-                      {tUserMenu('darkMode')}
+                      Mode sombre
                     </>
                   )}
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">
                   <LogOut className="mr-2 h-4 w-4" />
-                  {tUserMenu('logout')}
+                  Déconnexion
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

@@ -74,11 +74,10 @@ npm run dev:web
 
 ### Accès aux services
 
-- **Frontend**: http://localhost:3000
-- **API**: http://localhost:3001
-- **API Documentation (Swagger)**: http://localhost:3001/api
+- **Frontend**: http://localhost:3001
+- **API**: http://localhost:3333
+- **API Documentation (Swagger)**: http://localhost:3333/api
 - **Prisma Studio**: `npm run db:studio` puis http://localhost:5555
-- **MinIO Console**: http://localhost:9001 (minio_admin / minio_password_dev)
 
 ## 📚 Commandes Utiles
 

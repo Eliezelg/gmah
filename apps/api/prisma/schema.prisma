@@ -207,6 +207,7 @@ model Loan {
   approvalVotes     ApprovalVote[]
   auditLogs         AuditLog[]       @relation("LoanAuditLogs")
   notifications     Notification[]   @relation("LoanNotifications")
+  treasuryFlows     TreasuryFlow[]
   
   createdAt         DateTime         @default(now())
   updatedAt         DateTime         @updatedAt
@@ -278,6 +279,9 @@ model Payment {
   description       String?
   metadata          Json?
   
+  // Relations
+  treasuryFlows     TreasuryFlow[]
+  
   createdAt         DateTime         @default(now())
   updatedAt         DateTime         @updatedAt
   
@@ -325,6 +329,9 @@ model Contribution {
   
   // Payment
   payments          Payment[]
+  
+  // Relations
+  treasuryFlows     TreasuryFlow[]
   
   // Tax receipt
   taxReceiptIssued  Boolean          @default(false)
@@ -509,4 +516,172 @@ model SystemConfig {
   updatedAt         DateTime         @updatedAt
   
   @@index([key])
+}
+
+// Treasury Forecasting Models
+enum ForecastScenario {
+  OPTIMISTIC
+  REALISTIC
+  PESSIMISTIC
+}
+
+enum AlertType {
+  LOW_CASH_FLOW
+  NEGATIVE_BALANCE
+  HIGH_DEMAND
+  LIQUIDITY_WARNING
+  PAYMENT_DELAY
+}
+
+enum AlertSeverity {
+  INFO
+  WARNING
+  CRITICAL
+  URGENT
+}
+
+enum TreasuryFlowType {
+  INFLOW
+  OUTFLOW
+}
+
+enum TreasuryFlowCategory {
+  LOAN_DISBURSEMENT
+  LOAN_REPAYMENT
+  CONTRIBUTION
+  DEPOSIT_WITHDRAWAL
+  OPERATIONAL_EXPENSE
+  INTEREST_EARNED
+  FEE_INCOME
+  OTHER
+}
+
+model TreasuryForecast {
+  id                String           @id @default(cuid())
+  
+  // Forecast parameters
+  forecastDate      DateTime         // Date this forecast was generated
+  periodDays        Int              // Forecast period in days (30, 60, 90)
+  scenario          ForecastScenario @default(REALISTIC)
+  
+  // Financial data
+  currentBalance    Decimal          @db.Money
+  projectedBalance  Decimal          @db.Money
+  minBalance        Decimal          @db.Money // Lowest projected balance during period
+  maxBalance        Decimal          @db.Money // Highest projected balance during period
+  
+  // Cash flow summary
+  totalInflows      Decimal          @default(0) @db.Money
+  totalOutflows     Decimal          @default(0) @db.Money
+  netCashFlow       Decimal          @default(0) @db.Money
+  
+  // Risk metrics
+  liquidityRisk     Float            @default(0) // 0-100 scale
+  volatilityIndex   Float            @default(0) // Measures forecast volatility
+  confidenceLevel   Float            @default(0) // Confidence in predictions (0-100)
+  
+  // Metadata
+  calculatedAt      DateTime         @default(now())
+  calculationTime   Int              // Time taken to calculate in ms
+  dataPoints        Int              @default(0) // Number of data points used
+  
+  // Relations
+  alerts            ForecastAlert[]
+  flows             TreasuryFlow[]   @relation("ForecastFlows")
+  
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  
+  @@index([forecastDate])
+  @@index([periodDays])
+  @@index([scenario])
+}
+
+model ForecastAlert {
+  id                String           @id @default(cuid())
+  forecastId        String
+  forecast          TreasuryForecast @relation(fields: [forecastId], references: [id], onDelete: Cascade)
+  
+  type              AlertType
+  severity          AlertSeverity    @default(WARNING)
+  title             String
+  message           String           @db.Text
+  
+  // Alert data
+  triggeredAt       DateTime         @default(now())
+  projectedDate     DateTime?        // When the issue is projected to occur
+  amount            Decimal?         @db.Money // Amount involved (if applicable)
+  threshold         Decimal?         @db.Money // Threshold that was crossed
+  
+  // Status
+  isActive          Boolean          @default(true)
+  isAcknowledged    Boolean          @default(false)
+  acknowledgedBy    String?
+  acknowledgedAt    DateTime?
+  
+  // Recommendations
+  recommendations   Json?            // Array of suggested actions
+  
+  // Metadata
+  metadata          Json?
+  
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  
+  @@index([forecastId])
+  @@index([type])
+  @@index([severity])
+  @@index([isActive])
+  @@index([triggeredAt])
+}
+
+model TreasuryFlow {
+  id                String           @id @default(cuid())
+  
+  // Basic flow information
+  type              TreasuryFlowType
+  category          TreasuryFlowCategory
+  amount            Decimal          @db.Money
+  description       String
+  
+  // Timing
+  expectedDate      DateTime
+  actualDate        DateTime?
+  isActual          Boolean          @default(false) // true if flow has occurred
+  
+  // Probability and confidence (for projections)
+  probability       Float            @default(100) // Probability this flow will occur (0-100)
+  confidence        Float            @default(100) // Confidence in amount/timing (0-100)
+  
+  // Related entities
+  loanId            String?
+  loan              Loan?            @relation(fields: [loanId], references: [id])
+  paymentId         String?
+  payment           Payment?         @relation(fields: [paymentId], references: [id])
+  contributionId    String?
+  contribution      Contribution?    @relation(fields: [contributionId], references: [id])
+  
+  // Forecast relation
+  forecastId        String?
+  forecast          TreasuryForecast? @relation("ForecastFlows", fields: [forecastId], references: [id])
+  
+  // Source tracking
+  source            String           @default("SYSTEM") // SYSTEM, MANUAL, IMPORT, API
+  sourceRef         String?          // Reference to source data
+  
+  // Metadata
+  tags              String[]         @default([])
+  metadata          Json?
+  
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  
+  @@index([type])
+  @@index([category])
+  @@index([expectedDate])
+  @@index([isActual])
+  @@index([loanId])
+  @@index([paymentId])
+  @@index([contributionId])
+  @@index([forecastId])
 }

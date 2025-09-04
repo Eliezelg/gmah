@@ -1,0 +1,168 @@
+// Master Database Schema for Multi-tenant Organizations
+// This schema is used for the master database that tracks all organizations
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/@prisma/client-master"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("MASTER_DATABASE_URL")
+}
+
+model Organization {
+  id           String   @id @default(uuid())
+  slug         String   @unique @db.VarChar(50)
+  name         String   @db.VarChar(200)
+  domain       String?  @unique @db.VarChar(200)
+  databaseName String   @map("database_name") @db.VarChar(100)
+  
+  // Custom domains
+  customDomains CustomDomain[]
+  
+  // Status
+  status       OrganizationStatus @default(PENDING)
+  
+  // Configuration
+  settings     Json     @default("{}")
+  limits       Json     @default("{}")
+  features     Json     @default("{}")
+  
+  // Contact information
+  adminEmail   String   @map("admin_email") @db.VarChar(200)
+  adminName    String?  @map("admin_name") @db.VarChar(200)
+  phoneNumber  String?  @map("phone_number") @db.VarChar(20)
+  
+  // Address
+  address      String?  @db.Text
+  city         String?  @db.VarChar(100)
+  postalCode   String?  @map("postal_code") @db.VarChar(20)
+  country      String?  @db.VarChar(100)
+  
+  // Billing
+  billingEmail String?  @map("billing_email") @db.VarChar(200)
+  taxId        String?  @map("tax_id") @db.VarChar(50)
+  
+  // Timestamps
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+  activatedAt  DateTime? @map("activated_at")
+  suspendedAt  DateTime? @map("suspended_at")
+  
+  // Relations
+  features     OrganizationFeature[]
+  auditLogs    MasterAuditLog[]
+  
+  @@map("organizations")
+}
+
+model OrganizationFeature {
+  id             String   @id @default(uuid())
+  organizationId String   @map("organization_id")
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  
+  featureKey     String   @map("feature_key") @db.VarChar(100)
+  enabled        Boolean  @default(true)
+  config         Json     @default("{}")
+  
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+  
+  @@unique([organizationId, featureKey])
+  @@map("organization_features")
+}
+
+// Subscriptions removed - all GMAH organizations use the same free platform
+
+model MasterAuditLog {
+  id             String   @id @default(uuid())
+  organizationId String?  @map("organization_id")
+  organization   Organization? @relation(fields: [organizationId], references: [id], onDelete: SetNull)
+  
+  action         String   @db.VarChar(100)
+  entity         String   @db.VarChar(100)
+  entityId       String?  @map("entity_id")
+  
+  userId         String?  @map("user_id")
+  userEmail      String?  @map("user_email") @db.VarChar(200)
+  
+  oldValue       Json?    @map("old_value")
+  newValue       Json?    @map("new_value")
+  
+  ipAddress      String?  @map("ip_address") @db.VarChar(45)
+  userAgent      String?  @map("user_agent") @db.Text
+  
+  createdAt      DateTime @default(now()) @map("created_at")
+  
+  @@index([organizationId])
+  @@index([createdAt])
+  @@map("master_audit_logs")
+}
+
+model CustomDomain {
+  id             String   @id @default(uuid())
+  organizationId String   @map("organization_id")
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  
+  domain         String   @unique @db.VarChar(255)
+  status         DomainStatus @default(PENDING)
+  
+  // Verification
+  verificationMethod DomainVerificationMethod @default(DNS_TXT) @map("verification_method")
+  verificationToken  String? @map("verification_token") @db.VarChar(255)
+  verifiedAt         DateTime? @map("verified_at")
+  
+  // SSL Certificate
+  sslStatus      SSLStatus? @map("ssl_status") @default(PENDING)
+  sslIssuedAt    DateTime? @map("ssl_issued_at")
+  sslExpiresAt   DateTime? @map("ssl_expires_at")
+  
+  // DNS Settings
+  dnsConfigured  Boolean @default(false) @map("dns_configured")
+  lastCheckedAt  DateTime? @map("last_checked_at")
+  
+  // Priority (for multiple domains)
+  isPrimary      Boolean @default(false) @map("is_primary")
+  
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+  
+  @@index([organizationId])
+  @@index([status])
+  @@map("custom_domains")
+}
+
+// Enums
+enum OrganizationStatus {
+  PENDING
+  ACTIVE
+  SUSPENDED
+  CANCELLED
+  EXPIRED
+}
+
+// Plans removed - single platform type for all GMAH organizations
+
+enum DomainStatus {
+  PENDING
+  VERIFYING
+  VERIFIED
+  FAILED
+  SUSPENDED
+}
+
+enum DomainVerificationMethod {
+  DNS_TXT
+  DNS_CNAME
+  FILE_UPLOAD
+  META_TAG
+}
+
+enum SSLStatus {
+  PENDING
+  PROVISIONING
+  ACTIVE
+  EXPIRED
+  FAILED
+}

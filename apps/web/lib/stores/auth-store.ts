@@ -86,12 +86,26 @@ export const useAuthStore = create<AuthState>()(
       },
 
       refreshUser: async () => {
+        // Only attempt to refresh if we have a token
+        const token = typeof window !== 'undefined' ? localStorage.getItem('access_token') : null;
+        if (!token) {
+          set({ user: null, isAuthenticated: false, isLoading: false });
+          return;
+        }
+        
         set({ isLoading: true });
         try {
           const response = await apiClient.get('/users/profile');
           set({ user: response.data, isAuthenticated: true, isLoading: false });
         } catch (error) {
-          set({ user: null, isAuthenticated: false, isLoading: false });
+          // If we get a 403 or 401, clear the auth state
+          if (error.response?.status === 403 || error.response?.status === 401) {
+            localStorage.removeItem('access_token');
+            localStorage.removeItem('refresh_token');
+            set({ user: null, isAuthenticated: false, isLoading: false });
+          } else {
+            set({ user: null, isAuthenticated: false, isLoading: false });
+          }
         }
       },
 
