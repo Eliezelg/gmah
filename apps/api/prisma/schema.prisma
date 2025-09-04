@@ -23,6 +23,7 @@ enum Role {
 enum LoanStatus {
   DRAFT
   SUBMITTED
+  PENDING_APPROVAL
   UNDER_REVIEW
   APPROVED
   REJECTED
@@ -50,6 +51,7 @@ enum PaymentStatus {
   FAILED
   REFUNDED
   CANCELLED
+  OVERDUE
 }
 
 enum PaymentMethod {

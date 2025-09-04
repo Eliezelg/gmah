@@ -13,9 +13,9 @@ import {
   HttpCode,
   HttpStatus,
 } from '@nestjs/common';
-import { Response } from 'express';
+import type { Response } from 'express';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
-import { CalendarService, HebrewCalendarService } from './services';
+import { CalendarService, HebrewCalendarService, HebrewDateInfo, JewishHoliday } from './services';
 import { CreateCalendarEventDto, UpdateCalendarEventDto, CalendarEventQueryDto } from './dto';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';

@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException, ConflictException, BadRequestException } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
-import { HebrewCalendarService } from './hebrew-calendar.service';
+import { HebrewCalendarService, HebrewDateInfo } from './hebrew-calendar.service';
 import { CalendarEventType, CalendarEventStatus, CalendarEventPriority, Prisma } from '@prisma/client';
 import { CreateCalendarEventDto, UpdateCalendarEventDto, CalendarEventQueryDto } from '../dto';
 import { RRule } from 'rrule';
@@ -27,7 +27,7 @@ export class CalendarService {
     }
 
     // Handle Hebrew date conversion
-    let hebrewDateInfo = null;
+    let hebrewDateInfo: HebrewDateInfo | null = null;
     if (createDto.isHebrewDate && createDto.hebrewYear && createDto.hebrewMonth && createDto.hebrewDay) {
       try {
         const gregorianDate = this.hebrewCalendarService.hebrewToGregorian(
@@ -245,7 +245,7 @@ export class CalendarService {
     }
 
     // Handle Hebrew date conversion
-    let hebrewDateInfo = null;
+    let hebrewDateInfo: HebrewDateInfo | null = null;
     if (updateDto.isHebrewDate && updateDto.hebrewYear && updateDto.hebrewMonth && updateDto.hebrewDay) {
       try {
         const gregorianDate = this.hebrewCalendarService.hebrewToGregorian(
@@ -323,7 +323,7 @@ export class CalendarService {
       },
     });
 
-    const eventsToCreate = [];
+    const eventsToCreate: Prisma.CalendarEventCreateInput[] = [];
 
     for (const loan of activeLoans) {
       for (const schedule of loan.repaymentSchedule) {
@@ -344,7 +344,7 @@ export class CalendarService {
             startDate: schedule.dueDate,
             allDay: true,
             priority: schedule.daysLate > 0 ? CalendarEventPriority.HIGH : CalendarEventPriority.NORMAL,
-            loanId: loan.id,
+            loan: { connect: { id: loan.id } },
             isSystemGenerated: true,
             sourceType: `REPAYMENT_${schedule.id}`,
             color: schedule.daysLate > 0 ? '#ef4444' : '#10b981',
@@ -383,7 +383,7 @@ export class CalendarService {
       },
     });
 
-    const eventsToCreate = [];
+    const eventsToCreate: Prisma.CalendarEventCreateInput[] = [];
 
     for (const withdrawal of pendingWithdrawals) {
       const existingEvent = await this.prisma.calendarEvent.findFirst({
@@ -406,7 +406,7 @@ export class CalendarService {
           startDate: eventDate,
           allDay: true,
           priority,
-          withdrawalId: withdrawal.id,
+          withdrawal: { connect: { id: withdrawal.id } },
           isSystemGenerated: true,
           sourceType: 'WITHDRAWAL_REQUEST',
           color: priority === CalendarEventPriority.URGENT ? '#ef4444' : '#f59e0b',
@@ -434,7 +434,7 @@ export class CalendarService {
    */
   async generateJewishHolidayEvents(year: number) {
     const holidays = this.hebrewCalendarService.getJewishHolidays(year);
-    const eventsToCreate = [];
+    const eventsToCreate: Prisma.CalendarEventCreateInput[] = [];
 
     for (const holiday of holidays) {
       const existingEvent = await this.prisma.calendarEvent.findFirst({

@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
-import { Prisma, UserRole } from '@prisma/client';
+import { Prisma, Role } from '@prisma/client';
 import {
   DashboardConfigDto,
   DashboardResponseDto,
@@ -10,7 +10,7 @@ import {
 import { WidgetService } from './widget.service';
 import { MetricsService } from './metrics.service';
 import { InsightsService } from './insights.service';
-import { Cache } from 'cache-manager';
+import type { Cache } from 'cache-manager';
 import { Inject } from '@nestjs/common';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
 
@@ -52,7 +52,7 @@ export class DashboardService {
     return this.mapToDashboardConfig(dashboard);
   }
 
-  async createDefaultDashboard(userId: string, role: UserRole) {
+  async createDefaultDashboard(userId: string, role: Role) {
     const defaultWidgets = this.getDefaultWidgetsByRole(role);
     
     return this.prisma.userDashboard.create({
@@ -90,7 +90,7 @@ export class DashboardService {
     });
   }
 
-  getDefaultWidgetsByRole(role: UserRole) {
+  getDefaultWidgetsByRole(role: Role) {
     const baseWidgets = [
       {
         type: 'METRIC',
@@ -182,10 +182,10 @@ export class DashboardService {
     ];
 
     switch (role) {
-      case UserRole.SUPER_ADMIN:
-      case UserRole.ADMIN:
+      case Role.SUPER_ADMIN:
+      case Role.ADMIN:
         return adminWidgets;
-      case UserRole.TREASURER:
+      case Role.TREASURER:
         return treasurerWidgets;
       default:
         return baseWidgets.slice(0, 3);
@@ -227,7 +227,7 @@ export class DashboardService {
         preferences: updateDto.preferences
           ? { ...dashboard.preferences as any, ...updateDto.preferences }
           : dashboard.preferences,
-        filters: updateDto.filters || dashboard.filters,
+        filters: updateDto.filters || (dashboard.filters as any) || undefined,
       },
       include: {
         widgets: true,
@@ -242,7 +242,7 @@ export class DashboardService {
 
   async getDashboardData(
     userId: string,
-    role: UserRole,
+    role: Role,
     options: { period?: string; refresh?: boolean },
   ): Promise<DashboardResponseDto> {
     const cacheKey = `dashboard:data:${userId}:${options.period}`;
@@ -338,7 +338,12 @@ export class DashboardService {
       this.prisma.loan.count({
         where: {
           status: 'ACTIVE',
-          nextPaymentDate: { lt: now },
+          repaymentSchedule: {
+            some: {
+              dueDate: { lt: now },
+              isPaid: false,
+            },
+          },
         },
       }),
       this.prisma.user.count(),
@@ -347,15 +352,18 @@ export class DashboardService {
           lastLoginAt: { gte: startDate },
         },
       }),
-      this.prisma.treasuryTransaction.aggregate({
+      this.prisma.treasuryFlow.aggregate({
         _sum: { amount: true },
       }),
     ]);
 
-    const overdueAmount = await this.prisma.loan.aggregate({
+    const overdueAmount = await this.prisma.repaymentSchedule.aggregate({
       where: {
-        status: 'ACTIVE',
-        nextPaymentDate: { lt: now },
+        dueDate: { lt: now },
+        isPaid: false,
+        loan: {
+          status: 'ACTIVE',
+        },
       },
       _sum: { amount: true },
     });
@@ -374,20 +382,20 @@ export class DashboardService {
     return {
       totalLoans,
       activeLoans,
-      totalAmount: totalAmount._sum.amount || 0,
-      outstandingAmount: outstandingAmount._sum.amount || 0,
+      totalAmount: Number(totalAmount._sum.amount || 0),
+      outstandingAmount: Number(outstandingAmount._sum.amount || 0),
       overdueLoans,
-      overdueAmount: overdueAmount._sum.amount || 0,
+      overdueAmount: Number(overdueAmount._sum.amount || 0),
       totalUsers,
       activeUsers,
       newUsersThisMonth,
       repaymentRate: repaymentStats.rate,
       defaultRate: repaymentStats.defaultRate,
-      averageLoanAmount: repaymentStats.avgAmount,
+      averageLoanAmount: Number(repaymentStats.avgAmount || 0),
       averageLoanDuration: repaymentStats.avgDuration,
-      treasuryBalance: treasuryBalance._sum.amount || 0,
-      monthlyInflow: cashFlows.inflow,
-      monthlyOutflow: cashFlows.outflow,
+      treasuryBalance: Number(treasuryBalance._sum.amount || 0),
+      monthlyInflow: Number(cashFlows.inflow || 0),
+      monthlyOutflow: Number(cashFlows.outflow || 0),
     };
   }
 
@@ -406,38 +414,38 @@ export class DashboardService {
     const avgLoan = await this.prisma.loan.aggregate({
       _avg: {
         amount: true,
-        duration: true,
+        numberOfInstallments: true,
       },
     });
 
     return {
       rate: totalPayments > 0 ? (onTimePayments / totalPayments) * 100 : 0,
       defaultRate: totalLoansCount > 0 ? (defaultedLoans / totalLoansCount) * 100 : 0,
-      avgAmount: avgLoan._avg.amount || 0,
-      avgDuration: avgLoan._avg.duration || 0,
+      avgAmount: Number(avgLoan._avg?.amount || 0),
+      avgDuration: Number(avgLoan._avg?.numberOfInstallments || 0),
     };
   }
 
   private async calculateCashFlows(startDate: Date) {
-    const inflow = await this.prisma.treasuryTransaction.aggregate({
+    const inflow = await this.prisma.treasuryFlow.aggregate({
       where: {
         createdAt: { gte: startDate },
-        type: 'CREDIT',
+        type: 'INFLOW',
       },
       _sum: { amount: true },
     });
 
-    const outflow = await this.prisma.treasuryTransaction.aggregate({
+    const outflow = await this.prisma.treasuryFlow.aggregate({
       where: {
         createdAt: { gte: startDate },
-        type: 'DEBIT',
+        type: 'OUTFLOW',
       },
       _sum: { amount: true },
     });
 
     return {
       inflow: inflow._sum.amount || 0,
-      outflow: Math.abs(outflow._sum.amount || 0),
+      outflow: Math.abs(Number(outflow._sum.amount || 0)),
     };
   }
 
@@ -497,7 +505,7 @@ export class DashboardService {
       description: this.formatActivityDescription(a),
       user: `${a.user?.firstName} ${a.user?.lastName}`,
       timestamp: a.createdAt,
-      metadata: a.metadata,
+      metadata: (a as any).metadata || {},
     }));
   }
 
@@ -626,21 +634,21 @@ export class DashboardService {
         name: 'Vue Admin Complète',
         description: 'Dashboard complet pour administrateurs',
         preview: '/templates/admin-overview.png',
-        widgets: this.getDefaultWidgetsByRole(UserRole.ADMIN),
+        widgets: this.getDefaultWidgetsByRole(Role.ADMIN),
       },
       {
         id: 'treasurer-focus',
         name: 'Focus Trésorier',
         description: 'Vue centrée sur la gestion financière',
         preview: '/templates/treasurer-focus.png',
-        widgets: this.getDefaultWidgetsByRole(UserRole.TREASURER),
+        widgets: this.getDefaultWidgetsByRole(Role.TREASURER),
       },
       {
         id: 'minimal',
         name: 'Vue Minimale',
         description: 'Dashboard épuré avec l\'essentiel',
         preview: '/templates/minimal.png',
-        widgets: this.getDefaultWidgetsByRole(UserRole.BORROWER).slice(0, 4),
+        widgets: this.getDefaultWidgetsByRole(Role.BORROWER).slice(0, 4),
       },
     ];
   }
@@ -722,11 +730,16 @@ export class DashboardService {
         name: `${config.name} (Imported)`,
         description: config.description,
         theme: config.theme,
-        layout: config.layout,
+        layout: config.layout as any,
         widgets: {
           create: config.widgets.map(w => ({
             ...w,
             id: undefined, // Let Prisma generate new IDs
+            position: w.position as any,
+            dataConfig: w.dataConfig as any,
+            displayConfig: w.displayConfig as any,
+            interactionConfig: w.interactionConfig as any,
+            metadata: w.metadata as any,
           })),
         },
         preferences: config.preferences,
@@ -740,7 +753,7 @@ export class DashboardService {
     });
   }
 
-  async getQuickActions(role: UserRole) {
+  async getQuickActions(role: Role) {
     const baseActions = [
       {
         id: 'new-loan',
@@ -800,10 +813,10 @@ export class DashboardService {
     ];
 
     switch (role) {
-      case UserRole.SUPER_ADMIN:
-      case UserRole.ADMIN:
+      case Role.SUPER_ADMIN:
+      case Role.ADMIN:
         return adminActions;
-      case UserRole.TREASURER:
+      case Role.TREASURER:
         return treasurerActions;
       default:
         return baseActions;
@@ -818,7 +831,7 @@ export class DashboardService {
         action: 'QUICK_ACTION',
         entityType: 'DASHBOARD',
         entityId: actionId,
-        metadata: params,
+        newValues: params as any,
       },
     });
 

@@ -269,7 +269,7 @@ export class ImportValidationService {
             errorCode: 'INVALID_DATE',
             errorMessage: 'Invalid date format',
             actualValue: stringValue,
-            suggestedFix: suggestedDate,
+            suggestedFix: suggestedDate || undefined,
             canAutoFix: suggestedDate !== null,
             wasAutoFixed: false
           });

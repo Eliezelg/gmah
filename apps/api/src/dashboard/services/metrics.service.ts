@@ -3,6 +3,7 @@ import { PrismaService } from '../../prisma/prisma.service';
 import { MetricsResponseDto, MetricDto, MetricsCategoryDto } from '../dto';
 import { EventEmitter2 } from '@nestjs/event-emitter';
 import { Subject } from 'rxjs';
+import { LoanStatus, PaymentStatus, TreasuryFlowType } from '@prisma/client';
 
 @Injectable()
 export class MetricsService {
@@ -95,11 +96,13 @@ export class MetricsService {
       this.startMetricsStream(userId);
     }
     
-    return this.liveMetricsSubjects.get(userId).asObservable();
+    const subject = this.liveMetricsSubjects.get(userId);
+    return subject ? subject.asObservable() : new Subject().asObservable();
   }
 
   private async startMetricsStream(userId: string) {
     const subject = this.liveMetricsSubjects.get(userId);
+    if (!subject) return;
     
     // Send initial metrics
     const metrics = await this.getRealtimeMetrics();
@@ -109,7 +112,9 @@ export class MetricsService {
     const interval = setInterval(async () => {
       try {
         const updatedMetrics = await this.getRealtimeMetrics();
-        subject.next(updatedMetrics);
+        if (subject && !subject.closed) {
+          subject.next(updatedMetrics);
+        }
       } catch (error) {
         console.error('Error streaming metrics:', error);
       }
@@ -118,7 +123,9 @@ export class MetricsService {
     // Clean up on disconnect
     setTimeout(() => {
       clearInterval(interval);
-      subject.complete();
+      if (subject && !subject.closed) {
+        subject.complete();
+      }
       this.liveMetricsSubjects.delete(userId);
     }, 300000); // 5 minutes max stream time
   }
@@ -136,9 +143,9 @@ export class MetricsService {
         where: { status: 'ACTIVE' },
       }),
       this.prisma.loan.count({
-        where: { status: 'PENDING_APPROVAL' },
+        where: { status: LoanStatus.UNDER_REVIEW },
       }),
-      this.prisma.treasuryTransaction.count({
+      this.prisma.treasuryFlow.count({
         where: {
           createdAt: {
             gte: new Date(Date.now() - 60 * 60 * 1000), // Last hour
@@ -162,11 +169,11 @@ export class MetricsService {
     const metrics: MetricDto[] = [];
     
     // Treasury Balance
-    const currentBalance = await this.prisma.treasuryTransaction.aggregate({
+    const currentBalance = await this.prisma.treasuryFlow.aggregate({
       _sum: { amount: true },
     });
     
-    const previousBalance = await this.prisma.treasuryTransaction.aggregate({
+    const previousBalance = await this.prisma.treasuryFlow.aggregate({
       where: {
         createdAt: {
           lt: period.start,
@@ -175,8 +182,8 @@ export class MetricsService {
       _sum: { amount: true },
     });
     
-    const balanceValue = currentBalance._sum.amount || 0;
-    const previousBalanceValue = previousBalance._sum.amount || 0;
+    const balanceValue = Number(currentBalance._sum.amount || 0);
+    const previousBalanceValue = Number(previousBalance._sum.amount || 0);
     const balanceChange = balanceValue - previousBalanceValue;
     
     metrics.push({
@@ -194,9 +201,9 @@ export class MetricsService {
     });
     
     // Monthly Cash Flow
-    const monthlyInflow = await this.prisma.treasuryTransaction.aggregate({
+    const monthlyInflow = await this.prisma.treasuryFlow.aggregate({
       where: {
-        type: 'CREDIT',
+        type: TreasuryFlowType.INFLOW,
         createdAt: {
           gte: period.start,
           lte: period.end,
@@ -205,9 +212,9 @@ export class MetricsService {
       _sum: { amount: true },
     });
     
-    const monthlyOutflow = await this.prisma.treasuryTransaction.aggregate({
+    const monthlyOutflow = await this.prisma.treasuryFlow.aggregate({
       where: {
-        type: 'DEBIT',
+        type: TreasuryFlowType.OUTFLOW,
         createdAt: {
           gte: period.start,
           lte: period.end,
@@ -216,7 +223,7 @@ export class MetricsService {
       _sum: { amount: true },
     });
     
-    const netCashFlow = (monthlyInflow._sum.amount || 0) + (monthlyOutflow._sum.amount || 0);
+    const netCashFlow = Number(monthlyInflow._sum.amount || 0) + Number(monthlyOutflow._sum.amount || 0);
     
     metrics.push({
       id: 'net-cashflow',
@@ -242,7 +249,7 @@ export class MetricsService {
       id: 'outstanding-amount',
       category: 'financial',
       name: 'Montant En Cours',
-      value: outstandingAmount._sum.amount || 0,
+      value: Number(outstandingAmount._sum.amount || 0),
       unit: '€',
       format: 'currency',
       description: 'Total des prêts actifs',
@@ -343,7 +350,7 @@ export class MetricsService {
       id: 'avg-loan-amount',
       category: 'loans',
       name: 'Montant Moyen',
-      value: avgLoanAmount._avg.amount || 0,
+      value: Number(avgLoanAmount._avg.amount || 0),
       unit: '€',
       format: 'currency',
       updatedAt: new Date(),
@@ -352,16 +359,16 @@ export class MetricsService {
     // Repayment Rate
     const onTimePayments = await this.prisma.payment.count({
       where: {
-        status: 'COMPLETED',
-        paidAt: {
-          lte: 'dueDate' as any, // This would need proper date comparison
+        status: PaymentStatus.COMPLETED,
+        processedDate: {
+          lte: new Date(),
         },
       },
     });
     
     const totalPayments = await this.prisma.payment.count({
       where: {
-        status: { in: ['COMPLETED', 'LATE'] },
+        status: PaymentStatus.COMPLETED,
       },
     });
     
@@ -576,13 +583,23 @@ export class MetricsService {
     return totalMetrics > 0 ? (metricsWithData / totalMetrics) * 100 : 0;
   }
 
-  private async detectMetricAlerts(categories: MetricsCategoryDto[]) {
-    const alerts = [];
+  private async detectMetricAlerts(categories: MetricsCategoryDto[]): Promise<Array<{
+    metric: string;
+    type: 'threshold' | 'anomaly' | 'trend';
+    severity: 'low' | 'medium' | 'high' | 'critical';
+    message: string;
+  }>> {
+    const alerts: Array<{
+      metric: string;
+      type: 'threshold' | 'anomaly' | 'trend';
+      severity: 'low' | 'medium' | 'high' | 'critical';
+      message: string;
+    }> = [];
     
     categories.forEach(category => {
       category.metrics.forEach(metric => {
         // Check if metric is below target
-        if (metric.target && metric.targetProgress < 80) {
+        if (metric.target && metric.targetProgress !== undefined && metric.targetProgress < 80) {
           alerts.push({
             metric: metric.name,
             type: 'threshold' as const,
@@ -606,15 +623,25 @@ export class MetricsService {
     return alerts;
   }
 
-  private async generateRecommendations(categories: MetricsCategoryDto[]) {
-    const recommendations = [];
+  private async generateRecommendations(categories: MetricsCategoryDto[]): Promise<Array<{
+    metric: string;
+    action: string;
+    impact: string;
+    priority: number;
+  }>> {
+    const recommendations: Array<{
+      metric: string;
+      action: string;
+      impact: string;
+      priority: number;
+    }> = [];
     
     // Check loan approval rate
     const approvalRate = categories
       .find(c => c.id === 'loans')
       ?.metrics.find(m => m.id === 'approval-rate');
     
-    if (approvalRate && approvalRate.value < 70) {
+    if (approvalRate && typeof approvalRate.value === 'number' && approvalRate.value < 70) {
       recommendations.push({
         metric: 'Taux d\'Approbation',
         action: 'Réviser les critères d\'approbation',
@@ -628,7 +655,7 @@ export class MetricsService {
       .find(c => c.id === 'users')
       ?.metrics.find(m => m.id === 'retention-rate');
     
-    if (retentionRate && retentionRate.value < 60) {
+    if (retentionRate && typeof retentionRate.value === 'number' && retentionRate.value < 60) {
       recommendations.push({
         metric: 'Taux de Rétention',
         action: 'Lancer une campagne de réengagement',

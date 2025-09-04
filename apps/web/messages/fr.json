@@ -29,38 +29,6 @@
     "warning": "Attention",
     "info": "Information"
   },
-  "home": {
-    "hero": {
-      "title": "Plateforme de Prêts Sans Intérêts",
-      "subtitle": "Système de gestion communautaire pour des prêts solidaires conformes aux principes halakhiques",
-      "login": "Se connecter",
-      "register": "S'inscrire"
-    },
-    "features": {
-      "title": "Nos Services",
-      "secure": {
-        "title": "Sécurité Garantie",
-        "description": "Vos données sont protégées avec les plus hauts standards de sécurité"
-      },
-      "community": {
-        "title": "Communauté Solidaire",
-        "description": "Un réseau d'entraide basé sur la confiance et le soutien mutuel"
-      },
-      "efficient": {
-        "title": "Processus Efficace",
-        "description": "Traitement rapide des demandes et décisions en 48-72h"
-      },
-      "solidarity": {
-        "title": "Valeurs Solidaires",
-        "description": "Des prêts sans intérêts respectant les principes halakhiques"
-      }
-    },
-    "cta": {
-      "title": "Prêt à commencer?",
-      "subtitle": "Rejoignez notre communauté et bénéficiez de prêts sans intérêts",
-      "button": "Commencer maintenant"
-    }
-  },
   "auth": {
     "login": {
       "title": "Connexion à GMAH",
@@ -165,165 +133,6 @@
       "MEDICAL": "Médical",
       "EMERGENCY": "Urgence",
       "OTHER": "Autre"
-    }
-  },
-  "treasuryForecast": {
-    "title": "Prévisions de Trésorerie",
-    "tabs": {
-      "overview": "Vue d'ensemble",
-      "forecast": "Prévisions",
-      "scenarios": "Scénarios",
-      "alerts": "Alertes",
-      "reports": "Rapports"
-    },
-    "periods": {
-      "30days": "30 jours",
-      "60days": "60 jours",
-      "90days": "90 jours"
-    },
-    "scenarios": {
-      "optimistic": "Optimiste",
-      "realistic": "Réaliste",
-      "pessimistic": "Pessimiste"
-    },
-    "metrics": {
-      "currentBalance": "Solde actuel",
-      "forecast30": "Prévision 30j",
-      "forecast60": "Prévision 60j",
-      "forecast90": "Prévision 90j",
-      "liquidityRisk": "Risque de liquidité",
-      "confidence": "Confiance",
-      "expectedInflow": "Entrées prévues",
-      "expectedOutflow": "Sorties prévues",
-      "netPosition": "Position nette"
-    },
-    "alerts": {
-      "title": "Alertes actives",
-      "acknowledge": "Acquitter",
-      "acknowledged": "Acquittée",
-      "severity": {
-        "info": "Information",
-        "warning": "Avertissement",
-        "critical": "Critique",
-        "urgent": "Urgent"
-      },
-      "types": {
-        "lowBalance": "Solde faible",
-        "highRisk": "Risque élevé",
-        "negativeForecast": "Prévision négative",
-        "loanDefaults": "Défauts de prêts"
-      }
-    },
-    "actions": {
-      "generateReport": "Générer rapport",
-      "exportCSV": "Exporter CSV",
-      "refreshData": "Actualiser",
-      "configureAlerts": "Configurer alertes"
-    }
-  },
-  "import": {
-    "title": "Import de Données",
-    "dashboard": {
-      "title": "Tableau de bord Import",
-      "quickActions": "Actions rapides",
-      "recentImports": "Imports récents",
-      "statistics": "Statistiques"
-    },
-    "wizard": {
-      "title": "Assistant d'Import",
-      "steps": {
-        "upload": "Chargement",
-        "preview": "Aperçu",
-        "mapping": "Mapping",
-        "validation": "Validation",
-        "import": "Import"
-      },
-      "upload": {
-        "title": "Charger un fichier",
-        "dragDrop": "Glissez-déposez votre fichier ici",
-        "browse": "ou parcourir",
-        "supportedFormats": "Formats supportés: Excel (.xlsx, .xls), CSV (.csv)",
-        "maxSize": "Taille max: 10MB"
-      },
-      "preview": {
-        "title": "Aperçu des données",
-        "rowsFound": "{count} lignes trouvées",
-        "columnsDetected": "{count} colonnes détectées",
-        "encoding": "Encodage: {encoding}"
-      },
-      "mapping": {
-        "title": "Mapping des colonnes",
-        "sourceColumn": "Colonne source",
-        "targetField": "Champ cible",
-        "autoDetected": "Détection automatique",
-        "required": "Requis",
-        "optional": "Optionnel",
-        "ignored": "Ignoré",
-        "templates": {
-          "save": "Sauvegarder template",
-          "load": "Charger template",
-          "manage": "Gérer templates"
-        }
-      },
-      "validation": {
-        "title": "Validation des données",
-        "checking": "Vérification en cours...",
-        "results": "Résultats de validation",
-        "errors": "{count} erreurs",
-        "warnings": "{count} avertissements",
-        "valid": "{count} lignes valides",
-        "fixSuggestions": "Suggestions de correction",
-        "types": {
-          "email": "Email invalide",
-          "phone": "Téléphone invalide",
-          "duplicate": "Doublon détecté",
-          "required": "Champ requis manquant",
-          "format": "Format incorrect",
-          "range": "Valeur hors limites"
-        }
-      },
-      "import": {
-        "title": "Import en cours",
-        "processing": "Traitement des données...",
-        "progress": "{current} / {total} lignes",
-        "success": "Import réussi",
-        "failed": "Import échoué",
-        "partial": "Import partiel",
-        "rollback": "Annulation en cours...",
-        "report": {
-          "title": "Rapport d'import",
-          "imported": "{count} lignes importées",
-          "skipped": "{count} lignes ignorées",
-          "failed": "{count} lignes en erreur",
-          "duration": "Durée: {duration}",
-          "download": "Télécharger rapport"
-        }
-      }
-    },
-    "types": {
-      "users": "Utilisateurs",
-      "loans": "Prêts",
-      "contributions": "Contributions",
-      "guarantees": "Garanties",
-      "payments": "Paiements"
-    },
-    "status": {
-      "pending": "En attente",
-      "processing": "En cours",
-      "validating": "Validation",
-      "completed": "Terminé",
-      "failed": "Échoué",
-      "cancelled": "Annulé"
-    },
-    "actions": {
-      "startImport": "Démarrer import",
-      "pauseImport": "Mettre en pause",
-      "resumeImport": "Reprendre",
-      "cancelImport": "Annuler",
-      "retryImport": "Réessayer",
-      "viewDetails": "Voir détails",
-      "downloadReport": "Télécharger rapport",
-      "deleteSession": "Supprimer session"
     }
   },
   "dashboard": {
@@ -763,6 +572,7 @@
     "serverError": "Erreur serveur"
   },
   "calendar": {
+    "locale": "fr",
     "hebrew": "Calendrier hébraïque",
     "gregorian": "Calendrier grégorien",
     "shemitah": "Shemitat Kesafim",
@@ -780,7 +590,124 @@
       "tamuz": "Tamuz",
       "av": "Av",
       "elul": "Elul"
-    }
+    },
+    "admin": {
+      "title": "Calendrier Administrateur",
+      "description": "Gestion centralisée des événements, échéances et fêtes juives"
+    },
+    "tabs": {
+      "calendar": "Calendrier",
+      "events": "Événements",
+      "generate": "Générer",
+      "hebrew": "Calendrier Hébraïque"
+    },
+    "views": {
+      "today": "Aujourd'hui",
+      "month": "Mois",
+      "week": "Semaine",
+      "day": "Jour",
+      "list": "Liste"
+    },
+    "types": {
+      "loan_repayment": "Remboursement de prêt",
+      "deposit_withdrawal": "Retrait de dépôt",
+      "committee_meeting": "Réunion du comité",
+      "jewish_holiday": "Fête juive",
+      "custom_event": "Événement personnalisé",
+      "system_reminder": "Rappel système",
+      "approval_deadline": "Échéance d'approbation",
+      "payment_due": "Paiement dû",
+      "document_expiry": "Expiration de document",
+      "campaign_event": "Événement de campagne"
+    },
+    "status": {
+      "scheduled": "Planifié",
+      "completed": "Terminé",
+      "cancelled": "Annulé",
+      "postponed": "Reporté",
+      "in_progress": "En cours"
+    },
+    "priority": {
+      "low": "Faible",
+      "normal": "Normal",
+      "high": "Élevée",
+      "urgent": "Urgente"
+    },
+    "actions": {
+      "createEvent": "Créer un événement",
+      "editEvent": "Modifier l'événement",
+      "deleteEvent": "Supprimer l'événement",
+      "exportICal": "Exporter iCal",
+      "syncSettings": "Paramètres de sync",
+      "refresh": "Actualiser",
+      "create": "Créer",
+      "edit": "Modifier",
+      "delete": "Supprimer",
+      "cancel": "Annuler",
+      "close": "Fermer",
+      "save": "Enregistrer",
+      "openLink": "Ouvrir le lien"
+    },
+    "fields": {
+      "title": "Titre",
+      "description": "Description",
+      "type": "Type",
+      "priority": "Priorité",
+      "startDate": "Date de début",
+      "endDate": "Date de fin",
+      "location": "Lieu",
+      "allDay": "Toute la journée",
+      "isPublic": "Public",
+      "selectType": "Sélectionnez un type",
+      "selectPriority": "Sélectionnez une priorité"
+    },
+    "filters": {
+      "title": "Filtres",
+      "clear": "Effacer",
+      "search": "Recherche",
+      "searchPlaceholder": "Rechercher dans les événements..."
+    },
+    "stats": {
+      "totalEvents": "Total des événements",
+      "upcomingEvents": "Événements à venir",
+      "overdueEvents": "Événements en retard"
+    },
+    "generate": {
+      "loanRepayments": {
+        "title": "Remboursements de prêts",
+        "description": "Générer les événements d'échéances",
+        "action": "Générer les remboursements"
+      },
+      "withdrawals": {
+        "title": "Demandes de retrait",
+        "description": "Créer des événements pour les retraits",
+        "action": "Générer les retraits"
+      },
+      "holidays": {
+        "title": "Fêtes juives",
+        "description": "Ajouter les fêtes juives",
+        "action": "Générer les fêtes"
+      }
+    },
+    "sync": {
+      "title": "Synchronisation des calendriers",
+      "description": "Connectez vos calendriers externes",
+      "connected": "Connecté",
+      "notConnected": "Non connecté",
+      "connectGoogle": "Connecter Google Calendar",
+      "connectOutlook": "Connecter Outlook Calendar"
+    },
+    "validation": {
+      "required": "Ce champ est requis"
+    },
+    "errors": {
+      "loadingError": "Erreur lors du chargement"
+    },
+    "allDay": "Toute la journée",
+    "recurring": "Récurrent",
+    "systemGenerated": "Généré par le système",
+    "loading": "Chargement...",
+    "noEvents": "Aucun événement"
   },
   "sidebar": {
     "menu": {
@@ -814,357 +741,5 @@
   },
   "languageSelector": {
     "selectLanguage": "Sélectionner la langue"
-  },
-  "withdrawals": {
-    "title": "Demandes de Retrait",
-    "subtitle": "Gérer les demandes de retrait des dépositaires",
-    "newRequest": "Nouvelle demande",
-    "myWithdrawals": "Mes demandes de retrait",
-    "allWithdrawals": "Toutes les demandes",
-    "pendingApproval": "En attente d'approbation",
-    "approvedRequests": "Demandes approuvées",
-    "form": {
-      "title": "Demande de Retrait",
-      "deposit": "Dépôt",
-      "selectDeposit": "Sélectionner un dépôt",
-      "availableBalance": "Solde disponible",
-      "amount": "Montant à retirer",
-      "amountPlaceholder": "0.00",
-      "reason": "Motif du retrait",
-      "reasonPlaceholder": "Décrivez la raison de votre demande de retrait...",
-      "reasonCategory": "Catégorie",
-      "urgency": "Urgence",
-      "plannedDate": "Date souhaitée",
-      "paymentMethod": "Mode de paiement",
-      "bankDetails": "Coordonnées bancaires",
-      "bankName": "Nom de la banque",
-      "accountNumber": "Numéro de compte",
-      "routingNumber": "Code de routage",
-      "accountHolderName": "Nom du titulaire du compte",
-      "submit": "Soumettre la demande",
-      "cancel": "Annuler",
-      "validation": {
-        "depositRequired": "Veuillez sélectionner un dépôt",
-        "amountRequired": "Le montant est requis",
-        "amountMin": "Le montant minimum est de 1 ILS",
-        "amountExceedsBalance": "Le montant dépasse le solde disponible",
-        "reasonRequired": "Le motif est requis",
-        "reasonMinLength": "Le motif doit contenir au moins 10 caractères",
-        "bankDetailsRequired": "Les coordonnées bancaires sont requises pour les virements"
-      }
-    },
-    "statuses": {
-      "PENDING": "En attente",
-      "UNDER_REVIEW": "En cours d'examen",
-      "APPROVED": "Approuvé",
-      "REJECTED": "Rejeté",
-      "PROCESSING": "En traitement",
-      "COMPLETED": "Terminé",
-      "CANCELLED": "Annulé",
-      "FAILED": "Échoué"
-    },
-    "urgencyLevels": {
-      "LOW": "Faible",
-      "NORMAL": "Normal",
-      "HIGH": "Élevé",
-      "URGENT": "Urgent"
-    },
-    "reasonCategories": {
-      "EMERGENCY": "Urgence",
-      "PERSONAL": "Personnel",
-      "BUSINESS": "Professionnel",
-      "OTHER": "Autre"
-    },
-    "approvalModes": {
-      "AUTOMATIC": "Automatique",
-      "MANUAL": "Manuel",
-      "COMMITTEE": "Comité"
-    },
-    "list": {
-      "requestNumber": "N° de demande",
-      "deposit": "Dépôt",
-      "amount": "Montant",
-      "requestDate": "Date de demande",
-      "plannedDate": "Date souhaitée",
-      "status": "Statut",
-      "urgency": "Urgence",
-      "actions": "Actions",
-      "viewDetails": "Voir détails",
-      "approve": "Approuver",
-      "reject": "Rejeter",
-      "execute": "Exécuter",
-      "cancel": "Annuler",
-      "edit": "Modifier",
-      "noRequests": "Aucune demande de retrait",
-      "noRequestsDesc": "Vous n'avez pas encore fait de demande de retrait"
-    },
-    "details": {
-      "title": "Détails de la Demande de Retrait",
-      "generalInfo": "Informations générales",
-      "requestNumber": "Numéro de demande",
-      "depositor": "Dépositaire",
-      "deposit": "Dépôt concerné",
-      "amount": "Montant demandé",
-      "reason": "Motif",
-      "category": "Catégorie",
-      "urgency": "Niveau d'urgence",
-      "requestDate": "Date de demande",
-      "plannedDate": "Date souhaitée",
-      "status": "Statut actuel",
-      "approvalInfo": "Informations d'approbation",
-      "approvalMode": "Mode d'approbation",
-      "approvedBy": "Approuvé par",
-      "approvalDate": "Date d'approbation",
-      "approvalComments": "Commentaires d'approbation",
-      "rejectedBy": "Rejeté par",
-      "rejectionDate": "Date de rejet",
-      "rejectionReason": "Motif de rejet",
-      "paymentInfo": "Informations de paiement",
-      "paymentMethod": "Mode de paiement",
-      "bankDetails": "Coordonnées bancaires",
-      "transactionRef": "Référence de transaction",
-      "processingDate": "Date de traitement",
-      "completedDate": "Date de finalisation",
-      "treasuryImpact": "Impact sur la trésorerie",
-      "documents": "Documents justificatifs",
-      "timeline": "Historique"
-    },
-    "approval": {
-      "approveTitle": "Approuver la Demande",
-      "rejectTitle": "Rejeter la Demande",
-      "comments": "Commentaires",
-      "commentsPlaceholder": "Ajoutez des commentaires sur cette décision...",
-      "rejectionReason": "Motif de rejet",
-      "rejectionPlaceholder": "Expliquez pourquoi cette demande est rejetée...",
-      "updatePaymentMethod": "Modifier le mode de paiement",
-      "updateBankDetails": "Modifier les coordonnées bancaires",
-      "confirmApprove": "Confirmer l'approbation",
-      "confirmReject": "Confirmer le rejet",
-      "approveButton": "Approuver",
-      "rejectButton": "Rejeter"
-    },
-    "dashboard": {
-      "title": "Tableau de bord - Retraits",
-      "stats": {
-        "totalRequests": "Total des demandes",
-        "pendingApproval": "En attente",
-        "approved": "Approuvées",
-        "completed": "Terminées",
-        "totalAmount": "Montant total",
-        "avgProcessingTime": "Temps moyen de traitement"
-      },
-      "quickActions": {
-        "title": "Actions rapides",
-        "newRequest": "Nouvelle demande",
-        "reviewPending": "Examiner les demandes",
-        "viewReports": "Voir les rapports",
-        "manageLimits": "Gérer les limites"
-      },
-      "recentActivity": {
-        "title": "Activité récente",
-        "noActivity": "Aucune activité récente"
-      },
-      "upcomingWithdrawals": {
-        "title": "Retraits prévus",
-        "noUpcoming": "Aucun retrait prévu"
-      }
-    },
-    "admin": {
-      "title": "Gestion des Retraits - Administration",
-      "queue": {
-        "title": "Queue d'approbation",
-        "subtitle": "Demandes en attente d'approbation",
-        "filters": {
-          "all": "Toutes",
-          "pending": "En attente",
-          "urgent": "Urgentes",
-          "highAmount": "Montants élevés"
-        },
-        "bulkActions": "Actions groupées",
-        "selectAll": "Sélectionner tout",
-        "approveSelected": "Approuver la sélection",
-        "bulkApprove": "Approbation groupée"
-      },
-      "settings": {
-        "title": "Paramètres des Retraits",
-        "autoApprovalThreshold": "Seuil d'approbation automatique",
-        "manualApprovalThreshold": "Seuil d'approbation manuelle",
-        "committeeApprovalThreshold": "Seuil d'approbation par le comité",
-        "maxDailyAmount": "Montant quotidien maximum",
-        "requireDocuments": "Exiger des documents justificatifs",
-        "notificationSettings": "Paramètres de notification"
-      }
-    },
-    "treasury": {
-      "impact": {
-        "title": "Impact sur la Trésorerie",
-        "currentPeriod": "Période actuelle",
-        "projectedOutflow": "Sortie projetée",
-        "riskLevel": "Niveau de risque",
-        "recommendations": "Recommandations",
-        "byStatus": {
-          "pending": "Demandes en attente",
-          "approved": "Demandes approuvées",
-          "processing": "En cours de traitement"
-        },
-        "byUrgency": {
-          "urgent": "Urgentes",
-          "high": "Priorité élevée",
-          "normal": "Normales",
-          "low": "Faible priorité"
-        }
-      },
-      "cashFlow": {
-        "title": "Impact sur les Flux de Trésorerie",
-        "daily": "Quotidien",
-        "weekly": "Hebdomadaire",
-        "monthly": "Mensuel",
-        "projected": "Projeté",
-        "actual": "Réel"
-      }
-    },
-    "notifications": {
-      "requestCreated": "Demande de retrait créée",
-      "requestApproved": "Demande de retrait approuvée",
-      "requestRejected": "Demande de retrait rejetée",
-      "requestProcessing": "Retrait en cours de traitement",
-      "requestCompleted": "Retrait terminé",
-      "lowBalance": "Solde insuffisant pour le retrait",
-      "urgentRequest": "Demande de retrait urgente nécessite attention"
-    },
-    "messages": {
-      "requestSubmitted": "Demande de retrait soumise avec succès",
-      "requestUpdated": "Demande de retrait mise à jour",
-      "requestApproved": "Demande de retrait approuvée",
-      "requestRejected": "Demande de retrait rejetée",
-      "requestExecuted": "Traitement du retrait initié",
-      "insufficientBalance": "Solde insuffisant",
-      "depositNotFound": "Dépôt non trouvé",
-      "accessDenied": "Accès refusé à cette demande",
-      "cannotModify": "Impossible de modifier cette demande",
-      "executionFailed": "Échec de l'exécution du retrait"
-    },
-    "errors": {
-      "loadingFailed": "Erreur lors du chargement des données",
-      "submissionFailed": "Erreur lors de la soumission",
-      "approvalFailed": "Erreur lors de l'approbation",
-      "rejectionFailed": "Erreur lors du rejet",
-      "executionFailed": "Erreur lors de l'exécution"
-    }
-  },
-  "dashboard": {
-    "title": "Tableau de Bord",
-    "subtitle": "Vue d'ensemble de votre activité",
-    "refresh": "Actualiser",
-    "addWidget": "Ajouter un widget",
-    "editLayout": "Modifier la disposition",
-    "saveLayout": "Enregistrer la disposition",
-    "exportConfig": "Exporter la configuration",
-    "importConfig": "Importer la configuration",
-    "lightMode": "Mode clair",
-    "darkMode": "Mode sombre",
-    "breakpoint": "Point de rupture",
-    "editMode": "Mode édition",
-    "viewMode": "Mode visualisation",
-    "autoRefresh": "Actualisation auto",
-    "compactMode": "Mode compact",
-    "loading": "Chargement en cours...",
-    "errorLoadingDashboard": "Erreur lors du chargement du tableau de bord",
-    "retry": "Réessayer",
-    "confirmRemoveWidget": "Êtes-vous sûr de vouloir supprimer ce widget?",
-    "widgets": {
-      "metric": "Métrique",
-      "chart": "Graphique",
-      "table": "Tableau",
-      "list": "Liste",
-      "calendar": "Calendrier",
-      "gauge": "Jauge",
-      "progress": "Progression",
-      "alert": "Alerte",
-      "heatmap": "Carte de chaleur",
-      "timeline": "Chronologie",
-      "unknown": "Widget inconnu"
-    },
-    "actions": {
-      "minimize": "Réduire",
-      "maximize": "Agrandir",
-      "fullScreen": "Plein écran",
-      "exitFullScreen": "Quitter plein écran",
-      "export": "Exporter",
-      "lock": "Verrouiller",
-      "unlock": "Déverrouiller",
-      "settings": "Paramètres",
-      "delete": "Supprimer",
-      "refresh": "Actualiser",
-      "collapse": "Réduire",
-      "expand": "Développer"
-    },
-    "metrics": {
-      "totalLoans": "Total des prêts",
-      "activeLoans": "Prêts actifs",
-      "treasuryBalance": "Solde de trésorerie",
-      "repaymentRate": "Taux de remboursement",
-      "newUsers": "Nouveaux utilisateurs",
-      "overduePayments": "Paiements en retard",
-      "approvalRate": "Taux d'approbation",
-      "liquidityLevel": "Niveau de liquidité"
-    },
-    "insights": {
-      "title": "Recommandations",
-      "critical": "Critique",
-      "high": "Élevé",
-      "medium": "Moyen",
-      "low": "Faible",
-      "dismiss": "Ignorer",
-      "viewDetails": "Voir les détails",
-      "takeAction": "Agir",
-      "noInsights": "Aucune recommandation disponible"
-    },
-    "periods": {
-      "today": "Aujourd'hui",
-      "yesterday": "Hier",
-      "last7Days": "7 derniers jours",
-      "last30Days": "30 derniers jours",
-      "last90Days": "90 derniers jours",
-      "lastMonth": "Mois dernier",
-      "lastYear": "Année dernière",
-      "custom": "Personnalisé"
-    },
-    "templates": {
-      "adminOverview": "Vue Admin Complète",
-      "treasurerFocus": "Focus Trésorier",
-      "minimal": "Vue Minimale",
-      "applyTemplate": "Appliquer le modèle",
-      "saveAsTemplate": "Enregistrer comme modèle"
-    },
-    "quickActions": {
-      "title": "Actions rapides",
-      "newLoan": "Nouveau prêt",
-      "newUser": "Nouvel utilisateur",
-      "search": "Rechercher",
-      "reports": "Rapports",
-      "settings": "Paramètres",
-      "treasuryForecast": "Prévisions",
-      "export": "Export"
-    },
-    "status": {
-      "online": "En ligne",
-      "offline": "Hors ligne",
-      "syncing": "Synchronisation",
-      "error": "Erreur",
-      "lastUpdated": "Dernière mise à jour",
-      "realTime": "Temps réel"
-    },
-    "messages": {
-      "layoutSaved": "La disposition a été sauvegardée",
-      "widgetAdded": "Le widget a été ajouté",
-      "widgetRemoved": "Le widget a été supprimé",
-      "configExported": "Configuration exportée avec succès",
-      "configImported": "Configuration importée avec succès",
-      "templateApplied": "Le modèle a été appliqué",
-      "refreshing": "Actualisation en cours...",
-      "noData": "Aucune donnée disponible",
-      "error": "Une erreur est survenue"
-    }
   }
 }

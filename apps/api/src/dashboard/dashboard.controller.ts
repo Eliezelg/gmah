@@ -17,7 +17,7 @@ import {
   CreateWidgetDto,
   UpdateWidgetDto,
 } from './dto';
-import { UserRole } from '@prisma/client';
+import { Role } from '@prisma/client';
 
 @ApiTags('dashboard')
 @Controller('dashboard')
@@ -65,7 +65,7 @@ export class DashboardController {
   @Get('metrics')
   @ApiOperation({ summary: 'Get real-time metrics' })
   @ApiResponse({ status: 200, type: MetricsResponseDto })
-  @Roles(UserRole.SUPER_ADMIN, UserRole.ADMIN, UserRole.TREASURER)
+  @Roles(Role.SUPER_ADMIN, Role.ADMIN, Role.TREASURER)
   async getMetrics(
     @Query('category') category?: string,
     @Query('period') period?: string,
@@ -78,7 +78,7 @@ export class DashboardController {
 
   @Get('metrics/live')
   @ApiOperation({ summary: 'Get live streaming metrics' })
-  @Roles(UserRole.SUPER_ADMIN, UserRole.ADMIN)
+  @Roles(Role.SUPER_ADMIN, Role.ADMIN)
   async getLiveMetrics(@Req() req: any) {
     return this.metricsService.streamLiveMetrics(req.user.id);
   }
@@ -86,7 +86,7 @@ export class DashboardController {
   @Get('insights')
   @ApiOperation({ summary: 'Get AI-powered insights' })
   @ApiResponse({ status: 200, type: InsightResponseDto, isArray: true })
-  @Roles(UserRole.SUPER_ADMIN, UserRole.ADMIN, UserRole.TREASURER)
+  @Roles(Role.SUPER_ADMIN, Role.ADMIN, Role.TREASURER)
   async getInsights(
     @Query('type') type?: string,
     @Query('priority') priority?: string,
@@ -99,14 +99,14 @@ export class DashboardController {
 
   @Get('insights/:id/actions')
   @ApiOperation({ summary: 'Get suggested actions for an insight' })
-  @Roles(UserRole.SUPER_ADMIN, UserRole.ADMIN)
+  @Roles(Role.SUPER_ADMIN, Role.ADMIN)
   async getInsightActions(@Param('id') id: string) {
     return this.insightsService.getSuggestedActions(id);
   }
 
   @Post('insights/:id/dismiss')
   @ApiOperation({ summary: 'Dismiss an insight' })
-  @Roles(UserRole.SUPER_ADMIN, UserRole.ADMIN)
+  @Roles(Role.SUPER_ADMIN, Role.ADMIN)
   async dismissInsight(@Param('id') id: string, @Req() req: any) {
     return this.insightsService.dismissInsight(id, req.user.id);
   }
@@ -165,14 +165,14 @@ export class DashboardController {
 
   @Get('templates')
   @ApiOperation({ summary: 'Get dashboard templates' })
-  @Roles(UserRole.SUPER_ADMIN, UserRole.ADMIN)
+  @Roles(Role.SUPER_ADMIN, Role.ADMIN)
   async getDashboardTemplates() {
     return this.dashboardService.getTemplates();
   }
 
   @Post('templates/:templateId/apply')
   @ApiOperation({ summary: 'Apply a dashboard template' })
-  @Roles(UserRole.SUPER_ADMIN, UserRole.ADMIN)
+  @Roles(Role.SUPER_ADMIN, Role.ADMIN)
   async applyTemplate(
     @Param('templateId') templateId: string,
     @Req() req: any,

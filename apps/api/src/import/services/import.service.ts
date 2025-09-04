@@ -132,7 +132,7 @@ export class ImportService {
       where: { id: sessionId },
       data: {
         status: ImportStatus.MAPPED,
-        columnMapping: mappingDto.mapping,
+        columnMapping: mappingDto.mapping as any,
         validationRules: mappingDto.validationRules,
         updatedAt: new Date()
       }
@@ -184,17 +184,17 @@ export class ImportService {
       ].map(validation => ({
         sessionId: sessionId,
         rowNumber: validation.rowNumber,
-        columnName: validation.columnName,
-        fieldName: validation.fieldName,
+        columnName: validation.columnName || undefined,
+        fieldName: validation.fieldName || undefined,
         severity: validation.severity,
         errorCode: validation.errorCode,
         errorMessage: validation.errorMessage,
-        expectedValue: validation.expectedValue,
-        actualValue: validation.actualValue,
-        suggestedFix: validation.suggestedFix,
+        expectedValue: validation.expectedValue || undefined,
+        actualValue: validation.actualValue || undefined,
+        suggestedFix: validation.suggestedFix || undefined,
         canAutoFix: validation.canAutoFix,
         wasAutoFixed: validation.wasAutoFixed,
-        rowData: null // We could store full row data here if needed
+        rowData: undefined // We could store full row data here if needed
       }));
 
       // Delete existing validations and create new ones
@@ -315,14 +315,14 @@ export class ImportService {
     const validationDtos: ValidationResultDto[] = validations.map(v => ({
       id: v.id,
       rowNumber: v.rowNumber,
-      columnName: v.columnName,
-      fieldName: v.fieldName,
+      columnName: v.columnName || undefined,
+      fieldName: v.fieldName || undefined,
       severity: v.severity,
       errorCode: v.errorCode,
       errorMessage: v.errorMessage,
-      expectedValue: v.expectedValue,
-      actualValue: v.actualValue,
-      suggestedFix: v.suggestedFix,
+      expectedValue: v.expectedValue || undefined,
+      actualValue: v.actualValue || undefined,
+      suggestedFix: v.suggestedFix || undefined,
       canAutoFix: v.canAutoFix,
       wasAutoFixed: v.wasAutoFixed
     }));
@@ -455,7 +455,7 @@ export class ImportService {
       throw new BadRequestException('You can only cancel your own imports');
     }
 
-    if (![ImportStatus.PENDING, ImportStatus.PARSING, ImportStatus.MAPPED, ImportStatus.VALIDATING].includes(session.status)) {
+    if (![ImportStatus.PENDING, ImportStatus.PARSING, ImportStatus.MAPPED, ImportStatus.VALIDATING].includes(session.status as any)) {
       throw new BadRequestException('Cannot cancel import in current status');
     }
 

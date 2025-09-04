@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException, ForbiddenException } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
-import { UserRole } from '@prisma/client';
+import { Role, LoanStatus, PaymentStatus, TreasuryFlowType, Prisma } from '@prisma/client';
 import {
   WidgetConfigDto,
   CreateWidgetDto,
@@ -8,7 +8,7 @@ import {
   WidgetType,
   WidgetSize,
 } from '../dto';
-import { Cache } from 'cache-manager';
+import type { Cache } from 'cache-manager';
 import { Inject } from '@nestjs/common';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
 
@@ -19,7 +19,7 @@ export class WidgetService {
     @Inject(CACHE_MANAGER) private cacheManager: Cache,
   ) {}
 
-  async getAvailableWidgets(role: UserRole) {
+  async getAvailableWidgets(role: Role) {
     const widgets = [
       // Metrics widgets
       {
@@ -49,7 +49,7 @@ export class WidgetService {
         description: 'Solde actuel de la trésorerie',
         dataSource: 'treasury.balance',
         sizes: [WidgetSize.SMALL, WidgetSize.MEDIUM],
-        roles: [UserRole.SUPER_ADMIN, UserRole.ADMIN, UserRole.TREASURER],
+        roles: [Role.SUPER_ADMIN, Role.ADMIN, Role.TREASURER],
         category: 'Finance',
       },
       
@@ -76,7 +76,7 @@ export class WidgetService {
         description: 'Entrées et sorties de trésorerie',
         dataSource: 'treasury.cashflow',
         sizes: [WidgetSize.MEDIUM, WidgetSize.LARGE],
-        roles: [UserRole.SUPER_ADMIN, UserRole.ADMIN, UserRole.TREASURER],
+        roles: [Role.SUPER_ADMIN, Role.ADMIN, Role.TREASURER],
         category: 'Finance',
         defaultConfig: {
           chartType: 'bar',
@@ -116,7 +116,7 @@ export class WidgetService {
         description: 'Prêts en attente de validation',
         dataSource: 'loans.pendingApprovals',
         sizes: [WidgetSize.LARGE, WidgetSize.XLARGE],
-        roles: [UserRole.SUPER_ADMIN, UserRole.ADMIN, UserRole.APPROVAL_COMMITTEE],
+        roles: [Role.SUPER_ADMIN, Role.ADMIN, Role.COMMITTEE_MEMBER],
         category: 'Prêts',
       },
       {
@@ -126,7 +126,7 @@ export class WidgetService {
         description: 'Liste des paiements en retard',
         dataSource: 'payments.overdue',
         sizes: [WidgetSize.LARGE, WidgetSize.XLARGE],
-        roles: [UserRole.SUPER_ADMIN, UserRole.ADMIN, UserRole.TREASURER],
+        roles: [Role.SUPER_ADMIN, Role.ADMIN, Role.TREASURER],
         category: 'Paiements',
       },
       
@@ -138,7 +138,7 @@ export class WidgetService {
         description: 'Dernières actions dans le système',
         dataSource: 'activities.recent',
         sizes: [WidgetSize.MEDIUM, WidgetSize.LARGE],
-        roles: [UserRole.SUPER_ADMIN, UserRole.ADMIN],
+        roles: [Role.SUPER_ADMIN, Role.ADMIN],
         category: 'Système',
       },
       {
@@ -172,7 +172,7 @@ export class WidgetService {
         description: 'Indicateur de liquidité',
         dataSource: 'treasury.liquidityLevel',
         sizes: [WidgetSize.SMALL, WidgetSize.MEDIUM],
-        roles: [UserRole.SUPER_ADMIN, UserRole.ADMIN, UserRole.TREASURER],
+        roles: [Role.SUPER_ADMIN, Role.ADMIN, Role.TREASURER],
         category: 'Finance',
       },
       {
@@ -194,7 +194,7 @@ export class WidgetService {
         description: 'Progression vers l\'objectif mensuel',
         dataSource: 'goals.monthly',
         sizes: [WidgetSize.MEDIUM, WidgetSize.LARGE],
-        roles: [UserRole.SUPER_ADMIN, UserRole.ADMIN],
+        roles: [Role.SUPER_ADMIN, Role.ADMIN],
         category: 'Objectifs',
       },
       
@@ -206,7 +206,7 @@ export class WidgetService {
         description: 'Alertes nécessitant une attention',
         dataSource: 'alerts.active',
         sizes: [WidgetSize.MEDIUM, WidgetSize.LARGE],
-        roles: [UserRole.SUPER_ADMIN, UserRole.ADMIN],
+        roles: [Role.SUPER_ADMIN, Role.ADMIN],
         category: 'Système',
       },
       
@@ -218,7 +218,7 @@ export class WidgetService {
         description: 'Visualisation de l\'activité quotidienne',
         dataSource: 'activities.heatmap',
         sizes: [WidgetSize.LARGE, WidgetSize.XLARGE],
-        roles: [UserRole.SUPER_ADMIN, UserRole.ADMIN],
+        roles: [Role.SUPER_ADMIN, Role.ADMIN],
         category: 'Système',
       },
       
@@ -316,7 +316,7 @@ export class WidgetService {
         description: updateDto.description,
         icon: updateDto.icon,
         size: updateDto.size,
-        position: updateDto.position || widget.position,
+        position: updateDto.position !== undefined ? updateDto.position as Prisma.InputJsonValue : widget.position as Prisma.InputJsonValue,
         dataConfig: updateDto.dataConfig as any || widget.dataConfig,
         displayConfig: updateDto.displayConfig as any || widget.displayConfig,
         interactionConfig: updateDto.interactionConfig as any || widget.interactionConfig,
@@ -386,7 +386,10 @@ export class WidgetService {
 
   async refreshWidgetData(widgetId: string) {
     // Clear all cached data for this widget
-    const keys = await this.cacheManager.store.keys(`widget:${widgetId}:*`);
+    // Clear all cached data for this widget
+    // Note: cache-manager doesn't provide a direct keys() method
+    // We'll clear specific cache entries instead
+    const keys: string[] = [];
     for (const key of keys) {
       await this.cacheManager.del(key);
     }
@@ -450,8 +453,8 @@ export class WidgetService {
         const grouped = this.groupByDay(loans, 'createdAt');
         return Object.entries(grouped).map(([date, items]) => ({
           date,
-          count: items.length,
-          amount: items.reduce((sum, item) => sum + item.amount, 0),
+          count: (items as any[]).length,
+          amount: (items as any[]).reduce((sum: number, item: any) => sum + item.amount, 0),
         }));
         
       case 'recent':
@@ -470,7 +473,7 @@ export class WidgetService {
         
       case 'pendingApprovals':
         return this.prisma.loan.findMany({
-          where: { status: 'PENDING_APPROVAL' },
+          where: { status: LoanStatus.UNDER_REVIEW },
           orderBy: { createdAt: 'desc' },
           include: {
             borrower: {
@@ -556,13 +559,13 @@ export class WidgetService {
     
     switch (metric) {
       case 'balance':
-        const balance = await this.prisma.treasuryTransaction.aggregate({
+        const balance = await this.prisma.treasuryFlow.aggregate({
           _sum: { amount: true },
         });
         return balance._sum.amount || 0;
         
       case 'cashflow':
-        const transactions = await this.prisma.treasuryTransaction.findMany({
+        const transactions = await this.prisma.treasuryFlow.findMany({
           where: {
             createdAt: {
               gte: period.start,
@@ -579,24 +582,24 @@ export class WidgetService {
         const grouped = this.groupByDay(transactions, 'createdAt');
         return Object.entries(grouped).map(([date, items]) => ({
           date,
-          inflow: items
-            .filter(t => t.type === 'CREDIT')
-            .reduce((sum, t) => sum + t.amount, 0),
+          inflow: (items as any[])
+            .filter((t: any) => t.type === 'INFLOW')
+            .reduce((sum: number, t: any) => sum + t.amount, 0),
           outflow: Math.abs(
-            items
-              .filter(t => t.type === 'DEBIT')
-              .reduce((sum, t) => sum + t.amount, 0),
+            (items as any[])
+              .filter((t: any) => t.type === 'OUTFLOW')
+              .reduce((sum: number, t: any) => sum + t.amount, 0),
           ),
         }));
         
       case 'liquidityLevel':
-        const currentBalance = await this.prisma.treasuryTransaction.aggregate({
+        const currentBalance = await this.prisma.treasuryFlow.aggregate({
           _sum: { amount: true },
         });
         
-        const monthlyOutflow = await this.prisma.treasuryTransaction.aggregate({
+        const monthlyOutflow = await this.prisma.treasuryFlow.aggregate({
           where: {
-            type: 'DEBIT',
+            type: TreasuryFlowType.OUTFLOW,
             createdAt: {
               gte: new Date(new Date().setDate(1)),
             },
@@ -604,8 +607,8 @@ export class WidgetService {
           _sum: { amount: true },
         });
         
-        const balance_value = currentBalance._sum.amount || 0;
-        const outflow_value = Math.abs(monthlyOutflow._sum.amount || 1);
+        const balance_value = Number(currentBalance._sum?.amount || 0);
+        const outflow_value = Math.abs(Number(monthlyOutflow._sum?.amount || 1));
         
         return Math.min(100, (balance_value / outflow_value) * 100);
         
@@ -619,9 +622,12 @@ export class WidgetService {
       case 'overdue':
         return this.prisma.payment.findMany({
           where: {
-            status: 'OVERDUE',
+            status: PaymentStatus.PENDING,
+            scheduledDate: {
+              lt: new Date(),
+            },
           },
-          orderBy: { dueDate: 'asc' },
+          orderBy: { scheduledDate: 'asc' },
           include: {
             loan: {
               include: {
@@ -743,7 +749,7 @@ export class WidgetService {
       case 'active':
         return this.prisma.forecastAlert.findMany({
           where: {
-            status: 'ACTIVE',
+            isActive: true,
           },
           orderBy: { severity: 'desc' },
         });

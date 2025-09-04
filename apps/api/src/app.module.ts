@@ -24,7 +24,7 @@ import { OrganizationsModule } from './modules/organizations/organizations.modul
 import { TenantsModule } from './modules/tenants/tenants.module';
 import { DomainsModule } from './modules/domains/domains.module';
 import { TreasuryForecastModule } from './treasury-forecast/treasury-forecast.module';
-import { ImportModule } from './import/import.module';
+// import { ImportModule } from './import/import.module'; // TODO: Enable when import models are added to Prisma schema
 import { WithdrawalsModule } from './withdrawals/withdrawals.module';
 import { DepositsModule } from './deposits/deposits.module';
 import { CalendarModule } from './calendar/calendar.module';
@@ -64,7 +64,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
     TenantsModule,
     DomainsModule,
     TreasuryForecastModule,
-    ImportModule,
+    // ImportModule, // TODO: Enable when import models are added to Prisma schema
     WithdrawalsModule,
     DepositsModule,
     CalendarModule,

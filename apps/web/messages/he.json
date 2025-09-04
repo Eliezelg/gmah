@@ -572,6 +572,7 @@
     "serverError": "שגיאת שרת"
   },
   "calendar": {
+    "locale": "he",
     "hebrew": "לוח עברי",
     "gregorian": "לוח גרגוריאני",
     "shemitah": "שמיטת כספים",
@@ -589,7 +590,124 @@
       "tamuz": "תמוז",
       "av": "אב",
       "elul": "אלול"
-    }
+    },
+    "admin": {
+      "title": "לוח שנה מנהלים",
+      "description": "ניהול מרכזי של אירועים, מועדי פרעון וחגים יהודיים"
+    },
+    "tabs": {
+      "calendar": "לוח שנה",
+      "events": "אירועים",
+      "generate": "יצירה",
+      "hebrew": "לוח עברי"
+    },
+    "views": {
+      "today": "היום",
+      "month": "חודש",
+      "week": "שבוע",
+      "day": "יום",
+      "list": "רשימה"
+    },
+    "types": {
+      "loan_repayment": "החזר הלוואה",
+      "deposit_withdrawal": "משיכת פיקדון",
+      "committee_meeting": "ישיבת וועדה",
+      "jewish_holiday": "חג יהודי",
+      "custom_event": "אירוע מותאם",
+      "system_reminder": "תזכורת מערכת",
+      "approval_deadline": "מועד אישור",
+      "payment_due": "תשלום להתחייב",
+      "document_expiry": "פקיעת מסמך",
+      "campaign_event": "אירוע קמפיין"
+    },
+    "status": {
+      "scheduled": "מתוכנן",
+      "completed": "הושלם",
+      "cancelled": "בוטל",
+      "postponed": "נדחה",
+      "in_progress": "בביצוע"
+    },
+    "priority": {
+      "low": "נמוכה",
+      "normal": "רגילה",
+      "high": "גבוהה",
+      "urgent": "דחוף"
+    },
+    "actions": {
+      "createEvent": "צור אירוע",
+      "editEvent": "ערוך אירוע",
+      "deleteEvent": "מחק אירוע",
+      "exportICal": "ייצא iCal",
+      "syncSettings": "הגדרות סינכרון",
+      "refresh": "רענן",
+      "create": "צור",
+      "edit": "ערוך",
+      "delete": "מחק",
+      "cancel": "ביטול",
+      "close": "סגור",
+      "save": "שמור",
+      "openLink": "פתח קישור"
+    },
+    "fields": {
+      "title": "כותרת",
+      "description": "תיאור",
+      "type": "סוג",
+      "priority": "עדיפות",
+      "startDate": "תאריך התחלה",
+      "endDate": "תאריך סיום",
+      "location": "מקום",
+      "allDay": "כל היום",
+      "isPublic": "ציבורי",
+      "selectType": "בחר סוג",
+      "selectPriority": "בחר עדיפות"
+    },
+    "filters": {
+      "title": "מסננים",
+      "clear": "נקה",
+      "search": "חיפוש",
+      "searchPlaceholder": "חפש באירועים..."
+    },
+    "stats": {
+      "totalEvents": "סך הכל אירועים",
+      "upcomingEvents": "אירועים קרובים",
+      "overdueEvents": "אירועים באיחור"
+    },
+    "generate": {
+      "loanRepayments": {
+        "title": "החזרי הלוואות",
+        "description": "צור אירועי מועדי פרעון",
+        "action": "צור החזרים"
+      },
+      "withdrawals": {
+        "title": "בקשות משיכה",
+        "description": "צור אירועים למשיכות",
+        "action": "צור משיכות"
+      },
+      "holidays": {
+        "title": "חגים יהודיים",
+        "description": "הוסף חגים יהודיים",
+        "action": "צור חגים"
+      }
+    },
+    "sync": {
+      "title": "סינכרון לוחות שנה",
+      "description": "חבר את הלוחות החיצוניים שלך",
+      "connected": "מחובר",
+      "notConnected": "לא מחובר",
+      "connectGoogle": "חבר Google Calendar",
+      "connectOutlook": "חבר Outlook Calendar"
+    },
+    "validation": {
+      "required": "שדה זה נדרש"
+    },
+    "errors": {
+      "loadingError": "שגיאה בטעינה"
+    },
+    "allDay": "כל היום",
+    "recurring": "מתחזר",
+    "systemGenerated": "נוצר במערכת",
+    "loading": "טוען...",
+    "noEvents": "אין אירועים"
   },
   "sidebar": {
     "menu": {

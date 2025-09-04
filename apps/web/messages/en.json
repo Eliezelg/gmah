@@ -163,165 +163,6 @@
       "underConstructionDesc": "The committee dashboard will be available soon",
       "interfaceDescription": "This interface will allow reviewing requests and voting."
     },
-    "treasuryForecast": {
-      "title": "Treasury Forecasting",
-      "tabs": {
-        "overview": "Overview",
-        "forecast": "Forecast",
-        "scenarios": "Scenarios",
-        "alerts": "Alerts",
-        "reports": "Reports"
-      },
-      "periods": {
-        "30days": "30 days",
-        "60days": "60 days",
-        "90days": "90 days"
-      },
-      "scenarios": {
-        "optimistic": "Optimistic",
-        "realistic": "Realistic",
-        "pessimistic": "Pessimistic"
-      },
-      "metrics": {
-        "currentBalance": "Current Balance",
-        "forecast30": "30-Day Forecast",
-        "forecast60": "60-Day Forecast",
-        "forecast90": "90-Day Forecast",
-        "liquidityRisk": "Liquidity Risk",
-        "confidence": "Confidence",
-        "expectedInflow": "Expected Inflow",
-        "expectedOutflow": "Expected Outflow",
-        "netPosition": "Net Position"
-      },
-      "alerts": {
-        "title": "Active Alerts",
-        "acknowledge": "Acknowledge",
-        "acknowledged": "Acknowledged",
-        "severity": {
-          "info": "Info",
-          "warning": "Warning",
-          "critical": "Critical",
-          "urgent": "Urgent"
-        },
-        "types": {
-          "lowBalance": "Low Balance",
-          "highRisk": "High Risk",
-          "negativeForecast": "Negative Forecast",
-          "loanDefaults": "Loan Defaults"
-        }
-      },
-      "actions": {
-        "generateReport": "Generate Report",
-        "exportCSV": "Export CSV",
-        "refreshData": "Refresh",
-        "configureAlerts": "Configure Alerts"
-      }
-    },
-    "import": {
-      "title": "Data Import",
-      "dashboard": {
-        "title": "Import Dashboard",
-        "quickActions": "Quick Actions",
-        "recentImports": "Recent Imports",
-        "statistics": "Statistics"
-      },
-      "wizard": {
-        "title": "Import Wizard",
-        "steps": {
-          "upload": "Upload",
-          "preview": "Preview",
-          "mapping": "Mapping",
-          "validation": "Validation",
-          "import": "Import"
-        },
-        "upload": {
-          "title": "Upload File",
-          "dragDrop": "Drag and drop your file here",
-          "browse": "or browse",
-          "supportedFormats": "Supported formats: Excel (.xlsx, .xls), CSV (.csv)",
-          "maxSize": "Max size: 10MB"
-        },
-        "preview": {
-          "title": "Data Preview",
-          "rowsFound": "{count} rows found",
-          "columnsDetected": "{count} columns detected",
-          "encoding": "Encoding: {encoding}"
-        },
-        "mapping": {
-          "title": "Column Mapping",
-          "sourceColumn": "Source Column",
-          "targetField": "Target Field",
-          "autoDetected": "Auto-detected",
-          "required": "Required",
-          "optional": "Optional",
-          "ignored": "Ignored",
-          "templates": {
-            "save": "Save Template",
-            "load": "Load Template",
-            "manage": "Manage Templates"
-          }
-        },
-        "validation": {
-          "title": "Data Validation",
-          "checking": "Checking...",
-          "results": "Validation Results",
-          "errors": "{count} errors",
-          "warnings": "{count} warnings",
-          "valid": "{count} valid rows",
-          "fixSuggestions": "Fix Suggestions",
-          "types": {
-            "email": "Invalid email",
-            "phone": "Invalid phone",
-            "duplicate": "Duplicate found",
-            "required": "Required field missing",
-            "format": "Incorrect format",
-            "range": "Value out of range"
-          }
-        },
-        "import": {
-          "title": "Importing",
-          "processing": "Processing data...",
-          "progress": "{current} / {total} rows",
-          "success": "Import successful",
-          "failed": "Import failed",
-          "partial": "Partial import",
-          "rollback": "Rolling back...",
-          "report": {
-            "title": "Import Report",
-            "imported": "{count} rows imported",
-            "skipped": "{count} rows skipped",
-            "failed": "{count} rows failed",
-            "duration": "Duration: {duration}",
-            "download": "Download Report"
-          }
-        }
-      },
-      "types": {
-        "users": "Users",
-        "loans": "Loans",
-        "contributions": "Contributions",
-        "guarantees": "Guarantees",
-        "payments": "Payments"
-      },
-      "status": {
-        "pending": "Pending",
-        "processing": "Processing",
-        "validating": "Validating",
-        "completed": "Completed",
-        "failed": "Failed",
-        "cancelled": "Cancelled"
-      },
-      "actions": {
-        "startImport": "Start Import",
-        "pauseImport": "Pause",
-        "resumeImport": "Resume",
-        "cancelImport": "Cancel",
-        "retryImport": "Retry",
-        "viewDetails": "View Details",
-        "downloadReport": "Download Report",
-        "deleteSession": "Delete Session"
-      }
-    },
     "borrower": {
       "title": "Dashboard",
       "subtitle": "Manage your loans and track your repayments",
@@ -731,6 +572,7 @@
     "serverError": "Server error"
   },
   "calendar": {
+    "locale": "en",
     "hebrew": "Hebrew calendar",
     "gregorian": "Gregorian calendar",
     "shemitah": "Shemitat Kesafim",
@@ -748,7 +590,124 @@
       "tamuz": "Tamuz",
       "av": "Av",
       "elul": "Elul"
-    }
+    },
+    "admin": {
+      "title": "Admin Calendar",
+      "description": "Centralized management of events, due dates and Jewish holidays"
+    },
+    "tabs": {
+      "calendar": "Calendar",
+      "events": "Events",
+      "generate": "Generate",
+      "hebrew": "Hebrew Calendar"
+    },
+    "views": {
+      "today": "Today",
+      "month": "Month",
+      "week": "Week",
+      "day": "Day",
+      "list": "List"
+    },
+    "types": {
+      "loan_repayment": "Loan repayment",
+      "deposit_withdrawal": "Deposit withdrawal",
+      "committee_meeting": "Committee meeting",
+      "jewish_holiday": "Jewish holiday",
+      "custom_event": "Custom event",
+      "system_reminder": "System reminder",
+      "approval_deadline": "Approval deadline",
+      "payment_due": "Payment due",
+      "document_expiry": "Document expiry",
+      "campaign_event": "Campaign event"
+    },
+    "status": {
+      "scheduled": "Scheduled",
+      "completed": "Completed",
+      "cancelled": "Cancelled",
+      "postponed": "Postponed",
+      "in_progress": "In progress"
+    },
+    "priority": {
+      "low": "Low",
+      "normal": "Normal",
+      "high": "High",
+      "urgent": "Urgent"
+    },
+    "actions": {
+      "createEvent": "Create event",
+      "editEvent": "Edit event",
+      "deleteEvent": "Delete event",
+      "exportICal": "Export iCal",
+      "syncSettings": "Sync settings",
+      "refresh": "Refresh",
+      "create": "Create",
+      "edit": "Edit",
+      "delete": "Delete",
+      "cancel": "Cancel",
+      "close": "Close",
+      "save": "Save",
+      "openLink": "Open link"
+    },
+    "fields": {
+      "title": "Title",
+      "description": "Description",
+      "type": "Type",
+      "priority": "Priority",
+      "startDate": "Start date",
+      "endDate": "End date",
+      "location": "Location",
+      "allDay": "All day",
+      "isPublic": "Public",
+      "selectType": "Select a type",
+      "selectPriority": "Select priority"
+    },
+    "filters": {
+      "title": "Filters",
+      "clear": "Clear",
+      "search": "Search",
+      "searchPlaceholder": "Search in events..."
+    },
+    "stats": {
+      "totalEvents": "Total events",
+      "upcomingEvents": "Upcoming events",
+      "overdueEvents": "Overdue events"
+    },
+    "generate": {
+      "loanRepayments": {
+        "title": "Loan repayments",
+        "description": "Generate due date events",
+        "action": "Generate repayments"
+      },
+      "withdrawals": {
+        "title": "Withdrawal requests",
+        "description": "Create events for withdrawals",
+        "action": "Generate withdrawals"
+      },
+      "holidays": {
+        "title": "Jewish holidays",
+        "description": "Add Jewish holidays",
+        "action": "Generate holidays"
+      }
+    },
+    "sync": {
+      "title": "Calendar synchronization",
+      "description": "Connect your external calendars",
+      "connected": "Connected",
+      "notConnected": "Not connected",
+      "connectGoogle": "Connect Google Calendar",
+      "connectOutlook": "Connect Outlook Calendar"
+    },
+    "validation": {
+      "required": "This field is required"
+    },
+    "errors": {
+      "loadingError": "Loading error"
+    },
+    "allDay": "All day",
+    "recurring": "Recurring",
+    "systemGenerated": "System generated",
+    "loading": "Loading...",
+    "noEvents": "No events"
   },
   "sidebar": {
     "menu": {
@@ -782,242 +741,5 @@
   },
   "languageSelector": {
     "selectLanguage": "Select language"
-  },
-  "withdrawals": {
-    "title": "Withdrawal Requests",
-    "subtitle": "Manage depositor withdrawal requests",
-    "newRequest": "New request",
-    "myWithdrawals": "My withdrawal requests",
-    "allWithdrawals": "All requests",
-    "pendingApproval": "Pending approval",
-    "approvedRequests": "Approved requests",
-    "form": {
-      "title": "Withdrawal Request",
-      "deposit": "Deposit",
-      "selectDeposit": "Select a deposit",
-      "availableBalance": "Available balance",
-      "amount": "Amount to withdraw",
-      "amountPlaceholder": "0.00",
-      "reason": "Reason for withdrawal",
-      "reasonPlaceholder": "Describe the reason for your withdrawal request...",
-      "reasonCategory": "Category",
-      "urgency": "Urgency",
-      "plannedDate": "Desired date",
-      "paymentMethod": "Payment method",
-      "bankDetails": "Bank details",
-      "bankName": "Bank name",
-      "accountNumber": "Account number",
-      "routingNumber": "Routing number",
-      "accountHolderName": "Account holder name",
-      "submit": "Submit request",
-      "cancel": "Cancel",
-      "validation": {
-        "depositRequired": "Please select a deposit",
-        "amountRequired": "Amount is required",
-        "amountMin": "Minimum amount is 1 ILS",
-        "amountExceedsBalance": "Amount exceeds available balance",
-        "reasonRequired": "Reason is required",
-        "reasonMinLength": "Reason must be at least 10 characters long",
-        "bankDetailsRequired": "Bank details are required for transfers"
-      }
-    },
-    "statuses": {
-      "PENDING": "Pending",
-      "UNDER_REVIEW": "Under review",
-      "APPROVED": "Approved",
-      "REJECTED": "Rejected",
-      "PROCESSING": "Processing",
-      "COMPLETED": "Completed",
-      "CANCELLED": "Cancelled",
-      "FAILED": "Failed"
-    },
-    "urgencyLevels": {
-      "LOW": "Low",
-      "NORMAL": "Normal",
-      "HIGH": "High",
-      "URGENT": "Urgent"
-    },
-    "reasonCategories": {
-      "EMERGENCY": "Emergency",
-      "PERSONAL": "Personal",
-      "BUSINESS": "Business",
-      "OTHER": "Other"
-    },
-    "approvalModes": {
-      "AUTOMATIC": "Automatic",
-      "MANUAL": "Manual",
-      "COMMITTEE": "Committee"
-    },
-    "list": {
-      "requestNumber": "Request #",
-      "deposit": "Deposit",
-      "amount": "Amount",
-      "requestDate": "Request date",
-      "plannedDate": "Desired date",
-      "status": "Status",
-      "urgency": "Urgency",
-      "actions": "Actions",
-      "viewDetails": "View details",
-      "approve": "Approve",
-      "reject": "Reject",
-      "execute": "Execute",
-      "cancel": "Cancel",
-      "edit": "Edit",
-      "noRequests": "No withdrawal requests",
-      "noRequestsDesc": "You haven't made any withdrawal requests yet"
-    },
-    "details": {
-      "title": "Withdrawal Request Details",
-      "generalInfo": "General information",
-      "requestNumber": "Request number",
-      "depositor": "Depositor",
-      "deposit": "Related deposit",
-      "amount": "Requested amount",
-      "reason": "Reason",
-      "category": "Category",
-      "urgency": "Urgency level",
-      "requestDate": "Request date",
-      "plannedDate": "Desired date",
-      "status": "Current status",
-      "approvalInfo": "Approval information",
-      "approvalMode": "Approval mode",
-      "approvedBy": "Approved by",
-      "approvalDate": "Approval date",
-      "approvalComments": "Approval comments",
-      "rejectedBy": "Rejected by",
-      "rejectionDate": "Rejection date",
-      "rejectionReason": "Rejection reason",
-      "paymentInfo": "Payment information",
-      "paymentMethod": "Payment method",
-      "bankDetails": "Bank details",
-      "transactionRef": "Transaction reference",
-      "processingDate": "Processing date",
-      "completedDate": "Completion date",
-      "treasuryImpact": "Treasury impact",
-      "documents": "Supporting documents",
-      "timeline": "Timeline"
-    },
-    "approval": {
-      "approveTitle": "Approve Request",
-      "rejectTitle": "Reject Request",
-      "comments": "Comments",
-      "commentsPlaceholder": "Add comments about this decision...",
-      "rejectionReason": "Rejection reason",
-      "rejectionPlaceholder": "Explain why this request is being rejected...",
-      "updatePaymentMethod": "Update payment method",
-      "updateBankDetails": "Update bank details",
-      "confirmApprove": "Confirm approval",
-      "confirmReject": "Confirm rejection",
-      "approveButton": "Approve",
-      "rejectButton": "Reject"
-    },
-    "dashboard": {
-      "title": "Withdrawals Dashboard",
-      "stats": {
-        "totalRequests": "Total requests",
-        "pendingApproval": "Pending",
-        "approved": "Approved",
-        "completed": "Completed",
-        "totalAmount": "Total amount",
-        "avgProcessingTime": "Avg processing time"
-      },
-      "quickActions": {
-        "title": "Quick actions",
-        "newRequest": "New request",
-        "reviewPending": "Review requests",
-        "viewReports": "View reports",
-        "manageLimits": "Manage limits"
-      },
-      "recentActivity": {
-        "title": "Recent activity",
-        "noActivity": "No recent activity"
-      },
-      "upcomingWithdrawals": {
-        "title": "Upcoming withdrawals",
-        "noUpcoming": "No upcoming withdrawals"
-      }
-    },
-    "admin": {
-      "title": "Withdrawal Management - Administration",
-      "queue": {
-        "title": "Approval queue",
-        "subtitle": "Requests pending approval",
-        "filters": {
-          "all": "All",
-          "pending": "Pending",
-          "urgent": "Urgent",
-          "highAmount": "High amounts"
-        },
-        "bulkActions": "Bulk actions",
-        "selectAll": "Select all",
-        "approveSelected": "Approve selected",
-        "bulkApprove": "Bulk approval"
-      },
-      "settings": {
-        "title": "Withdrawal Settings",
-        "autoApprovalThreshold": "Auto-approval threshold",
-        "manualApprovalThreshold": "Manual approval threshold",
-        "committeeApprovalThreshold": "Committee approval threshold",
-        "maxDailyAmount": "Maximum daily amount",
-        "requireDocuments": "Require supporting documents",
-        "notificationSettings": "Notification settings"
-      }
-    },
-    "treasury": {
-      "impact": {
-        "title": "Treasury Impact",
-        "currentPeriod": "Current period",
-        "projectedOutflow": "Projected outflow",
-        "riskLevel": "Risk level",
-        "recommendations": "Recommendations",
-        "byStatus": {
-          "pending": "Pending requests",
-          "approved": "Approved requests",
-          "processing": "Processing requests"
-        },
-        "byUrgency": {
-          "urgent": "Urgent",
-          "high": "High priority",
-          "normal": "Normal",
-          "low": "Low priority"
-        }
-      },
-      "cashFlow": {
-        "title": "Cash Flow Impact",
-        "daily": "Daily",
-        "weekly": "Weekly",
-        "monthly": "Monthly",
-        "projected": "Projected",
-        "actual": "Actual"
-      }
-    },
-    "notifications": {
-      "requestCreated": "Withdrawal request created",
-      "requestApproved": "Withdrawal request approved",
-      "requestRejected": "Withdrawal request rejected",
-      "requestProcessing": "Withdrawal processing",
-      "requestCompleted": "Withdrawal completed",
-      "lowBalance": "Insufficient balance for withdrawal",
-      "urgentRequest": "Urgent withdrawal request requires attention"
-    },
-    "messages": {
-      "requestSubmitted": "Withdrawal request submitted successfully",
-      "requestUpdated": "Withdrawal request updated",
-      "requestApproved": "Withdrawal request approved",
-      "requestRejected": "Withdrawal request rejected",
-      "requestExecuted": "Withdrawal processing initiated",
-      "insufficientBalance": "Insufficient balance",
-      "depositNotFound": "Deposit not found",
-      "accessDenied": "Access denied to this request",
-      "cannotModify": "Cannot modify this request",
-      "executionFailed": "Withdrawal execution failed"
-    },
-    "errors": {
-      "loadingFailed": "Error loading data",
-      "submissionFailed": "Error submitting request",
-      "approvalFailed": "Error approving request",
-      "rejectionFailed": "Error rejecting request",
-      "executionFailed": "Error executing withdrawal"
-    }
   }
 }

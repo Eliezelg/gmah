@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { HDate, months, Event, HebrewCalendar, flags } from '@hebcal/core';
 
-interface HebrewDateInfo {
+export interface HebrewDateInfo {
   hebrewDate: string;
   hebrewYear: number;
   hebrewMonth: string;
@@ -9,7 +9,7 @@ interface HebrewDateInfo {
   gregorianDate: Date;
 }
 
-interface JewishHoliday {
+export interface JewishHoliday {
   title: string;
   hebrewTitle?: string;
   date: Date;

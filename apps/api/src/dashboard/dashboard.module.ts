@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { EventEmitterModule } from '@nestjs/event-emitter';
 import { DashboardController } from './dashboard.controller';
 import { DashboardService } from './services/dashboard.service';
 import { WidgetService } from './services/widget.service';
@@ -16,6 +17,7 @@ import { CacheModule } from '@nestjs/cache-manager';
 @Module({
   imports: [
     PrismaModule,
+    EventEmitterModule.forRoot(),
     CacheModule.register({
       ttl: 60, // 60 seconds cache
       max: 100, // maximum number of items in cache

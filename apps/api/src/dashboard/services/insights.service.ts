@@ -121,7 +121,7 @@ export class InsightsService {
         action: 'DISMISS_INSIGHT',
         entityType: 'INSIGHT',
         entityId: insightId,
-        metadata: { dismissedAt: new Date() },
+        newValues: { dismissedAt: new Date() } as any,
       },
     });
     
@@ -258,7 +258,7 @@ export class InsightsService {
     });
     
     if (recentPayments.length > 10) {
-      const amounts = recentPayments.map(p => p.amount);
+      const amounts = recentPayments.map(p => Number(p.amount));
       const mean = amounts.reduce((a, b) => a + b, 0) / amounts.length;
       const variance = amounts.reduce((sum, val) => sum + Math.pow(val - mean, 2), 0) / amounts.length;
       const stdDev = Math.sqrt(variance);
@@ -453,7 +453,7 @@ export class InsightsService {
     
     // Recommendation for loan approval optimization
     const pendingLoans = await this.prisma.loan.count({
-      where: { status: 'PENDING_APPROVAL' },
+      where: { status: 'UNDER_REVIEW' },
     });
     
     const avgProcessingTime = 3.5; // Mock value, would be calculated from actual data
@@ -565,20 +565,26 @@ export class InsightsService {
     const insights: InsightResponseDto[] = [];
     
     // Warning for overdue payments
-    const overduePayments = await this.prisma.payment.count({
+    const overduePayments = await this.prisma.repaymentSchedule.count({
       where: {
-        status: 'OVERDUE',
         dueDate: {
           lt: new Date(),
+        },
+        isPaid: false,
+        loan: {
+          status: 'ACTIVE',
         },
       },
     });
     
-    const overdueAmount = await this.prisma.payment.aggregate({
+    const overdueAmount = await this.prisma.repaymentSchedule.aggregate({
       where: {
-        status: 'OVERDUE',
         dueDate: {
           lt: new Date(),
+        },
+        isPaid: false,
+        loan: {
+          status: 'ACTIVE',
         },
       },
       _sum: { amount: true },
@@ -821,8 +827,8 @@ export class InsightsService {
     });
     
     if (largestBorrowers.length > 0 && totalActiveAmount._sum.amount) {
-      const top5Amount = largestBorrowers.reduce((sum, b) => sum + (b._sum.amount || 0), 0);
-      const concentrationRatio = (top5Amount / totalActiveAmount._sum.amount) * 100;
+      const top5Amount = largestBorrowers.reduce((sum, b) => sum + Number(b._sum.amount || 0), 0);
+      const concentrationRatio = (top5Amount / Number(totalActiveAmount._sum.amount || 1)) * 100;
       
       if (concentrationRatio > 30) {
         insights.push({
@@ -932,13 +938,13 @@ export class InsightsService {
 
   private async calculateTreasuryTrend() {
     // Simplified trend calculation
-    const currentBalance = await this.prisma.treasuryTransaction.aggregate({
+    const currentBalance = await this.prisma.treasuryFlow.aggregate({
       _sum: { amount: true },
     });
     
-    const monthlyOutflow = await this.prisma.treasuryTransaction.aggregate({
+    const monthlyOutflow = await this.prisma.treasuryFlow.aggregate({
       where: {
-        type: 'DEBIT',
+        type: 'OUTFLOW',
         createdAt: {
           gte: new Date(new Date().setMonth(new Date().getMonth() - 1)),
         },
@@ -946,9 +952,9 @@ export class InsightsService {
       _sum: { amount: true },
     });
     
-    const monthlyInflow = await this.prisma.treasuryTransaction.aggregate({
+    const monthlyInflow = await this.prisma.treasuryFlow.aggregate({
       where: {
-        type: 'CREDIT',
+        type: 'INFLOW',
         createdAt: {
           gte: new Date(new Date().setMonth(new Date().getMonth() - 1)),
         },
@@ -956,9 +962,9 @@ export class InsightsService {
       _sum: { amount: true },
     });
     
-    const balance = currentBalance._sum.amount || 0;
-    const outflow = Math.abs(monthlyOutflow._sum.amount || 0);
-    const inflow = monthlyInflow._sum.amount || 0;
+    const balance = Number(currentBalance._sum.amount || 0);
+    const outflow = Math.abs(Number(monthlyOutflow._sum.amount || 0));
+    const inflow = Number(monthlyInflow._sum.amount || 0);
     const netFlow = inflow - outflow;
     
     const minimumThreshold = outflow * 2; // 2 months of expenses
@@ -977,8 +983,13 @@ export class InsightsService {
     const overdueLoans = await this.prisma.loan.findMany({
       where: {
         status: 'ACTIVE',
-        nextPaymentDate: {
-          lt: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000),
+        repaymentSchedule: {
+          some: {
+            dueDate: {
+              lt: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000),
+            },
+            isPaid: false,
+          },
         },
       },
       select: {
@@ -990,7 +1001,7 @@ export class InsightsService {
       where: { status: 'ACTIVE' },
     });
     
-    const amountAtRisk = overdueLoans.reduce((sum, loan) => sum + loan.amount, 0);
+    const amountAtRisk = overdueLoans.reduce((sum, loan) => sum + Number(loan.amount), 0);
     const riskScore = totalActiveLoans > 0 ? (overdueLoans.length / totalActiveLoans) * 100 : 0;
     
     return {
@@ -1002,9 +1013,15 @@ export class InsightsService {
   }
 
   private async getOverdueEntities(limit: number) {
-    const overduePayments = await this.prisma.payment.findMany({
+    const overduePayments = await this.prisma.repaymentSchedule.findMany({
       where: {
-        status: 'OVERDUE',
+        dueDate: {
+          lt: new Date(),
+        },
+        isPaid: false,
+        loan: {
+          status: 'ACTIVE',
+        },
       },
       take: limit,
       include: {
