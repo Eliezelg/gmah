@@ -163,6 +163,165 @@
       "underConstructionDesc": "The committee dashboard will be available soon",
       "interfaceDescription": "This interface will allow reviewing requests and voting."
     },
+    "treasuryForecast": {
+      "title": "Treasury Forecasting",
+      "tabs": {
+        "overview": "Overview",
+        "forecast": "Forecast",
+        "scenarios": "Scenarios",
+        "alerts": "Alerts",
+        "reports": "Reports"
+      },
+      "periods": {
+        "30days": "30 days",
+        "60days": "60 days",
+        "90days": "90 days"
+      },
+      "scenarios": {
+        "optimistic": "Optimistic",
+        "realistic": "Realistic",
+        "pessimistic": "Pessimistic"
+      },
+      "metrics": {
+        "currentBalance": "Current Balance",
+        "forecast30": "30-Day Forecast",
+        "forecast60": "60-Day Forecast",
+        "forecast90": "90-Day Forecast",
+        "liquidityRisk": "Liquidity Risk",
+        "confidence": "Confidence",
+        "expectedInflow": "Expected Inflow",
+        "expectedOutflow": "Expected Outflow",
+        "netPosition": "Net Position"
+      },
+      "alerts": {
+        "title": "Active Alerts",
+        "acknowledge": "Acknowledge",
+        "acknowledged": "Acknowledged",
+        "severity": {
+          "info": "Info",
+          "warning": "Warning",
+          "critical": "Critical",
+          "urgent": "Urgent"
+        },
+        "types": {
+          "lowBalance": "Low Balance",
+          "highRisk": "High Risk",
+          "negativeForecast": "Negative Forecast",
+          "loanDefaults": "Loan Defaults"
+        }
+      },
+      "actions": {
+        "generateReport": "Generate Report",
+        "exportCSV": "Export CSV",
+        "refreshData": "Refresh",
+        "configureAlerts": "Configure Alerts"
+      }
+    },
+    "import": {
+      "title": "Data Import",
+      "dashboard": {
+        "title": "Import Dashboard",
+        "quickActions": "Quick Actions",
+        "recentImports": "Recent Imports",
+        "statistics": "Statistics"
+      },
+      "wizard": {
+        "title": "Import Wizard",
+        "steps": {
+          "upload": "Upload",
+          "preview": "Preview",
+          "mapping": "Mapping",
+          "validation": "Validation",
+          "import": "Import"
+        },
+        "upload": {
+          "title": "Upload File",
+          "dragDrop": "Drag and drop your file here",
+          "browse": "or browse",
+          "supportedFormats": "Supported formats: Excel (.xlsx, .xls), CSV (.csv)",
+          "maxSize": "Max size: 10MB"
+        },
+        "preview": {
+          "title": "Data Preview",
+          "rowsFound": "{count} rows found",
+          "columnsDetected": "{count} columns detected",
+          "encoding": "Encoding: {encoding}"
+        },
+        "mapping": {
+          "title": "Column Mapping",
+          "sourceColumn": "Source Column",
+          "targetField": "Target Field",
+          "autoDetected": "Auto-detected",
+          "required": "Required",
+          "optional": "Optional",
+          "ignored": "Ignored",
+          "templates": {
+            "save": "Save Template",
+            "load": "Load Template",
+            "manage": "Manage Templates"
+          }
+        },
+        "validation": {
+          "title": "Data Validation",
+          "checking": "Checking...",
+          "results": "Validation Results",
+          "errors": "{count} errors",
+          "warnings": "{count} warnings",
+          "valid": "{count} valid rows",
+          "fixSuggestions": "Fix Suggestions",
+          "types": {
+            "email": "Invalid email",
+            "phone": "Invalid phone",
+            "duplicate": "Duplicate found",
+            "required": "Required field missing",
+            "format": "Incorrect format",
+            "range": "Value out of range"
+          }
+        },
+        "import": {
+          "title": "Importing",
+          "processing": "Processing data...",
+          "progress": "{current} / {total} rows",
+          "success": "Import successful",
+          "failed": "Import failed",
+          "partial": "Partial import",
+          "rollback": "Rolling back...",
+          "report": {
+            "title": "Import Report",
+            "imported": "{count} rows imported",
+            "skipped": "{count} rows skipped",
+            "failed": "{count} rows failed",
+            "duration": "Duration: {duration}",
+            "download": "Download Report"
+          }
+        }
+      },
+      "types": {
+        "users": "Users",
+        "loans": "Loans",
+        "contributions": "Contributions",
+        "guarantees": "Guarantees",
+        "payments": "Payments"
+      },
+      "status": {
+        "pending": "Pending",
+        "processing": "Processing",
+        "validating": "Validating",
+        "completed": "Completed",
+        "failed": "Failed",
+        "cancelled": "Cancelled"
+      },
+      "actions": {
+        "startImport": "Start Import",
+        "pauseImport": "Pause",
+        "resumeImport": "Resume",
+        "cancelImport": "Cancel",
+        "retryImport": "Retry",
+        "viewDetails": "View Details",
+        "downloadReport": "Download Report",
+        "deleteSession": "Delete Session"
+      }
+    },
     "borrower": {
       "title": "Dashboard",
       "subtitle": "Manage your loans and track your repayments",

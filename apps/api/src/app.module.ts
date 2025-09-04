@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { ScheduleModule } from '@nestjs/schedule';
+import { BullModule } from '@nestjs/bull';
 import { APP_GUARD } from '@nestjs/core';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -23,6 +24,7 @@ import { OrganizationsModule } from './modules/organizations/organizations.modul
 import { TenantsModule } from './modules/tenants/tenants.module';
 import { DomainsModule } from './modules/domains/domains.module';
 import { TreasuryForecastModule } from './treasury-forecast/treasury-forecast.module';
+import { ImportModule } from './import/import.module';
 
 @Module({
   imports: [
@@ -35,6 +37,13 @@ import { TreasuryForecastModule } from './treasury-forecast/treasury-forecast.mo
       limit: 100,
     }]),
     ScheduleModule.forRoot(),
+    BullModule.forRoot({
+      redis: {
+        host: process.env.REDIS_HOST || 'localhost',
+        port: parseInt(process.env.REDIS_PORT || '6379'),
+        password: process.env.REDIS_PASSWORD,
+      },
+    }),
     PrismaModule,
     RedisCacheModule,
     AuthModule,
@@ -51,6 +60,7 @@ import { TreasuryForecastModule } from './treasury-forecast/treasury-forecast.mo
     TenantsModule,
     DomainsModule,
     TreasuryForecastModule,
+    ImportModule,
   ],
   controllers: [AppController],
   providers: [

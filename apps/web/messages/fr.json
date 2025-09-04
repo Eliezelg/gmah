@@ -167,6 +167,165 @@
       "OTHER": "Autre"
     }
   },
+  "treasuryForecast": {
+    "title": "Prévisions de Trésorerie",
+    "tabs": {
+      "overview": "Vue d'ensemble",
+      "forecast": "Prévisions",
+      "scenarios": "Scénarios",
+      "alerts": "Alertes",
+      "reports": "Rapports"
+    },
+    "periods": {
+      "30days": "30 jours",
+      "60days": "60 jours",
+      "90days": "90 jours"
+    },
+    "scenarios": {
+      "optimistic": "Optimiste",
+      "realistic": "Réaliste",
+      "pessimistic": "Pessimiste"
+    },
+    "metrics": {
+      "currentBalance": "Solde actuel",
+      "forecast30": "Prévision 30j",
+      "forecast60": "Prévision 60j",
+      "forecast90": "Prévision 90j",
+      "liquidityRisk": "Risque de liquidité",
+      "confidence": "Confiance",
+      "expectedInflow": "Entrées prévues",
+      "expectedOutflow": "Sorties prévues",
+      "netPosition": "Position nette"
+    },
+    "alerts": {
+      "title": "Alertes actives",
+      "acknowledge": "Acquitter",
+      "acknowledged": "Acquittée",
+      "severity": {
+        "info": "Information",
+        "warning": "Avertissement",
+        "critical": "Critique",
+        "urgent": "Urgent"
+      },
+      "types": {
+        "lowBalance": "Solde faible",
+        "highRisk": "Risque élevé",
+        "negativeForecast": "Prévision négative",
+        "loanDefaults": "Défauts de prêts"
+      }
+    },
+    "actions": {
+      "generateReport": "Générer rapport",
+      "exportCSV": "Exporter CSV",
+      "refreshData": "Actualiser",
+      "configureAlerts": "Configurer alertes"
+    }
+  },
+  "import": {
+    "title": "Import de Données",
+    "dashboard": {
+      "title": "Tableau de bord Import",
+      "quickActions": "Actions rapides",
+      "recentImports": "Imports récents",
+      "statistics": "Statistiques"
+    },
+    "wizard": {
+      "title": "Assistant d'Import",
+      "steps": {
+        "upload": "Chargement",
+        "preview": "Aperçu",
+        "mapping": "Mapping",
+        "validation": "Validation",
+        "import": "Import"
+      },
+      "upload": {
+        "title": "Charger un fichier",
+        "dragDrop": "Glissez-déposez votre fichier ici",
+        "browse": "ou parcourir",
+        "supportedFormats": "Formats supportés: Excel (.xlsx, .xls), CSV (.csv)",
+        "maxSize": "Taille max: 10MB"
+      },
+      "preview": {
+        "title": "Aperçu des données",
+        "rowsFound": "{count} lignes trouvées",
+        "columnsDetected": "{count} colonnes détectées",
+        "encoding": "Encodage: {encoding}"
+      },
+      "mapping": {
+        "title": "Mapping des colonnes",
+        "sourceColumn": "Colonne source",
+        "targetField": "Champ cible",
+        "autoDetected": "Détection automatique",
+        "required": "Requis",
+        "optional": "Optionnel",
+        "ignored": "Ignoré",
+        "templates": {
+          "save": "Sauvegarder template",
+          "load": "Charger template",
+          "manage": "Gérer templates"
+        }
+      },
+      "validation": {
+        "title": "Validation des données",
+        "checking": "Vérification en cours...",
+        "results": "Résultats de validation",
+        "errors": "{count} erreurs",
+        "warnings": "{count} avertissements",
+        "valid": "{count} lignes valides",
+        "fixSuggestions": "Suggestions de correction",
+        "types": {
+          "email": "Email invalide",
+          "phone": "Téléphone invalide",
+          "duplicate": "Doublon détecté",
+          "required": "Champ requis manquant",
+          "format": "Format incorrect",
+          "range": "Valeur hors limites"
+        }
+      },
+      "import": {
+        "title": "Import en cours",
+        "processing": "Traitement des données...",
+        "progress": "{current} / {total} lignes",
+        "success": "Import réussi",
+        "failed": "Import échoué",
+        "partial": "Import partiel",
+        "rollback": "Annulation en cours...",
+        "report": {
+          "title": "Rapport d'import",
+          "imported": "{count} lignes importées",
+          "skipped": "{count} lignes ignorées",
+          "failed": "{count} lignes en erreur",
+          "duration": "Durée: {duration}",
+          "download": "Télécharger rapport"
+        }
+      }
+    },
+    "types": {
+      "users": "Utilisateurs",
+      "loans": "Prêts",
+      "contributions": "Contributions",
+      "guarantees": "Garanties",
+      "payments": "Paiements"
+    },
+    "status": {
+      "pending": "En attente",
+      "processing": "En cours",
+      "validating": "Validation",
+      "completed": "Terminé",
+      "failed": "Échoué",
+      "cancelled": "Annulé"
+    },
+    "actions": {
+      "startImport": "Démarrer import",
+      "pauseImport": "Mettre en pause",
+      "resumeImport": "Reprendre",
+      "cancelImport": "Annuler",
+      "retryImport": "Réessayer",
+      "viewDetails": "Voir détails",
+      "downloadReport": "Télécharger rapport",
+      "deleteSession": "Supprimer session"
+    }
+  },
   "dashboard": {
     "welcome": "Bienvenue",
     "overview": "Vue d'ensemble",

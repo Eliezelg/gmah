@@ -122,6 +122,8 @@ model User {
   sessions          Session[]
   uploadedDocuments Document[]       @relation("UploadedDocuments")
   verifiedDocuments Document[]       @relation("VerifiedDocuments")
+  importSessions    ImportSession[]  @relation("ImportSessions")
+  createdTemplates  ImportTemplate[] @relation("CreatedTemplates")
   
   createdAt         DateTime         @default(now())
   updatedAt         DateTime         @updatedAt
@@ -684,4 +686,166 @@ model TreasuryFlow {
   @@index([paymentId])
   @@index([contributionId])
   @@index([forecastId])
+}
+
+// Import System Models
+enum ImportStatus {
+  PENDING
+  PARSING
+  MAPPED
+  VALIDATING
+  IMPORTING
+  COMPLETED
+  FAILED
+  CANCELLED
+}
+
+enum ImportType {
+  USERS
+  LOANS
+  CONTRIBUTIONS
+  GUARANTEES
+  PAYMENTS
+}
+
+enum ImportFileType {
+  CSV
+  EXCEL
+}
+
+enum ValidationSeverity {
+  ERROR
+  WARNING
+  INFO
+}
+
+model ImportSession {
+  id                String           @id @default(cuid())
+  
+  // Session details
+  sessionNumber     String           @unique
+  userId            String
+  user              User             @relation("ImportSessions", fields: [userId], references: [id])
+  
+  // File information
+  fileName          String
+  originalName      String
+  fileSize          Int
+  fileType          ImportFileType
+  filePath          String
+  fileUrl           String?
+  
+  // Import configuration
+  importType        ImportType
+  status            ImportStatus     @default(PENDING)
+  hasHeaders        Boolean          @default(true)
+  delimiter         String?          @default(",")
+  encoding          String           @default("utf8")
+  
+  // Processing info
+  totalRows         Int              @default(0)
+  processedRows     Int              @default(0)
+  successRows       Int              @default(0)
+  failedRows        Int              @default(0)
+  skippedRows       Int              @default(0)
+  
+  // Timing
+  startedAt         DateTime?
+  completedAt       DateTime?
+  processingTime    Int?             // in milliseconds
+  
+  // Configuration and results
+  columnMapping     Json?            // Column to field mapping
+  validationRules   Json?            // Applied validation rules
+  errorReport       Json?            // Detailed error report
+  successReport     Json?            // Success summary
+  
+  // Rollback capability
+  canRollback       Boolean          @default(false)
+  rollbackData      Json?            // Data needed for rollback
+  rolledBackAt      DateTime?
+  rolledBackBy      String?
+  
+  // Relations
+  templateId        String?
+  template          ImportTemplate?  @relation(fields: [templateId], references: [id])
+  validations       ImportValidation[]
+  
+  // Metadata
+  metadata          Json?
+  
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  
+  @@index([userId])
+  @@index([status])
+  @@index([importType])
+  @@index([createdAt])
+  @@index([sessionNumber])
+}
+
+model ImportTemplate {
+  id                String           @id @default(cuid())
+  
+  // Template details
+  name              String
+  description       String?
+  importType        ImportType
+  isDefault         Boolean          @default(false)
+  isActive          Boolean          @default(true)
+  
+  // Template configuration
+  columnMapping     Json             // Default column to field mapping
+  validationRules   Json?            // Default validation rules
+  transformRules    Json?            // Data transformation rules
+  
+  // Metadata
+  usageCount        Int              @default(0)
+  lastUsedAt        DateTime?
+  
+  // Creator
+  createdBy         String
+  creator           User             @relation("CreatedTemplates", fields: [createdBy], references: [id])
+  
+  // Relations
+  sessions          ImportSession[]
+  
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  
+  @@index([importType])
+  @@index([isActive])
+  @@index([createdBy])
+}
+
+model ImportValidation {
+  id                String           @id @default(cuid())
+  sessionId         String
+  session           ImportSession    @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  
+  // Validation details
+  rowNumber         Int
+  columnName        String?
+  fieldName         String?
+  severity          ValidationSeverity
+  
+  // Error information
+  errorCode         String
+  errorMessage      String
+  expectedValue     String?
+  actualValue       String?
+  
+  // Suggestions
+  suggestedFix      String?
+  canAutoFix        Boolean          @default(false)
+  wasAutoFixed      Boolean          @default(false)
+  
+  // Context
+  rowData           Json?            // Full row data for context
+  
+  createdAt         DateTime         @default(now())
+  
+  @@index([sessionId])
+  @@index([severity])
+  @@index([errorCode])
 }
