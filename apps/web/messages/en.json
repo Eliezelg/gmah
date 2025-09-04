@@ -782,5 +782,242 @@
   },
   "languageSelector": {
     "selectLanguage": "Select language"
+  },
+  "withdrawals": {
+    "title": "Withdrawal Requests",
+    "subtitle": "Manage depositor withdrawal requests",
+    "newRequest": "New request",
+    "myWithdrawals": "My withdrawal requests",
+    "allWithdrawals": "All requests",
+    "pendingApproval": "Pending approval",
+    "approvedRequests": "Approved requests",
+    "form": {
+      "title": "Withdrawal Request",
+      "deposit": "Deposit",
+      "selectDeposit": "Select a deposit",
+      "availableBalance": "Available balance",
+      "amount": "Amount to withdraw",
+      "amountPlaceholder": "0.00",
+      "reason": "Reason for withdrawal",
+      "reasonPlaceholder": "Describe the reason for your withdrawal request...",
+      "reasonCategory": "Category",
+      "urgency": "Urgency",
+      "plannedDate": "Desired date",
+      "paymentMethod": "Payment method",
+      "bankDetails": "Bank details",
+      "bankName": "Bank name",
+      "accountNumber": "Account number",
+      "routingNumber": "Routing number",
+      "accountHolderName": "Account holder name",
+      "submit": "Submit request",
+      "cancel": "Cancel",
+      "validation": {
+        "depositRequired": "Please select a deposit",
+        "amountRequired": "Amount is required",
+        "amountMin": "Minimum amount is 1 ILS",
+        "amountExceedsBalance": "Amount exceeds available balance",
+        "reasonRequired": "Reason is required",
+        "reasonMinLength": "Reason must be at least 10 characters long",
+        "bankDetailsRequired": "Bank details are required for transfers"
+      }
+    },
+    "statuses": {
+      "PENDING": "Pending",
+      "UNDER_REVIEW": "Under review",
+      "APPROVED": "Approved",
+      "REJECTED": "Rejected",
+      "PROCESSING": "Processing",
+      "COMPLETED": "Completed",
+      "CANCELLED": "Cancelled",
+      "FAILED": "Failed"
+    },
+    "urgencyLevels": {
+      "LOW": "Low",
+      "NORMAL": "Normal",
+      "HIGH": "High",
+      "URGENT": "Urgent"
+    },
+    "reasonCategories": {
+      "EMERGENCY": "Emergency",
+      "PERSONAL": "Personal",
+      "BUSINESS": "Business",
+      "OTHER": "Other"
+    },
+    "approvalModes": {
+      "AUTOMATIC": "Automatic",
+      "MANUAL": "Manual",
+      "COMMITTEE": "Committee"
+    },
+    "list": {
+      "requestNumber": "Request #",
+      "deposit": "Deposit",
+      "amount": "Amount",
+      "requestDate": "Request date",
+      "plannedDate": "Desired date",
+      "status": "Status",
+      "urgency": "Urgency",
+      "actions": "Actions",
+      "viewDetails": "View details",
+      "approve": "Approve",
+      "reject": "Reject",
+      "execute": "Execute",
+      "cancel": "Cancel",
+      "edit": "Edit",
+      "noRequests": "No withdrawal requests",
+      "noRequestsDesc": "You haven't made any withdrawal requests yet"
+    },
+    "details": {
+      "title": "Withdrawal Request Details",
+      "generalInfo": "General information",
+      "requestNumber": "Request number",
+      "depositor": "Depositor",
+      "deposit": "Related deposit",
+      "amount": "Requested amount",
+      "reason": "Reason",
+      "category": "Category",
+      "urgency": "Urgency level",
+      "requestDate": "Request date",
+      "plannedDate": "Desired date",
+      "status": "Current status",
+      "approvalInfo": "Approval information",
+      "approvalMode": "Approval mode",
+      "approvedBy": "Approved by",
+      "approvalDate": "Approval date",
+      "approvalComments": "Approval comments",
+      "rejectedBy": "Rejected by",
+      "rejectionDate": "Rejection date",
+      "rejectionReason": "Rejection reason",
+      "paymentInfo": "Payment information",
+      "paymentMethod": "Payment method",
+      "bankDetails": "Bank details",
+      "transactionRef": "Transaction reference",
+      "processingDate": "Processing date",
+      "completedDate": "Completion date",
+      "treasuryImpact": "Treasury impact",
+      "documents": "Supporting documents",
+      "timeline": "Timeline"
+    },
+    "approval": {
+      "approveTitle": "Approve Request",
+      "rejectTitle": "Reject Request",
+      "comments": "Comments",
+      "commentsPlaceholder": "Add comments about this decision...",
+      "rejectionReason": "Rejection reason",
+      "rejectionPlaceholder": "Explain why this request is being rejected...",
+      "updatePaymentMethod": "Update payment method",
+      "updateBankDetails": "Update bank details",
+      "confirmApprove": "Confirm approval",
+      "confirmReject": "Confirm rejection",
+      "approveButton": "Approve",
+      "rejectButton": "Reject"
+    },
+    "dashboard": {
+      "title": "Withdrawals Dashboard",
+      "stats": {
+        "totalRequests": "Total requests",
+        "pendingApproval": "Pending",
+        "approved": "Approved",
+        "completed": "Completed",
+        "totalAmount": "Total amount",
+        "avgProcessingTime": "Avg processing time"
+      },
+      "quickActions": {
+        "title": "Quick actions",
+        "newRequest": "New request",
+        "reviewPending": "Review requests",
+        "viewReports": "View reports",
+        "manageLimits": "Manage limits"
+      },
+      "recentActivity": {
+        "title": "Recent activity",
+        "noActivity": "No recent activity"
+      },
+      "upcomingWithdrawals": {
+        "title": "Upcoming withdrawals",
+        "noUpcoming": "No upcoming withdrawals"
+      }
+    },
+    "admin": {
+      "title": "Withdrawal Management - Administration",
+      "queue": {
+        "title": "Approval queue",
+        "subtitle": "Requests pending approval",
+        "filters": {
+          "all": "All",
+          "pending": "Pending",
+          "urgent": "Urgent",
+          "highAmount": "High amounts"
+        },
+        "bulkActions": "Bulk actions",
+        "selectAll": "Select all",
+        "approveSelected": "Approve selected",
+        "bulkApprove": "Bulk approval"
+      },
+      "settings": {
+        "title": "Withdrawal Settings",
+        "autoApprovalThreshold": "Auto-approval threshold",
+        "manualApprovalThreshold": "Manual approval threshold",
+        "committeeApprovalThreshold": "Committee approval threshold",
+        "maxDailyAmount": "Maximum daily amount",
+        "requireDocuments": "Require supporting documents",
+        "notificationSettings": "Notification settings"
+      }
+    },
+    "treasury": {
+      "impact": {
+        "title": "Treasury Impact",
+        "currentPeriod": "Current period",
+        "projectedOutflow": "Projected outflow",
+        "riskLevel": "Risk level",
+        "recommendations": "Recommendations",
+        "byStatus": {
+          "pending": "Pending requests",
+          "approved": "Approved requests",
+          "processing": "Processing requests"
+        },
+        "byUrgency": {
+          "urgent": "Urgent",
+          "high": "High priority",
+          "normal": "Normal",
+          "low": "Low priority"
+        }
+      },
+      "cashFlow": {
+        "title": "Cash Flow Impact",
+        "daily": "Daily",
+        "weekly": "Weekly",
+        "monthly": "Monthly",
+        "projected": "Projected",
+        "actual": "Actual"
+      }
+    },
+    "notifications": {
+      "requestCreated": "Withdrawal request created",
+      "requestApproved": "Withdrawal request approved",
+      "requestRejected": "Withdrawal request rejected",
+      "requestProcessing": "Withdrawal processing",
+      "requestCompleted": "Withdrawal completed",
+      "lowBalance": "Insufficient balance for withdrawal",
+      "urgentRequest": "Urgent withdrawal request requires attention"
+    },
+    "messages": {
+      "requestSubmitted": "Withdrawal request submitted successfully",
+      "requestUpdated": "Withdrawal request updated",
+      "requestApproved": "Withdrawal request approved",
+      "requestRejected": "Withdrawal request rejected",
+      "requestExecuted": "Withdrawal processing initiated",
+      "insufficientBalance": "Insufficient balance",
+      "depositNotFound": "Deposit not found",
+      "accessDenied": "Access denied to this request",
+      "cannotModify": "Cannot modify this request",
+      "executionFailed": "Withdrawal execution failed"
+    },
+    "errors": {
+      "loadingFailed": "Error loading data",
+      "submissionFailed": "Error submitting request",
+      "approvalFailed": "Error approving request",
+      "rejectionFailed": "Error rejecting request",
+      "executionFailed": "Error executing withdrawal"
+    }
   }
 }

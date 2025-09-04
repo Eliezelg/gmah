@@ -125,6 +125,12 @@ model User {
   importSessions    ImportSession[]  @relation("ImportSessions")
   createdTemplates  ImportTemplate[] @relation("CreatedTemplates")
   
+  // Depositor relations
+  deposits          Deposit[]        @relation("DepositorDeposits")
+  withdrawalRequests WithdrawalRequest[] @relation("DepositorWithdrawals")
+  approvedWithdrawals WithdrawalRequest[] @relation("ApprovedWithdrawals")
+  rejectedWithdrawals WithdrawalRequest[] @relation("RejectedWithdrawals")
+  
   createdAt         DateTime         @default(now())
   updatedAt         DateTime         @updatedAt
   
@@ -379,6 +385,10 @@ model Document {
   loan              Loan?            @relation("LoanDocuments", fields: [loanId], references: [id])
   guaranteeId       String?
   guarantee         Guarantee?       @relation("GuaranteeDocuments", fields: [guaranteeId], references: [id])
+  depositId         String?
+  deposit           Deposit?         @relation("DepositDocuments", fields: [depositId], references: [id])
+  withdrawalId      String?
+  withdrawal        WithdrawalRequest? @relation("WithdrawalDocuments", fields: [withdrawalId], references: [id])
   
   type              String           // ID_CARD, PAY_SLIP, BANK_STATEMENT, CONTRACT, etc.
   name              String
@@ -415,6 +425,8 @@ model Document {
   @@index([profileId])
   @@index([loanId])
   @@index([guaranteeId])
+  @@index([depositId])
+  @@index([withdrawalId])
   @@index([type])
   @@index([status])
 }
@@ -431,6 +443,8 @@ model Notification {
   // Related entity
   loanId            String?
   loan              Loan?            @relation("LoanNotifications", fields: [loanId], references: [id])
+  withdrawalId      String?
+  withdrawal        WithdrawalRequest? @relation("WithdrawalNotifications", fields: [withdrawalId], references: [id])
   
   // Status
   isRead            Boolean          @default(false)
@@ -479,6 +493,8 @@ model AuditLog {
   // Related entities
   loanId            String?
   loan              Loan?            @relation("LoanAuditLogs", fields: [loanId], references: [id])
+  withdrawalId      String?
+  withdrawal        WithdrawalRequest? @relation("WithdrawalAuditLogs", fields: [withdrawalId], references: [id])
   
   // Details
   oldValues         Json?
@@ -551,6 +567,7 @@ enum TreasuryFlowCategory {
   LOAN_DISBURSEMENT
   LOAN_REPAYMENT
   CONTRIBUTION
+  DEPOSIT_PLACEMENT
   DEPOSIT_WITHDRAWAL
   OPERATIONAL_EXPENSE
   INTEREST_EARNED
@@ -662,6 +679,10 @@ model TreasuryFlow {
   payment           Payment?         @relation(fields: [paymentId], references: [id])
   contributionId    String?
   contribution      Contribution?    @relation(fields: [contributionId], references: [id])
+  depositId         String?
+  deposit           Deposit?         @relation("DepositFlows", fields: [depositId], references: [id])
+  withdrawalId      String?
+  withdrawal        WithdrawalRequest? @relation("WithdrawalFlows", fields: [withdrawalId], references: [id])
   
   // Forecast relation
   forecastId        String?
@@ -685,6 +706,8 @@ model TreasuryFlow {
   @@index([loanId])
   @@index([paymentId])
   @@index([contributionId])
+  @@index([depositId])
+  @@index([withdrawalId])
   @@index([forecastId])
 }
 
@@ -848,4 +871,128 @@ model ImportValidation {
   @@index([sessionId])
   @@index([severity])
   @@index([errorCode])
+}
+
+// Depositor Withdrawal Management Models
+enum WithdrawalStatus {
+  PENDING
+  UNDER_REVIEW
+  APPROVED
+  REJECTED
+  PROCESSING
+  COMPLETED
+  CANCELLED
+  FAILED
+}
+
+enum ApprovalMode {
+  AUTOMATIC
+  MANUAL
+  COMMITTEE
+}
+
+model Deposit {
+  id                String           @id @default(cuid())
+  depositNumber     String           @unique
+  depositorId       String
+  depositor         User             @relation("DepositorDeposits", fields: [depositorId], references: [id])
+  
+  // Deposit details
+  amount            Decimal          @db.Money
+  currency          String           @default("ILS")
+  type              String           // TERM, DEMAND, SAVINGS, EMERGENCY_FUND
+  
+  // Dates
+  depositDate       DateTime         @default(now())
+  maturityDate      DateTime?        // For term deposits
+  
+  // Interest and terms
+  interestRate      Float?           @default(0) // Should be 0 for Halakhic compliance
+  term              Int?             // Term in months
+  
+  // Status
+  isActive          Boolean          @default(true)
+  currentBalance    Decimal          @db.Money
+  
+  // Relations
+  withdrawalRequests WithdrawalRequest[]
+  treasuryFlows     TreasuryFlow[]   @relation("DepositFlows")
+  documents         Document[]       @relation("DepositDocuments")
+  
+  // Metadata
+  description       String?
+  metadata          Json?
+  
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  
+  @@index([depositorId])
+  @@index([depositNumber])
+  @@index([isActive])
+  @@index([depositDate])
+}
+
+model WithdrawalRequest {
+  id                String           @id @default(cuid())
+  requestNumber     String           @unique
+  depositId         String
+  deposit           Deposit          @relation(fields: [depositId], references: [id])
+  depositorId       String
+  depositor         User             @relation("DepositorWithdrawals", fields: [depositorId], references: [id])
+  
+  // Request details
+  amount            Decimal          @db.Money
+  reason            String           @db.Text
+  reasonCategory    String?          // EMERGENCY, PERSONAL, BUSINESS, OTHER
+  urgency           String           @default("NORMAL") // LOW, NORMAL, HIGH, URGENT
+  
+  // Dates
+  requestDate       DateTime         @default(now())
+  plannedDate       DateTime?        // When the depositor needs the funds
+  approvalDate      DateTime?
+  rejectionDate     DateTime?
+  processingDate    DateTime?
+  completedDate     DateTime?
+  
+  // Status and approval
+  status            WithdrawalStatus @default(PENDING)
+  approvalMode      ApprovalMode     @default(MANUAL)
+  
+  // Approval details
+  approvedBy        String?          // ID of the approver
+  approver          User?            @relation("ApprovedWithdrawals", fields: [approvedBy], references: [id])
+  approvalComments  String?          @db.Text
+  rejectedBy        String?          // ID of the rejecter
+  rejecter          User?            @relation("RejectedWithdrawals", fields: [rejectedBy], references: [id])
+  rejectionReason   String?          @db.Text
+  
+  // Payment details
+  paymentMethod     PaymentMethod?
+  bankDetails       Json?            // Bank account details for transfer
+  transactionRef    String?          // Reference when processed
+  
+  // Treasury impact
+  treasuryImpact    Json?            // Impact analysis on cash flow
+  requiresApproval  Boolean          @default(true)
+  autoApproved      Boolean          @default(false)
+  
+  // Relations
+  documents         Document[]       @relation("WithdrawalDocuments")
+  notifications     Notification[]   @relation("WithdrawalNotifications")
+  auditLogs         AuditLog[]       @relation("WithdrawalAuditLogs")
+  treasuryFlows     TreasuryFlow[]   @relation("WithdrawalFlows")
+  
+  // Metadata
+  metadata          Json?
+  
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  
+  @@index([depositId])
+  @@index([depositorId])
+  @@index([status])
+  @@index([requestNumber])
+  @@index([requestDate])
+  @@index([plannedDate])
+  @@index([approvalMode])
 }

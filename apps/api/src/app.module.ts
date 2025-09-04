@@ -25,6 +25,8 @@ import { TenantsModule } from './modules/tenants/tenants.module';
 import { DomainsModule } from './modules/domains/domains.module';
 import { TreasuryForecastModule } from './treasury-forecast/treasury-forecast.module';
 import { ImportModule } from './import/import.module';
+import { WithdrawalsModule } from './withdrawals/withdrawals.module';
+import { DepositsModule } from './deposits/deposits.module';
 
 @Module({
   imports: [
@@ -61,6 +63,8 @@ import { ImportModule } from './import/import.module';
     DomainsModule,
     TreasuryForecastModule,
     ImportModule,
+    WithdrawalsModule,
+    DepositsModule,
   ],
   controllers: [AppController],
   providers: [

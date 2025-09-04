@@ -814,5 +814,242 @@
   },
   "languageSelector": {
     "selectLanguage": "Sélectionner la langue"
+  },
+  "withdrawals": {
+    "title": "Demandes de Retrait",
+    "subtitle": "Gérer les demandes de retrait des dépositaires",
+    "newRequest": "Nouvelle demande",
+    "myWithdrawals": "Mes demandes de retrait",
+    "allWithdrawals": "Toutes les demandes",
+    "pendingApproval": "En attente d'approbation",
+    "approvedRequests": "Demandes approuvées",
+    "form": {
+      "title": "Demande de Retrait",
+      "deposit": "Dépôt",
+      "selectDeposit": "Sélectionner un dépôt",
+      "availableBalance": "Solde disponible",
+      "amount": "Montant à retirer",
+      "amountPlaceholder": "0.00",
+      "reason": "Motif du retrait",
+      "reasonPlaceholder": "Décrivez la raison de votre demande de retrait...",
+      "reasonCategory": "Catégorie",
+      "urgency": "Urgence",
+      "plannedDate": "Date souhaitée",
+      "paymentMethod": "Mode de paiement",
+      "bankDetails": "Coordonnées bancaires",
+      "bankName": "Nom de la banque",
+      "accountNumber": "Numéro de compte",
+      "routingNumber": "Code de routage",
+      "accountHolderName": "Nom du titulaire du compte",
+      "submit": "Soumettre la demande",
+      "cancel": "Annuler",
+      "validation": {
+        "depositRequired": "Veuillez sélectionner un dépôt",
+        "amountRequired": "Le montant est requis",
+        "amountMin": "Le montant minimum est de 1 ILS",
+        "amountExceedsBalance": "Le montant dépasse le solde disponible",
+        "reasonRequired": "Le motif est requis",
+        "reasonMinLength": "Le motif doit contenir au moins 10 caractères",
+        "bankDetailsRequired": "Les coordonnées bancaires sont requises pour les virements"
+      }
+    },
+    "statuses": {
+      "PENDING": "En attente",
+      "UNDER_REVIEW": "En cours d'examen",
+      "APPROVED": "Approuvé",
+      "REJECTED": "Rejeté",
+      "PROCESSING": "En traitement",
+      "COMPLETED": "Terminé",
+      "CANCELLED": "Annulé",
+      "FAILED": "Échoué"
+    },
+    "urgencyLevels": {
+      "LOW": "Faible",
+      "NORMAL": "Normal",
+      "HIGH": "Élevé",
+      "URGENT": "Urgent"
+    },
+    "reasonCategories": {
+      "EMERGENCY": "Urgence",
+      "PERSONAL": "Personnel",
+      "BUSINESS": "Professionnel",
+      "OTHER": "Autre"
+    },
+    "approvalModes": {
+      "AUTOMATIC": "Automatique",
+      "MANUAL": "Manuel",
+      "COMMITTEE": "Comité"
+    },
+    "list": {
+      "requestNumber": "N° de demande",
+      "deposit": "Dépôt",
+      "amount": "Montant",
+      "requestDate": "Date de demande",
+      "plannedDate": "Date souhaitée",
+      "status": "Statut",
+      "urgency": "Urgence",
+      "actions": "Actions",
+      "viewDetails": "Voir détails",
+      "approve": "Approuver",
+      "reject": "Rejeter",
+      "execute": "Exécuter",
+      "cancel": "Annuler",
+      "edit": "Modifier",
+      "noRequests": "Aucune demande de retrait",
+      "noRequestsDesc": "Vous n'avez pas encore fait de demande de retrait"
+    },
+    "details": {
+      "title": "Détails de la Demande de Retrait",
+      "generalInfo": "Informations générales",
+      "requestNumber": "Numéro de demande",
+      "depositor": "Dépositaire",
+      "deposit": "Dépôt concerné",
+      "amount": "Montant demandé",
+      "reason": "Motif",
+      "category": "Catégorie",
+      "urgency": "Niveau d'urgence",
+      "requestDate": "Date de demande",
+      "plannedDate": "Date souhaitée",
+      "status": "Statut actuel",
+      "approvalInfo": "Informations d'approbation",
+      "approvalMode": "Mode d'approbation",
+      "approvedBy": "Approuvé par",
+      "approvalDate": "Date d'approbation",
+      "approvalComments": "Commentaires d'approbation",
+      "rejectedBy": "Rejeté par",
+      "rejectionDate": "Date de rejet",
+      "rejectionReason": "Motif de rejet",
+      "paymentInfo": "Informations de paiement",
+      "paymentMethod": "Mode de paiement",
+      "bankDetails": "Coordonnées bancaires",
+      "transactionRef": "Référence de transaction",
+      "processingDate": "Date de traitement",
+      "completedDate": "Date de finalisation",
+      "treasuryImpact": "Impact sur la trésorerie",
+      "documents": "Documents justificatifs",
+      "timeline": "Historique"
+    },
+    "approval": {
+      "approveTitle": "Approuver la Demande",
+      "rejectTitle": "Rejeter la Demande",
+      "comments": "Commentaires",
+      "commentsPlaceholder": "Ajoutez des commentaires sur cette décision...",
+      "rejectionReason": "Motif de rejet",
+      "rejectionPlaceholder": "Expliquez pourquoi cette demande est rejetée...",
+      "updatePaymentMethod": "Modifier le mode de paiement",
+      "updateBankDetails": "Modifier les coordonnées bancaires",
+      "confirmApprove": "Confirmer l'approbation",
+      "confirmReject": "Confirmer le rejet",
+      "approveButton": "Approuver",
+      "rejectButton": "Rejeter"
+    },
+    "dashboard": {
+      "title": "Tableau de bord - Retraits",
+      "stats": {
+        "totalRequests": "Total des demandes",
+        "pendingApproval": "En attente",
+        "approved": "Approuvées",
+        "completed": "Terminées",
+        "totalAmount": "Montant total",
+        "avgProcessingTime": "Temps moyen de traitement"
+      },
+      "quickActions": {
+        "title": "Actions rapides",
+        "newRequest": "Nouvelle demande",
+        "reviewPending": "Examiner les demandes",
+        "viewReports": "Voir les rapports",
+        "manageLimits": "Gérer les limites"
+      },
+      "recentActivity": {
+        "title": "Activité récente",
+        "noActivity": "Aucune activité récente"
+      },
+      "upcomingWithdrawals": {
+        "title": "Retraits prévus",
+        "noUpcoming": "Aucun retrait prévu"
+      }
+    },
+    "admin": {
+      "title": "Gestion des Retraits - Administration",
+      "queue": {
+        "title": "Queue d'approbation",
+        "subtitle": "Demandes en attente d'approbation",
+        "filters": {
+          "all": "Toutes",
+          "pending": "En attente",
+          "urgent": "Urgentes",
+          "highAmount": "Montants élevés"
+        },
+        "bulkActions": "Actions groupées",
+        "selectAll": "Sélectionner tout",
+        "approveSelected": "Approuver la sélection",
+        "bulkApprove": "Approbation groupée"
+      },
+      "settings": {
+        "title": "Paramètres des Retraits",
+        "autoApprovalThreshold": "Seuil d'approbation automatique",
+        "manualApprovalThreshold": "Seuil d'approbation manuelle",
+        "committeeApprovalThreshold": "Seuil d'approbation par le comité",
+        "maxDailyAmount": "Montant quotidien maximum",
+        "requireDocuments": "Exiger des documents justificatifs",
+        "notificationSettings": "Paramètres de notification"
+      }
+    },
+    "treasury": {
+      "impact": {
+        "title": "Impact sur la Trésorerie",
+        "currentPeriod": "Période actuelle",
+        "projectedOutflow": "Sortie projetée",
+        "riskLevel": "Niveau de risque",
+        "recommendations": "Recommandations",
+        "byStatus": {
+          "pending": "Demandes en attente",
+          "approved": "Demandes approuvées",
+          "processing": "En cours de traitement"
+        },
+        "byUrgency": {
+          "urgent": "Urgentes",
+          "high": "Priorité élevée",
+          "normal": "Normales",
+          "low": "Faible priorité"
+        }
+      },
+      "cashFlow": {
+        "title": "Impact sur les Flux de Trésorerie",
+        "daily": "Quotidien",
+        "weekly": "Hebdomadaire",
+        "monthly": "Mensuel",
+        "projected": "Projeté",
+        "actual": "Réel"
+      }
+    },
+    "notifications": {
+      "requestCreated": "Demande de retrait créée",
+      "requestApproved": "Demande de retrait approuvée",
+      "requestRejected": "Demande de retrait rejetée",
+      "requestProcessing": "Retrait en cours de traitement",
+      "requestCompleted": "Retrait terminé",
+      "lowBalance": "Solde insuffisant pour le retrait",
+      "urgentRequest": "Demande de retrait urgente nécessite attention"
+    },
+    "messages": {
+      "requestSubmitted": "Demande de retrait soumise avec succès",
+      "requestUpdated": "Demande de retrait mise à jour",
+      "requestApproved": "Demande de retrait approuvée",
+      "requestRejected": "Demande de retrait rejetée",
+      "requestExecuted": "Traitement du retrait initié",
+      "insufficientBalance": "Solde insuffisant",
+      "depositNotFound": "Dépôt non trouvé",
+      "accessDenied": "Accès refusé à cette demande",
+      "cannotModify": "Impossible de modifier cette demande",
+      "executionFailed": "Échec de l'exécution du retrait"
+    },
+    "errors": {
+      "loadingFailed": "Erreur lors du chargement des données",
+      "submissionFailed": "Erreur lors de la soumission",
+      "approvalFailed": "Erreur lors de l'approbation",
+      "rejectionFailed": "Erreur lors du rejet",
+      "executionFailed": "Erreur lors de l'exécution"
+    }
   }
 }
