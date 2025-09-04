@@ -136,6 +136,9 @@ model User {
   createdCalendarEvents CalendarEvent[] @relation("CreatedCalendarEvents")
   updatedCalendarEvents CalendarEvent[] @relation("UpdatedCalendarEvents")
   
+  // Dashboard relations
+  dashboards        UserDashboard[]
+  
   createdAt         DateTime         @default(now())
   updatedAt         DateTime         @updatedAt
   
@@ -1123,4 +1126,93 @@ model CalendarEvent {
   @@index([isHebrewDate])
   @@index([isSystemGenerated])
   @@index([createdBy])
+}
+
+// Dashboard models
+model UserDashboard {
+  id                String           @id @default(cuid())
+  userId            String
+  user              User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  name              String
+  description       String?
+  theme             String           @default("light") // light, dark, auto
+  
+  // Layout configuration
+  layout            Json             // Grid layout configuration
+  
+  // Dashboard widgets
+  widgets           DashboardWidget[]
+  
+  // Preferences
+  preferences       Json             // autoRefresh, refreshInterval, compactMode, etc.
+  
+  // Filters
+  filters           Json?            // Default filters for data
+  
+  // Quick actions
+  quickActions      Json?            // Array of quick action configurations
+  
+  // Template
+  templateId        String?          // If based on a template
+  
+  // Status
+  isDefault         Boolean          @default(false)
+  isActive          Boolean          @default(true)
+  isShared          Boolean          @default(false) // Shared with team
+  
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  
+  @@unique([userId, isDefault])
+  @@index([userId])
+}
+
+model DashboardWidget {
+  id                String           @id @default(cuid())
+  dashboardId       String
+  dashboard         UserDashboard    @relation(fields: [dashboardId], references: [id], onDelete: Cascade)
+  
+  type              String           // METRIC, CHART, TABLE, LIST, etc.
+  title             String
+  subtitle          String?
+  description       String?
+  icon              String?
+  
+  // Position and size
+  position          Json             // {x, y, w, h}
+  size              String           // SMALL, MEDIUM, LARGE, XLARGE, FULL
+  
+  // Data configuration
+  dataSource        String           // API endpoint or data key
+  dataConfig        Json?            // Query params, filters, aggregations
+  
+  // Display configuration
+  displayConfig     Json?            // Chart type, colors, etc.
+  
+  // Interaction configuration
+  interactionConfig Json?            // Clickable, draggable, resizable, etc.
+  
+  // Refresh
+  refreshInterval   Int?             // In seconds
+  autoRefresh       Boolean          @default(false)
+  
+  // Status
+  isVisible         Boolean          @default(true)
+  isLocked          Boolean          @default(false) // Cannot be moved/resized
+  isCollapsed       Boolean          @default(false)
+  
+  // Permissions
+  permissions       String[]         @default([]) // Role-based permissions
+  
+  // Custom metadata
+  metadata          Json?
+  
+  // Custom component
+  customComponent   String?          // For custom widgets
+  
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  
+  @@index([dashboardId])
 }

@@ -1051,5 +1051,120 @@
       "rejectionFailed": "Erreur lors du rejet",
       "executionFailed": "Erreur lors de l'exécution"
     }
+  },
+  "dashboard": {
+    "title": "Tableau de Bord",
+    "subtitle": "Vue d'ensemble de votre activité",
+    "refresh": "Actualiser",
+    "addWidget": "Ajouter un widget",
+    "editLayout": "Modifier la disposition",
+    "saveLayout": "Enregistrer la disposition",
+    "exportConfig": "Exporter la configuration",
+    "importConfig": "Importer la configuration",
+    "lightMode": "Mode clair",
+    "darkMode": "Mode sombre",
+    "breakpoint": "Point de rupture",
+    "editMode": "Mode édition",
+    "viewMode": "Mode visualisation",
+    "autoRefresh": "Actualisation auto",
+    "compactMode": "Mode compact",
+    "loading": "Chargement en cours...",
+    "errorLoadingDashboard": "Erreur lors du chargement du tableau de bord",
+    "retry": "Réessayer",
+    "confirmRemoveWidget": "Êtes-vous sûr de vouloir supprimer ce widget?",
+    "widgets": {
+      "metric": "Métrique",
+      "chart": "Graphique",
+      "table": "Tableau",
+      "list": "Liste",
+      "calendar": "Calendrier",
+      "gauge": "Jauge",
+      "progress": "Progression",
+      "alert": "Alerte",
+      "heatmap": "Carte de chaleur",
+      "timeline": "Chronologie",
+      "unknown": "Widget inconnu"
+    },
+    "actions": {
+      "minimize": "Réduire",
+      "maximize": "Agrandir",
+      "fullScreen": "Plein écran",
+      "exitFullScreen": "Quitter plein écran",
+      "export": "Exporter",
+      "lock": "Verrouiller",
+      "unlock": "Déverrouiller",
+      "settings": "Paramètres",
+      "delete": "Supprimer",
+      "refresh": "Actualiser",
+      "collapse": "Réduire",
+      "expand": "Développer"
+    },
+    "metrics": {
+      "totalLoans": "Total des prêts",
+      "activeLoans": "Prêts actifs",
+      "treasuryBalance": "Solde de trésorerie",
+      "repaymentRate": "Taux de remboursement",
+      "newUsers": "Nouveaux utilisateurs",
+      "overduePayments": "Paiements en retard",
+      "approvalRate": "Taux d'approbation",
+      "liquidityLevel": "Niveau de liquidité"
+    },
+    "insights": {
+      "title": "Recommandations",
+      "critical": "Critique",
+      "high": "Élevé",
+      "medium": "Moyen",
+      "low": "Faible",
+      "dismiss": "Ignorer",
+      "viewDetails": "Voir les détails",
+      "takeAction": "Agir",
+      "noInsights": "Aucune recommandation disponible"
+    },
+    "periods": {
+      "today": "Aujourd'hui",
+      "yesterday": "Hier",
+      "last7Days": "7 derniers jours",
+      "last30Days": "30 derniers jours",
+      "last90Days": "90 derniers jours",
+      "lastMonth": "Mois dernier",
+      "lastYear": "Année dernière",
+      "custom": "Personnalisé"
+    },
+    "templates": {
+      "adminOverview": "Vue Admin Complète",
+      "treasurerFocus": "Focus Trésorier",
+      "minimal": "Vue Minimale",
+      "applyTemplate": "Appliquer le modèle",
+      "saveAsTemplate": "Enregistrer comme modèle"
+    },
+    "quickActions": {
+      "title": "Actions rapides",
+      "newLoan": "Nouveau prêt",
+      "newUser": "Nouvel utilisateur",
+      "search": "Rechercher",
+      "reports": "Rapports",
+      "settings": "Paramètres",
+      "treasuryForecast": "Prévisions",
+      "export": "Export"
+    },
+    "status": {
+      "online": "En ligne",
+      "offline": "Hors ligne",
+      "syncing": "Synchronisation",
+      "error": "Erreur",
+      "lastUpdated": "Dernière mise à jour",
+      "realTime": "Temps réel"
+    },
+    "messages": {
+      "layoutSaved": "La disposition a été sauvegardée",
+      "widgetAdded": "Le widget a été ajouté",
+      "widgetRemoved": "Le widget a été supprimé",
+      "configExported": "Configuration exportée avec succès",
+      "configImported": "Configuration importée avec succès",
+      "templateApplied": "Le modèle a été appliqué",
+      "refreshing": "Actualisation en cours...",
+      "noData": "Aucune donnée disponible",
+      "error": "Une erreur est survenue"
+    }
   }
 }
