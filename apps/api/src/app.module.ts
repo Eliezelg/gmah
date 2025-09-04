@@ -27,6 +27,7 @@ import { TreasuryForecastModule } from './treasury-forecast/treasury-forecast.mo
 import { ImportModule } from './import/import.module';
 import { WithdrawalsModule } from './withdrawals/withdrawals.module';
 import { DepositsModule } from './deposits/deposits.module';
+import { CalendarModule } from './calendar/calendar.module';
 
 @Module({
   imports: [
@@ -65,6 +66,7 @@ import { DepositsModule } from './deposits/deposits.module';
     ImportModule,
     WithdrawalsModule,
     DepositsModule,
+    CalendarModule,
   ],
   controllers: [AppController],
   providers: [

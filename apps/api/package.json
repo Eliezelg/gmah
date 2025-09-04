@@ -21,6 +21,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@hebcal/core": "^5.10.1",
     "@nestjs/bull": "^11.0.3",
     "@nestjs/cache-manager": "^3.0.1",
     "@nestjs/common": "^11.0.1",
@@ -54,6 +55,7 @@
     "csv-stringify": "^6.6.0",
     "exceljs": "^4.4.0",
     "iconv-lite": "^0.6.3",
+    "node-ical": "^0.20.1",
     "papaparse": "^5.5.3",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
@@ -64,6 +66,7 @@
     "redis": "^5.8.2",
     "reflect-metadata": "^0.2.2",
     "resend": "^6.0.1",
+    "rrule": "^2.8.1",
     "rxjs": "^7.8.1",
     "socket.io": "^4.8.1",
     "speakeasy": "^2.0.0",

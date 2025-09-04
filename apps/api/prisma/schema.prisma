@@ -131,6 +131,11 @@ model User {
   approvedWithdrawals WithdrawalRequest[] @relation("ApprovedWithdrawals")
   rejectedWithdrawals WithdrawalRequest[] @relation("RejectedWithdrawals")
   
+  // Calendar relations
+  calendarEvents    CalendarEvent[]  @relation("UserCalendarEvents")
+  createdCalendarEvents CalendarEvent[] @relation("CreatedCalendarEvents")
+  updatedCalendarEvents CalendarEvent[] @relation("UpdatedCalendarEvents")
+  
   createdAt         DateTime         @default(now())
   updatedAt         DateTime         @updatedAt
   
@@ -216,6 +221,7 @@ model Loan {
   auditLogs         AuditLog[]       @relation("LoanAuditLogs")
   notifications     Notification[]   @relation("LoanNotifications")
   treasuryFlows     TreasuryFlow[]
+  calendarEvents    CalendarEvent[]  @relation("CalendarLoanEvents")
   
   createdAt         DateTime         @default(now())
   updatedAt         DateTime         @updatedAt
@@ -365,6 +371,7 @@ model Campaign {
   isActive          Boolean          @default(true)
   
   contributions     Contribution[]
+  calendarEvents    CalendarEvent[]  @relation("CalendarCampaignEvents")
   
   createdAt         DateTime         @default(now())
   updatedAt         DateTime         @updatedAt
@@ -742,6 +749,34 @@ enum ValidationSeverity {
   INFO
 }
 
+enum CalendarEventType {
+  LOAN_REPAYMENT
+  DEPOSIT_WITHDRAWAL
+  COMMITTEE_MEETING
+  JEWISH_HOLIDAY
+  CUSTOM_EVENT
+  SYSTEM_REMINDER
+  APPROVAL_DEADLINE
+  PAYMENT_DUE
+  DOCUMENT_EXPIRY
+  CAMPAIGN_EVENT
+}
+
+enum CalendarEventStatus {
+  SCHEDULED
+  COMPLETED
+  CANCELLED
+  POSTPONED
+  IN_PROGRESS
+}
+
+enum CalendarEventPriority {
+  LOW
+  NORMAL
+  HIGH
+  URGENT
+}
+
 model ImportSession {
   id                String           @id @default(cuid())
   
@@ -981,6 +1016,7 @@ model WithdrawalRequest {
   notifications     Notification[]   @relation("WithdrawalNotifications")
   auditLogs         AuditLog[]       @relation("WithdrawalAuditLogs")
   treasuryFlows     TreasuryFlow[]   @relation("WithdrawalFlows")
+  calendarEvents    CalendarEvent[]  @relation("CalendarWithdrawalEvents")
   
   // Metadata
   metadata          Json?
@@ -995,4 +1031,96 @@ model WithdrawalRequest {
   @@index([requestDate])
   @@index([plannedDate])
   @@index([approvalMode])
+}
+
+model CalendarEvent {
+  id                String           @id @default(cuid())
+  
+  // Basic event information
+  title             String
+  description       String?          @db.Text
+  type              CalendarEventType
+  status            CalendarEventStatus @default(SCHEDULED)
+  priority          CalendarEventPriority @default(NORMAL)
+  
+  // Timing
+  startDate         DateTime
+  endDate           DateTime?
+  allDay            Boolean          @default(false)
+  timezone          String?          @default("Asia/Jerusalem")
+  
+  // Recurrence using RRULE format
+  isRecurring       Boolean          @default(false)
+  recurrenceRule    String?          // RRULE string for recurring events
+  recurrenceId      String?          // Parent event ID for recurring instances
+  recurrenceDate    DateTime?        // Specific date for this instance
+  isRecurrenceException Boolean       @default(false)
+  
+  // Hebrew calendar support
+  isHebrewDate      Boolean          @default(false)
+  hebrewDate        String?          // Hebrew date representation
+  hebrewYear        Int?
+  hebrewMonth       String?          // Tishrei, Cheshvan, etc.
+  hebrewDay         Int?
+  
+  // Related entities
+  loanId            String?
+  loan              Loan?            @relation("CalendarLoanEvents", fields: [loanId], references: [id])
+  userId            String?          // Assigned user or creator
+  user              User?            @relation("UserCalendarEvents", fields: [userId], references: [id])
+  withdrawalId      String?
+  withdrawal        WithdrawalRequest? @relation("CalendarWithdrawalEvents", fields: [withdrawalId], references: [id])
+  campaignId        String?
+  campaign          Campaign?        @relation("CalendarCampaignEvents", fields: [campaignId], references: [id])
+  
+  // Notification and reminders
+  hasReminders      Boolean          @default(false)
+  reminderMinutes   Int[]            @default([]) // Array of reminder times in minutes before event
+  lastReminderSent  DateTime?
+  
+  // Location and attendees
+  location          String?
+  locationUrl       String?          // Virtual meeting URL
+  attendees         String[]         @default([]) // Array of user IDs or email addresses
+  
+  // External calendar sync
+  externalId        String?          // ID in external calendar system (Google, Outlook)
+  syncProvider      String?          // google, outlook, caldav
+  lastSyncedAt      DateTime?
+  syncHash          String?          // Hash to detect changes
+  
+  // Visual customization
+  color             String?          @default("#3b82f6") // Hex color code
+  backgroundColor   String?
+  textColor         String?
+  
+  // Metadata
+  isPublic          Boolean          @default(false) // Visible to all users vs. private
+  isSystemGenerated Boolean          @default(false) // Generated by system vs. manually created
+  sourceType        String?          // MANUAL, LOAN_REPAYMENT, WITHDRAWAL, etc.
+  metadata          Json?            // Additional event-specific data
+  
+  // Audit fields
+  createdBy         String?
+  creator           User?            @relation("CreatedCalendarEvents", fields: [createdBy], references: [id])
+  updatedBy         String?
+  updater           User?            @relation("UpdatedCalendarEvents", fields: [updatedBy], references: [id])
+  
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  
+  @@index([startDate])
+  @@index([endDate])
+  @@index([type])
+  @@index([status])
+  @@index([priority])
+  @@index([loanId])
+  @@index([userId])
+  @@index([withdrawalId])
+  @@index([campaignId])
+  @@index([isRecurring])
+  @@index([recurrenceId])
+  @@index([isHebrewDate])
+  @@index([isSystemGenerated])
+  @@index([createdBy])
 }

@@ -1,4 +1,5 @@
 {
+  "locale": "fr",
   "hebrew": "Calendrier hébraïque",
   "gregorian": "Calendrier grégorien",
   "shemitah": "Shemitat Kesafim",
@@ -16,5 +17,122 @@
     "tamuz": "Tamuz",
     "av": "Av",
     "elul": "Elul"
-  }
+  },
+  "admin": {
+    "title": "Calendrier Administrateur",
+    "description": "Gestion centralisée des événements, échéances et fêtes juives"
+  },
+  "tabs": {
+    "calendar": "Calendrier",
+    "events": "Événements",
+    "generate": "Générer",
+    "hebrew": "Calendrier Hébraïque"
+  },
+  "views": {
+    "today": "Aujourd'hui",
+    "month": "Mois",
+    "week": "Semaine",
+    "day": "Jour",
+    "list": "Liste"
+  },
+  "types": {
+    "loan_repayment": "Remboursement de prêt",
+    "deposit_withdrawal": "Retrait de dépôt",
+    "committee_meeting": "Réunion du comité",
+    "jewish_holiday": "Fête juive",
+    "custom_event": "Événement personnalisé",
+    "system_reminder": "Rappel système",
+    "approval_deadline": "Échéance d'approbation",
+    "payment_due": "Paiement dû",
+    "document_expiry": "Expiration de document",
+    "campaign_event": "Événement de campagne"
+  },
+  "status": {
+    "scheduled": "Planifié",
+    "completed": "Terminé",
+    "cancelled": "Annulé",
+    "postponed": "Reporté",
+    "in_progress": "En cours"
+  },
+  "priority": {
+    "low": "Faible",
+    "normal": "Normal",
+    "high": "Élevée",
+    "urgent": "Urgente"
+  },
+  "actions": {
+    "createEvent": "Créer un événement",
+    "editEvent": "Modifier l'événement",
+    "deleteEvent": "Supprimer l'événement",
+    "exportICal": "Exporter iCal",
+    "syncSettings": "Paramètres de sync",
+    "refresh": "Actualiser",
+    "create": "Créer",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "cancel": "Annuler",
+    "close": "Fermer",
+    "save": "Enregistrer",
+    "openLink": "Ouvrir le lien"
+  },
+  "fields": {
+    "title": "Titre",
+    "description": "Description",
+    "type": "Type",
+    "priority": "Priorité",
+    "startDate": "Date de début",
+    "endDate": "Date de fin",
+    "location": "Lieu",
+    "allDay": "Toute la journée",
+    "isPublic": "Public",
+    "selectType": "Sélectionnez un type",
+    "selectPriority": "Sélectionnez une priorité"
+  },
+  "filters": {
+    "title": "Filtres",
+    "clear": "Effacer",
+    "search": "Recherche",
+    "searchPlaceholder": "Rechercher dans les événements..."
+  },
+  "stats": {
+    "totalEvents": "Total des événements",
+    "upcomingEvents": "Événements à venir",
+    "overdueEvents": "Événements en retard"
+  },
+  "generate": {
+    "loanRepayments": {
+      "title": "Remboursements de prêts",
+      "description": "Générer les événements d'échéances",
+      "action": "Générer les remboursements"
+    },
+    "withdrawals": {
+      "title": "Demandes de retrait",
+      "description": "Créer des événements pour les retraits",
+      "action": "Générer les retraits"
+    },
+    "holidays": {
+      "title": "Fêtes juives",
+      "description": "Ajouter les fêtes juives",
+      "action": "Générer les fêtes"
+    }
+  },
+  "sync": {
+    "title": "Synchronisation des calendriers",
+    "description": "Connectez vos calendriers externes",
+    "connected": "Connecté",
+    "notConnected": "Non connecté",
+    "connectGoogle": "Connecter Google Calendar",
+    "connectOutlook": "Connecter Outlook Calendar"
+  },
+  "validation": {
+    "required": "Ce champ est requis"
+  },
+  "errors": {
+    "loadingError": "Erreur lors du chargement"
+  },
+  "allDay": "Toute la journée",
+  "recurring": "Récurrent",
+  "systemGenerated": "Généré par le système",
+  "loading": "Chargement...",
+  "noEvents": "Aucun événement"
 }

@@ -1,4 +1,5 @@
 {
+  "locale": "en",
   "hebrew": "Hebrew calendar",
   "gregorian": "Gregorian calendar",
   "shemitah": "Shemitat Kesafim",
@@ -16,5 +17,122 @@
     "tamuz": "Tamuz",
     "av": "Av",
     "elul": "Elul"
-  }
+  },
+  "admin": {
+    "title": "Admin Calendar",
+    "description": "Centralized management of events, due dates and Jewish holidays"
+  },
+  "tabs": {
+    "calendar": "Calendar",
+    "events": "Events",
+    "generate": "Generate",
+    "hebrew": "Hebrew Calendar"
+  },
+  "views": {
+    "today": "Today",
+    "month": "Month",
+    "week": "Week",
+    "day": "Day",
+    "list": "List"
+  },
+  "types": {
+    "loan_repayment": "Loan repayment",
+    "deposit_withdrawal": "Deposit withdrawal",
+    "committee_meeting": "Committee meeting",
+    "jewish_holiday": "Jewish holiday",
+    "custom_event": "Custom event",
+    "system_reminder": "System reminder",
+    "approval_deadline": "Approval deadline",
+    "payment_due": "Payment due",
+    "document_expiry": "Document expiry",
+    "campaign_event": "Campaign event"
+  },
+  "status": {
+    "scheduled": "Scheduled",
+    "completed": "Completed",
+    "cancelled": "Cancelled",
+    "postponed": "Postponed",
+    "in_progress": "In progress"
+  },
+  "priority": {
+    "low": "Low",
+    "normal": "Normal",
+    "high": "High",
+    "urgent": "Urgent"
+  },
+  "actions": {
+    "createEvent": "Create event",
+    "editEvent": "Edit event",
+    "deleteEvent": "Delete event",
+    "exportICal": "Export iCal",
+    "syncSettings": "Sync settings",
+    "refresh": "Refresh",
+    "create": "Create",
+    "edit": "Edit",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "close": "Close",
+    "save": "Save",
+    "openLink": "Open link"
+  },
+  "fields": {
+    "title": "Title",
+    "description": "Description",
+    "type": "Type",
+    "priority": "Priority",
+    "startDate": "Start date",
+    "endDate": "End date",
+    "location": "Location",
+    "allDay": "All day",
+    "isPublic": "Public",
+    "selectType": "Select a type",
+    "selectPriority": "Select priority"
+  },
+  "filters": {
+    "title": "Filters",
+    "clear": "Clear",
+    "search": "Search",
+    "searchPlaceholder": "Search in events..."
+  },
+  "stats": {
+    "totalEvents": "Total events",
+    "upcomingEvents": "Upcoming events",
+    "overdueEvents": "Overdue events"
+  },
+  "generate": {
+    "loanRepayments": {
+      "title": "Loan repayments",
+      "description": "Generate due date events",
+      "action": "Generate repayments"
+    },
+    "withdrawals": {
+      "title": "Withdrawal requests",
+      "description": "Create events for withdrawals",
+      "action": "Generate withdrawals"
+    },
+    "holidays": {
+      "title": "Jewish holidays",
+      "description": "Add Jewish holidays",
+      "action": "Generate holidays"
+    }
+  },
+  "sync": {
+    "title": "Calendar synchronization",
+    "description": "Connect your external calendars",
+    "connected": "Connected",
+    "notConnected": "Not connected",
+    "connectGoogle": "Connect Google Calendar",
+    "connectOutlook": "Connect Outlook Calendar"
+  },
+  "validation": {
+    "required": "This field is required"
+  },
+  "errors": {
+    "loadingError": "Loading error"
+  },
+  "allDay": "All day",
+  "recurring": "Recurring",
+  "systemGenerated": "System generated",
+  "loading": "Loading...",
+  "noEvents": "No events"
 }
