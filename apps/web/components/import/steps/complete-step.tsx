@@ -52,7 +52,7 @@ export function CompleteStep({ onComplete }: CompleteStepProps) {
       toast.success('Import annulé avec succès');
       handleComplete();
     } catch (error) {
-      toast.error('Erreur lors de l'annulation');
+      toast.error('Erreur lors de l\'annulation');
     }
   };
 

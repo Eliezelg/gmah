@@ -30,8 +30,8 @@ const MainLandingPage = () => {
   const router = useRouter();
   
   useEffect(() => {
-    // Redirect to the landing page for the main site
-    router.push('/landing');
+    // Redirect to the platform marketing page for the main site
+    router.push('/platform');
   }, [router]);
   
   return null;

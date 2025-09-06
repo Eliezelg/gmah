@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "npm run build:translations && next build --turbopack",
+    "build": "npm run build:translations && next build",
     "build:translations": "node scripts/build-translations.js",
     "start": "next start",
     "lint": "eslint"
@@ -41,6 +41,7 @@
     "axios": "^1.11.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "cookies-next": "^6.1.0",
     "date-fns": "^4.1.0",
     "lucide-react": "^0.542.0",
     "next": "15.5.2",

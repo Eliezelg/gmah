@@ -10,6 +10,7 @@ import rrulePlugin from '@fullcalendar/rrule';
 import { useTranslations } from 'next-intl';
 import { CalendarEvent, FullCalendarEvent, EVENT_TYPE_COLORS, PRIORITY_COLORS } from '@/types/calendar';
 import { Loader2 } from 'lucide-react';
+import styles from './AdminCalendar.module.css';
 
 interface AdminCalendarProps {
   events: CalendarEvent[];
@@ -157,87 +158,8 @@ export function AdminCalendar({
   }
 
   return (
-    <div className="calendar-container">
+    <div className={styles.calendarContainer}>
       <FullCalendar {...calendarConfig} />
-      
-      {/* Custom styles for Hebrew RTL support */}
-      {locale === 'he' && (
-        <style jsx global>{`
-          .fc-direction-rtl .fc-toolbar-chunk {
-            display: flex;
-            flex-direction: row-reverse;
-          }
-          .fc-direction-rtl .fc-button-group {
-            direction: ltr;
-          }
-          .fc-direction-rtl .fc-daygrid-event {
-            text-align: right;
-          }
-        `}</style>
-      )}
-      
-      {/* Custom event styling */}
-      <style jsx global>{`
-        .fc-event {
-          border-radius: 4px;
-          border-width: 1px;
-          cursor: pointer;
-          transition: all 0.2s ease;
-        }
-        .fc-event:hover {
-          opacity: 0.8;
-          transform: translateY(-1px);
-          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .fc-daygrid-event {
-          margin: 1px 0;
-        }
-        .fc-event-title {
-          font-weight: 500;
-        }
-        /* Priority styling */
-        .fc-event[data-priority="URGENT"] {
-          animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.7; }
-        }
-        /* Hebrew font support */
-        .fc-direction-rtl {
-          font-family: 'Heebo', 'David', 'Narkisim', sans-serif;
-        }
-        /* Status styling */
-        .fc-event[data-status="COMPLETED"] {
-          opacity: 0.6;
-          text-decoration: line-through;
-        }
-        .fc-event[data-status="CANCELLED"] {
-          opacity: 0.4;
-          filter: grayscale(50%);
-        }
-        /* System generated events styling */
-        .fc-event[data-system-generated="true"] {
-          border-style: dashed;
-        }
-        /* Mobile responsive adjustments */
-        @media (max-width: 768px) {
-          .fc-toolbar {
-            flex-direction: column;
-            gap: 0.5rem;
-          }
-          .fc-toolbar-chunk {
-            justify-content: center;
-          }
-          .fc-button-group {
-            display: flex;
-            justify-content: center;
-          }
-          .fc-daygrid-event {
-            font-size: 0.75rem;
-          }
-        }
-      `}</style>
     </div>
   );
 }

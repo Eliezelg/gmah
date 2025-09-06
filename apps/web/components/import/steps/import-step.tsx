@@ -73,7 +73,7 @@ export function ImportStep() {
       setStatus('CANCELLED');
       toast.info('Import annulé');
     } catch (error) {
-      toast.error('Erreur lors de l'annulation');
+      toast.error('Erreur lors de l\'annulation');
     }
   };
 
