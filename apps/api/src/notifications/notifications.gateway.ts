@@ -108,7 +108,7 @@ export class NotificationsGateway
     await this.prisma.notification.create({
       data: {
         userId,
-        type: event as any,
+        type: 'IN_APP', // Use valid NotificationType enum value
         title: data.title || 'Nouvelle notification',
         message: data.message,
         metadata: data.metadata || {},

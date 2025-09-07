@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import axios from 'axios';
+import apiClient from '@/lib/api-client';
 import { 
   TreasuryForecastResponseDto, 
   ForecastSummaryDto, 
@@ -11,7 +11,6 @@ import {
   ForecastQueryDto
 } from '@/types/treasury-forecast';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
 interface UseTreasuryForecastOptions {
   autoRefresh?: boolean;
@@ -30,7 +29,7 @@ export function useTreasuryForecast(options: UseTreasuryForecastOptions = {}) {
   } = useQuery<ForecastSummaryDto>({
     queryKey: ['treasury-forecast', 'summary'],
     queryFn: async () => {
-      const response = await axios.get(`${API_BASE_URL}/api/treasury/forecast/summary`);
+      const response = await apiClient.get('/treasury/forecast/summary');
       return response.data;
     },
     refetchInterval: options.refetchInterval || 30000, // Refresh every 30 seconds
@@ -51,7 +50,7 @@ export function useTreasuryForecast(options: UseTreasuryForecastOptions = {}) {
       if (currentQuery.startDate) params.append('startDate', currentQuery.startDate);
       if (currentQuery.includeInactiveAlerts) params.append('includeInactiveAlerts', 'true');
       
-      const response = await axios.get(`${API_BASE_URL}/api/treasury/forecast?${params}`);
+      const response = await apiClient.get(`/treasury/forecast?${params}`);
       return response.data;
     },
     enabled: Object.keys(currentQuery).length > 0,
@@ -60,7 +59,7 @@ export function useTreasuryForecast(options: UseTreasuryForecastOptions = {}) {
   // Generate new forecast mutation
   const generateForecastMutation = useMutation({
     mutationFn: async (dto: CreateTreasuryForecastDto) => {
-      const response = await axios.post(`${API_BASE_URL}/api/treasury/forecast`, dto);
+      const response = await apiClient.post('/treasury/forecast', dto);
       return response.data;
     },
     onSuccess: (data) => {
@@ -72,7 +71,7 @@ export function useTreasuryForecast(options: UseTreasuryForecastOptions = {}) {
   // Quick forecast mutation
   const quickForecastMutation = useMutation({
     mutationFn: async (days: number) => {
-      const response = await axios.get(`${API_BASE_URL}/api/treasury/forecast/quick/${days}`);
+      const response = await apiClient.get(`/treasury/forecast/quick/${days}`);
       return response.data;
     },
     onSuccess: (data) => {
@@ -84,7 +83,7 @@ export function useTreasuryForecast(options: UseTreasuryForecastOptions = {}) {
   // Compare scenarios mutation
   const compareScenariosMutation = useMutation({
     mutationFn: async ({ periodDays, currentBalance }: { periodDays: number; currentBalance: number }) => {
-      const response = await axios.post(`${API_BASE_URL}/api/treasury/forecast/scenarios/compare`, {
+      const response = await apiClient.post('/treasury/forecast/scenarios/compare', {
         forecastDate: new Date().toISOString(),
         periodDays,
         currentBalance,
@@ -96,7 +95,7 @@ export function useTreasuryForecast(options: UseTreasuryForecastOptions = {}) {
   // Acknowledge alert mutation
   const acknowledgeAlertMutation = useMutation({
     mutationFn: async (alertId: string) => {
-      const response = await axios.post(`${API_BASE_URL}/api/treasury/forecast/alerts/${alertId}/acknowledge`);
+      const response = await apiClient.post(`/treasury/forecast/alerts/${alertId}/acknowledge`);
       return response.data;
     },
     onSuccess: () => {

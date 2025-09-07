@@ -29,6 +29,7 @@ import { WithdrawalsModule } from './withdrawals/withdrawals.module';
 import { DepositsModule } from './deposits/deposits.module';
 import { CalendarModule } from './calendar/calendar.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { AdminModule } from './admin/admin.module';
 
 @Module({
   imports: [
@@ -69,6 +70,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
     DepositsModule,
     CalendarModule,
     DashboardModule,
+    AdminModule,
   ],
   controllers: [AppController],
   providers: [

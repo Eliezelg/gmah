@@ -119,10 +119,19 @@ export default function AdminLoansPage() {
   const fetchLoans = async () => {
     try {
       const response = await apiClient.get('/loans');
-      setLoans(response.data);
-      calculateStats(response.data);
-    } catch (error) {
-      toast.error('Erreur lors du chargement des prêts');
+      const loansData = Array.isArray(response.data) ? response.data : [];
+      setLoans(loansData);
+      calculateStats(loansData);
+    } catch (error: any) {
+      console.error('Error fetching loans:', error);
+      if (error.response?.status === 401) {
+        toast.error('Session expirée. Veuillez vous reconnecter.');
+        router.push('/login');
+      } else {
+        toast.error('Erreur lors du chargement des prêts');
+      }
+      setLoans([]);
+      calculateStats([]);
     } finally {
       setIsLoading(false);
     }

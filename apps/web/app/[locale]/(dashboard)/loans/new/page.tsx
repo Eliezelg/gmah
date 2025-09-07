@@ -55,24 +55,31 @@ const steps = [
 
 const loanTypes = [
   {
-    value: 'PERSONAL',
-    label: 'Prêt Personnel',
-    description: 'Pour vos besoins personnels urgents',
+    value: 'STANDARD',
+    label: 'Prêt Standard',
+    description: 'Pour vos besoins personnels',
     maxAmount: 10000,
     maxDuration: 36,
   },
   {
-    value: 'BUSINESS',
+    value: 'PROFESSIONAL',
     label: 'Prêt Professionnel',
     description: 'Pour développer votre activité',
     maxAmount: 50000,
     maxDuration: 60,
   },
   {
-    value: 'STUDENT',
+    value: 'EDUCATION',
     label: 'Prêt Étudiant',
     description: 'Pour financer vos études',
     maxAmount: 20000,
+    maxDuration: 48,
+  },
+  {
+    value: 'WEDDING',
+    label: 'Prêt Mariage',
+    description: 'Pour financer votre mariage',
+    maxAmount: 30000,
     maxDuration: 48,
   },
   {
@@ -92,15 +99,15 @@ const loanTypes = [
 ];
 
 const purposes = {
-  PERSONAL: [
-    'Mariage',
+  STANDARD: [
     'Déménagement',
     'Rénovation',
     'Voyage',
     'Achat équipement',
+    'Besoins personnels',
     'Autre',
   ],
-  BUSINESS: [
+  PROFESSIONAL: [
     'Création entreprise',
     'Développement activité',
     'Achat matériel',
@@ -108,11 +115,19 @@ const purposes = {
     'Stock',
     'Autre',
   ],
-  STUDENT: [
+  EDUCATION: [
     'Frais de scolarité',
     'Logement étudiant',
     'Matériel scolaire',
     'Formation',
+    'Autre',
+  ],
+  WEDDING: [
+    'Cérémonie',
+    'Réception',
+    'Traiteur',
+    'Location de salle',
+    'Décoration',
     'Autre',
   ],
   MEDICAL: [
@@ -128,10 +143,14 @@ const purposes = {
     'Situation familiale',
     'Autre',
   ],
+  OTHER: [
+    'Autre besoin',
+    'Non spécifié',
+  ],
 };
 
 const loanSchema = z.object({
-  type: z.enum(['PERSONAL', 'BUSINESS', 'STUDENT', 'MEDICAL', 'EMERGENCY']),
+  type: z.enum(['STANDARD', 'PROFESSIONAL', 'EDUCATION', 'WEDDING', 'MEDICAL', 'EMERGENCY', 'OTHER']),
   amount: z.number().min(100).max(50000),
   numberOfInstallments: z.number().min(1).max(60),
   purpose: z.string().min(3),
@@ -192,21 +211,6 @@ export default function NewLoanPage() {
         break;
       case 3:
         fieldsToValidate = ['purpose'];
-        // Create a temporary loan when moving to documents step
-        if (!tempLoanId) {
-          try {
-            const formValues = form.getValues();
-            const payload = {
-              ...formValues,
-              expectedEndDate: expectedEndDate.toISOString(),
-            };
-            const response = await apiClient.post('/loans', payload);
-            setTempLoanId(response.data.id);
-          } catch (error) {
-            toast.error('Erreur lors de la création de la demande');
-            return;
-          }
-        }
         break;
       case 4:
         if (uploadedDocuments.length === 0) {
@@ -219,6 +223,26 @@ export default function NewLoanPage() {
     const isStepValid = await form.trigger(fieldsToValidate);
     
     if (isStepValid) {
+      // Create a temporary loan when moving from step 3 to step 4 (documents)
+      if (currentStep === 3 && !tempLoanId) {
+        try {
+          const formValues = form.getValues();
+          const payload = {
+            ...formValues,
+            type: selectedType || 'STANDARD', // Add the loan type
+            expectedEndDate: expectedEndDate.toISOString(),
+          };
+          console.log('Sending loan payload:', payload); // Debug log
+          const response = await apiClient.post('/loans', payload);
+          setTempLoanId(response.data.id);
+          toast.success('Demande de prêt initialisée');
+        } catch (error: any) {
+          console.error('Loan creation error:', error.response?.data); // Debug error
+          toast.error(error.response?.data?.message || 'Erreur lors de la création de la demande');
+          return;
+        }
+      }
+      
       if (currentStep < steps.length) {
         setCurrentStep(currentStep + 1);
       }
@@ -250,10 +274,15 @@ export default function NewLoanPage() {
       // Documents and guarantees are already associated with the loan
       toast.success('Demande de prêt créée avec succès!');
       
-      // Submit the loan for review
-      await apiClient.post(`/loans/${finalLoanId}/submit`, {
-        message: 'Demande soumise pour examen',
-      });
+      // Submit the loan for review by updating its status
+      try {
+        await apiClient.patch(`/loans/${finalLoanId}`, {
+          status: 'SUBMITTED',
+        });
+      } catch (submitError: any) {
+        console.warn('Could not submit loan, it may require manual submission:', submitError);
+        // Continue anyway - the loan is created
+      }
       
       router.push(`/loans/${finalLoanId}`);
     } catch (error: any) {

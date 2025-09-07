@@ -133,23 +133,43 @@ export function GuaranteeManager({
     setIsAddingGuarantee(true);
     try {
       // First, find guarantor by email
-      const usersResponse = await apiClient.get(`/users?email=${data.guarantorEmail}`);
-      const guarantor = usersResponse.data[0];
+      let guarantor;
+      let userSearchFailed = false;
+      try {
+        const usersResponse = await apiClient.get(`/users?email=${data.guarantorEmail}`);
+        guarantor = usersResponse.data[0];
+      } catch (error: any) {
+        if (error.response?.status === 403) {
+          // If user search fails due to auth, create guarantee with email only
+          // The backend should handle this case
+          console.warn('User search failed due to auth, proceeding with email only');
+          userSearchFailed = true;
+        } else {
+          throw error;
+        }
+      }
       
-      if (!guarantor) {
+      if (!guarantor && !userSearchFailed) {
         toast.error('Aucun utilisateur trouvé avec cet email');
         setIsAddingGuarantee(false);
         return;
       }
 
       // Create guarantee
-      const guaranteeData = {
+      const guaranteeData: any = {
         loanId,
-        guarantorId: guarantor.id,
         type: data.type,
         amount: data.amount,
         percentage: data.percentage,
       };
+      
+      // Add guarantor info based on what we have
+      if (guarantor) {
+        guaranteeData.guarantorId = guarantor.id;
+      } else {
+        // If we couldn't find the user, send the email for backend to handle
+        guaranteeData.guarantorEmail = data.guarantorEmail;
+      }
 
       await apiClient.post('/guarantees', guaranteeData);
       toast.success('Invitation de garantie envoyée avec succès');

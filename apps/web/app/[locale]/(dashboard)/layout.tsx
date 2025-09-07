@@ -7,6 +7,7 @@ import { useAuthStore } from '@/lib/stores/auth-store';
 import { Sidebar } from '@/components/layout/sidebar';
 import { NotificationBell } from '@/components/notifications/NotificationBell';
 import { NotificationProvider } from '@/contexts/NotificationContext';
+import { LanguageSelector } from '@/components/language-selector';
 import { Loader2 } from 'lucide-react';
 
 export default function DashboardLayout({
@@ -80,7 +81,10 @@ export default function DashboardLayout({
                 {user?.role === 'ADMIN' && t('admin')}
                 {user?.role === 'SUPER_ADMIN' && t('superAdmin')}
               </h1>
-              <NotificationBell />
+              <div className="flex items-center gap-2">
+                <LanguageSelector />
+                <NotificationBell />
+              </div>
             </div>
           </div>
           <div className="container mx-auto px-4 py-8 lg:px-8">
